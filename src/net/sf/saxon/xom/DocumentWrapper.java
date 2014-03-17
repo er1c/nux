@@ -1,8 +1,5 @@
 package net.sf.saxon.xom;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
 import net.sf.saxon.Configuration;
 import net.sf.saxon.om.DocumentInfo;
 import net.sf.saxon.om.NamePool;
@@ -13,12 +10,16 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Node;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Collections;
+
 /**
  * The root node of an XPath tree. (Or equivalently, the tree itself).
  * <P>
  * This class is used not only for a document, but also for the root
  * of a document-less tree fragment.
- * 
+ *
  * @author Michael H. Kay
  * @author Wolfgang Hoschek (ported net.sf.saxon.jdom to XOM)
  */
@@ -35,7 +36,7 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 
 	/**
 	 * Create a Saxon wrapper for a XOM root node
-	 * 
+	 *
 	 * @param root
 	 *            The XOM root node
 	 * @param baseURI
@@ -46,16 +47,16 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 	 */
 	public DocumentWrapper(Node root, String baseURI, Configuration config) {
 		super(root, null, 0);
-		if (root.getParent() != null) 
+		if (root.getParent() != null)
 			throw new IllegalArgumentException("root node must not have a parent node");
 		this.baseURI = baseURI;
-		this.docWrapper = this;
+        docWrapper = this;
 		setConfiguration(config);
 	}
-	
+
 	/**
 	 * Wrap a node in the XOM document.
-	 * 
+	 *
 	 * @param node
 	 *            The node to be wrapped. This must be a node in the same
 	 *            document (the system does not check for this).
@@ -76,16 +77,15 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 	 * document, so that it can be retrieved using getNamePool(). It must also
 	 * call NamePool.allocateDocumentNumber(), and return the relevant document
 	 * number when getDocumentNumber() is subsequently called.
-	 * 
-	 * @param config
-	 *            The configuration to be used
+	 *
+	 * @param config The configuration to be used
 	 */
 
 	public void setConfiguration(Configuration config) {
 		this.config = config;
-		this.documentNumber = allocateDocumentNumber(config);
+        documentNumber = config.getDocumentNumberAllocator().allocateDocumentNumber();
 	}
-	
+
     /**
 	 * Get the configuration previously set using setConfiguration
 	 */
@@ -96,7 +96,7 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 
 	/**
 	 * Get the name pool used for the names in this document
-	 * 
+	 *
 	 * @return the name pool in which all the names used in this document are
 	 *         registered
 	 */
@@ -108,7 +108,7 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 	/**
 	 * Get the unique document number for this document (the number is unique
 	 * for all documents within a NamePool)
-	 * 
+	 *
 	 * @return the unique number identifying this document within the name pool
 	 */
 
@@ -118,7 +118,7 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 
     /**
 	 * Get the element with a given ID, if any
-	 * 
+	 *
 	 * @param id
 	 *            the required ID value
 	 * @return the element with the given ID, or null if there is no such ID
@@ -130,13 +130,13 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 		if (idIndex == null) {
 			Element elem;
 			switch (nodeKind) {
-				case Type.DOCUMENT : 
+				case Type.DOCUMENT :
 					elem = ((Document) node).getRootElement();
 					break;
-				case Type.ELEMENT : 
+				case Type.ELEMENT :
 					elem = (Element) node;
 					break;
-				default: 
+				default:
 					return null;
 			}
 			idIndex = new HashMap(50);
@@ -144,8 +144,8 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 		}
 		return (NodeInfo) idIndex.get(id);
 	}
-	
-	
+
+
 	private void buildIDIndex(Element elem) {
 		// walk the tree in reverse document order, to satisfy the XPath 1.0 rule
 		// that says if an ID appears twice, the first one wins
@@ -164,55 +164,25 @@ public class DocumentWrapper extends NodeWrapper implements DocumentInfo {
 	}
 
     /**
+     * Get the list of unparsed entities defined in this document
+     * @return an Iterator, whose items are of type String, containing the names of all
+     *         unparsed entities defined in this document. If there are no unparsed entities or if the
+     *         information is not available then an empty iterator is returned
+     */
+
+    public Iterator getUnparsedEntityNames() {
+        return Collections.EMPTY_LIST.iterator();
+    }    
+
+    /**
 	 * Get the unparsed entity with a given name
-	 * 
-	 * @param name
-	 *            the name of the entity
+	 *
+	 * @param name the name of the entity
 	 * @return null: XOM does not provide access to unparsed entities
-	 * @return if the entity exists, return an array of two Strings, the first
-	 *         holding the system ID of the entity, the second holding the
-	 *         public ID if there is one, or null if not. If the entity does not
-	 *         exist, return null.
 	 */
 
 	public String[] getUnparsedEntity(String name) {
 		return null;
-	}
-
-	private static final Method saxon85Method = findAllocateDocumentNumberMethod85();
-
-	// work-around for incompatibility introduced in saxon-8.5.1
-	private int allocateDocumentNumber(Configuration config) {
-		if (saxon85Method == null) {
-			try { // saxon >= 8.5.1
-				return allocateDocumentNumber851(config);
-			} catch (Throwable t) {
-				throw new RuntimeException(t);
-			}
-		}
-		
-		// saxon < 8.5.1
-		try { 
-			// return config.getNamePool().allocateDocumentNumber(this);
-			Object result = saxon85Method.invoke(config.getNamePool(), new Object[] {this});
-			return ((Integer) result).intValue();
-		} catch (Throwable t) {
-			throw new RuntimeException(t);
-		}
-		
-	}
-
-	// saxon >= 8.5.1
-	private int allocateDocumentNumber851(Configuration config) {
-		return config.getDocumentNumberAllocator().allocateDocumentNumber();
-	}
-	
-	private static Method findAllocateDocumentNumberMethod85() {
-		try {
-			return NamePool.class.getMethod("allocateDocumentNumber", new Class[] {NodeInfo.class});
-		} catch (Throwable t) {
-			return null;
-		}
 	}
 
 }
