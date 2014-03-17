@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!-- $Id: readme.xml,v 1.5 2005/08/20 22:32:42 hoschek3 Exp $          -->
+<document>
+  <properties>
+    <author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+    <title>Readme</title>
+  </properties>
+<body>
+
+<!-- ##################################################################################### -->
+<section name="Quick File Overview">
+<p>
+The project website is a copy of the <code> doc/ </code> directory.
+</p>
+<listing name="Directories and Files">
+doc/readme.html     - this file
+doc/changelog.html  - lists recent changes to the source code (release notes)
+doc/license.html    - the license defining the terms of use of the software
+doc/todo.html       - lists planned or possible changes/additions
+doc/bugs.html       - lists known bugs and work-arounds
+</listing>
+
+</section>
+
+
+<!-- ##################################################################################### -->
+<section name="Directories necessary for users of a binary distribution">
+
+<listing name="Directories and Files">
+bin/                - cross platform executable programs
+doc/                - guides, tutorials, FAQ, etc.
+doc/api/            - generated javadoc HTML documentation
+lib/                - jar files for client usage
+samples/            - sample XML files and queries
+
+</listing>
+
+</section>
+
+
+<!-- ##################################################################################### -->
+<section name="Directories necessary for developers">
+
+<listing name="Directories and Files">
+src/                 - java source code
+xdocs/               - HTML for website generation
+build.xml            - ant build file to build the entire thing from scratch.
+                       The build file contains build instructions
+build/classes/       - temporary dir for compilation upon build
+</listing>
+
+</section>
+
+
+<!-- ##################################################################################### -->
+<section name="Building from source">
+<p>
+Most users will not need to build from source as a binary distribution of all
+libraries is included in the download.
+If you are a developer, then see the
+build, tarball, etc. instructions in the ant build file <code>build.xml</code>.  
+</p>
+
+<listing name="Build Requirements">
+jdk-1.4 or higher ('java' must be in your PATH)
+ant-1.5.3 or higher (http://jakarta.apache.org/ant)
+</listing>
+<p></p>
+
+
+<listing name="Define the path to your java installation and ant software. For example">
+UNIX bash-style: 
+	export PATH=/home/dsd/java2/jdk/jdk-1.4/bin:$PATH
+
+	export PATH=/home/dsd/java2/share/apache/ant/bin:$PATH
+	export JAVA_HOME=/home/dsd/java2/jdk/jdk-1.4    
+		(ant works without this but reports a warning)
+		
+Windows:
+	set PATH=e:\java\jdk\sun-1.4.2\bin;%PATH%
+
+	set PATH=e:\java\share\apache\ant-1.5.4\bin;%PATH%
+	set JAVA_HOME=e:\java\jdk\sun-1.4.2              
+		(ant works without this but reports a warning)
+</listing>
+
+
+<p></p>
+<listing name="To build everything from scratch">
+cd nux
+ant build
+</listing>  
+<p></p>
+
+<listing name="To get more information on other targets">
+ant help
+</listing>
+</section>
+
+
+</body>
+</document>

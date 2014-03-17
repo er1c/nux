@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!-- $Id: related.xml,v 1.9 2005/11/09 19:35:14 hoschek3 Exp $          -->
+<document>
+	<properties>
+		<author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+		<title>Frequently Asked Questions / Related Information</title>
+	</properties>
+	<body>
+		<!-- ##################################################################################### -->
+<section name="Frequently Asked Questions">
+<ul>
+	<li><i>How does Nux relate to Saxon?</i>
+		<p>
+		Nux wraps Saxon via a XOM-friendly API, hiding most of Saxon's substantial complexity and 
+		making it accessible via a convenient, powerful and efficient API.
+		In general, Saxon (and by its virtue, Nux) implements the latest and greatest XQuery specs.
+		Nux supports XQuery in the same way that Saxon does. 
+		If Saxon supports XQuery feature XYZ, then Nux automatically inherits that feature as well, 
+		with the very same semantics.
+		For example, Saxon and Nux implement XQuery's <i>full axis feature</i>, 
+		i.e., support all 12 XPath axes (except the namespace axis which has been deprecated by the W3C).
+		In particular, anything that can be done with the Saxon API can be done with the Nux API.
+		Like Saxon-B, Nux XQuery is not schema aware, unlike the commercial Saxon SA version.
+		Nux contributed its Saxon-XOM bridge back to the Saxon codebase.
+		</p>
+	</li>
+		
+	<li><i>What about support for database integration and the 
+		<a href="http://www.jcp.org/en/jsr/detail?id=225">XQJ</a> standard?</i>
+		<p>
+		XQJ will be very useful, but it is still immature, in flux and mostly without real implementations. Once XQJ stabilizes, and implementations of it become available, 
+		we will also support plugging in any XQJ implementation via a factory interface.
+		But that day doesn't seem close yet.
+		</p>
+	</li>
+	
+	<li><i>Where does the project name stem from?</i> 
+		<p>
+		No, it's not an akronym. 
+		For anthropologists: The Goddess <i>Nux</i> (Night) was one of the four original primeval Greek deities, 
+		who were the first entities to be formed out of Chaos, her siblings being 
+		Eros (Love), Gaea (Earth) and Erebos (Darkness). 
+		<i>Nux vomica</i> also refers to a tree native to the East Indies, as well as its nut-like seeds. 
+		In homeopathy, it is one of the most commonly prescribed remedies.
+		</p>				
+	</li>
+				
+	<li><i>I'd like to help. How can I contribute?</i>
+		<p>
+		Your contributions are most welcome, be they suggestions for improvement, 
+		problem reports, bug fixes, patches, or anything else. 
+		In particular, a comprehensive suite of JUnit test cases in your area of interest 
+		would be a very useful addition.
+		</p>
+	</li>
+		
+</ul>
+</section>
+
+
+		<!-- ##################################################################################### -->
+<section name="Related Information">
+
+<p>
+A GUI XQuery Editor helps to learn the query language, and to quickly try out 
+queries during early development stages. Such editors include
+<a target="_blank" href="http://www.oxygenxml.com">Oxygen</a> 
+(commercial but with free trial, including Eclipse plugin)
+and <a target="_blank" href="http://www.stylusstudio.com/xquery_editor.html">Stylus Studio</a> 
+(commercial but with free trial). 
+Using such rapid prototyping GUIs before deploying into your Nux-based production 
+application can speed up development and early testing.
+Incidentally, these GUIs also use the Saxon XQuery engine internally, just like Nux.
+</p>
+<p>
+Easy-to-read tutorials and other material about XQuery include:
+<ul>
+   <li><a href="http://www.stylusstudio.com/xquery_primer.html">Learning XQuery in 10 Minutes</a></li>
+   <li><a href="http://www.stylusstudio.com/xquery_flwor.html">Introduction to the XQuery FLWOR Expression</a></li>
+   <li><a href="http://www.w3schools.com/xpath/">XPath Tutorial</a></li>
+   <li><a href="http://www.yukonxml.com/articles/xquery/">Essential XQuery</a></li>
+   <li><a href="http://www.datadirect.com/news/whatsnew/xquerybook.asp">XQuery - A Guided Tour</a></li>
+   <li><a href="http://www.informit.com/content/downloads/chap2_0321180607.pdf">Influences on the Design of XQuery</a></li>
+   <li><a href="http://www.softwareag.com/xml/tools/xquery_primer.pdf">XQuery Primer</a></li>
+   <!-- <li><a href="http://www.datypic.com/IntroductionToXQuery.pdf">Introduction to XQuery</a></li> -->
+   <!-- <li><a href="http://www.informit.com/title/0672324792">XQuery Kick Start</a></li> -->
+   <!-- <li><a href="http://cafeconleche.org/slides/xmlsig/xquery/XQuery.html">XQuery Tutorial 2</a></li> -->
+   <li><a href="http://www.w3.org/TR/xquery-use-cases/">W3C Sample XQueries</a> (also contained in the Saxon download).</li>
+   <li><a href="http://www.xquery.com/">www.xquery.com</a></li>
+   <li><a href="http://www.w3.org/XML/Query">W3C XQuery and XPath Specifications</a> (also with news, products, etc.)</li>
+   <li><a href="http://idealliance.org/proceedings/xtech05/papers/02-03-01/">Comparing XSLT and XQuery</a></li>
+   <li><a href="http://www.softwareag.com/trainingweek2003/presentations/XML_Query_Michael_Kay.ppt">XQuery 1.0 vs. XPath 1.0, XPath 2.0 and XSLT 2.0</a></li>
+   <li><a href="http://www.gnu.org/software/qexo/XQ-Gen-XML.html">Generating XML and HTML using XQuery</a></li>
+   <li><a href="http://idealliance.org/papers/dx_xmle04/papers/02-03-02/02-03-02.html">XSLT and XPath Optimization</a></li>
+   <li><a href="http://www-128.ibm.com/developerworks/xml/library/x-xslt2/">Saxon: Anatomy of an XSLT processor</a></li>
+</ul>
+</p>
+</section>
+
+	</body>
+</document>

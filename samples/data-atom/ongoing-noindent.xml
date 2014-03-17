@@ -1,0 +1,857 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom'
+      xml:base='http://www.tbray.org/ongoing/ongoing.atom'
+      xml:lang='en-us'>
+ <title>ongoing</title>
+ <id>http://www.tbray.org/ongoing/</id>
+ <link href='./' />
+ <link rel='self' href='' />
+ <logo>rsslogo.jpg</logo>
+ <icon>/favicon.ico</icon>
+ <updated>2006-01-24T07:32:22-08:00</updated>
+ <author><name>Tim Bray</name></author>
+ <subtitle>ongoing fragmented essay by Tim Bray</subtitle>
+ <rights>All content written by Tim Bray and photos by Tim Bray Copyright Tim Bray, some rights reserved, see /ongoing/misc/Copyright</rights>
+ <generator uri='/misc/Colophon'>Generated from XML source code using Perl, Expat, XML::Parser, Emacs, Mysql, and ImageMagick.  Industrial strength technology, baby.</generator>
+ <entry xml:base='When/200x/2006/01/24/NBExtras'>
+  <title>nbextras.org</title>
+  <link href='NBExtras' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/24/NBExtras</id>
+  <published>2006-01-24T12:00:00-08:00</published>
+  <updated>2006-01-24T07:32:19-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Java' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Java' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Publishing' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Publishing' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>I ran across a couple of blog pointers to
+<a href="http://www.nbextras.org/">nbextras.org</a> and thought it looked kind
+of cool and kind of useful and kind of lightweight, and I wondered how it came
+to be here this week when it wasn’t there last week.  So I chatted with Trung
+Duc Tran (he’s one of the senior people over in our Prague NetBeans shop)
+who put it together with a couple of other co-conspirators and asked
+“How’d you do that?”  Well, it turns out that they found a cheap hosting
+service and rented a fake
+<a href="http://www.cl.cam.ac.uk/Research/SRG/netos/xen/">Xen</a>-based server
+and cobbled together the
+<a href="http://jetty.mortbay.org/jetty/">Jetty</a> server and the
+<a href="http://sourceforge.net/projects/pebble">Pebble</a> blogging engine.
+“It’s amazing”, Trung told me, “how much work you can get a servlet engine to
+do when you have all the data in memory.”
+I asked whether it was a lot of development time and he seemed surprised,
+they’d discussed it over lunch one day last week and set it up over the
+weekend and now it’s up.
+This Java/Web/Open-Source technology, it’s gonna catch on, you just watch.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/23/Election-Day'>
+  <title>Election Day</title>
+  <link href='Election-Day' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/23/Election-Day</id>
+  <published>2006-01-23T12:00:00-08:00</published>
+  <updated>2006-01-23T17:17:08-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Politics' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Politics' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Places/Canada' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Places' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Canada' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>I voted early this morning; we’ve been living in this neighborhood long
+enough that 
+I recognized some people over at the poll, hung out and chatted for a bit.
+It felt good.
+I think that what’s happening today here in Canada highlights the
+single essential thing about democracy; I
+<a href="/ongoing/When/200x/2003/02/23/Democracy">wrote
+about this almost three years ago</a>, but it’s worth saying again: I don’t
+particularly trust “the people” to pick the right policies or even to pick the
+right leaders.  I do, however trust them to detect the condition that the
+government has been bad and needs to be turfed.  Which we, today, are
+apparently the process of doing.  Frankly, I think it would be OK to pick the
+next government by random selection, and we probably wouldn’t do that much
+worse than the current electoral crap-shoot.  The important thing—<em>the only
+thing that really matters</em>—is that we retain the right to throw ’em out in
+a peaceful and orderly fashion, at our sole discretion and for any reason.
+There are a lot of people in the world without that right.  It’s the one that
+all the others flow from.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/23/BWV-131'>
+  <title>5&#x272d;&#x266b;: BWV 131</title>
+  <link href='BWV-131' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/23/BWV-131</id>
+  <published>2006-01-23T12:00:00-08:00</published>
+  <updated>2006-01-23T10:21:53-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Music/Recordings' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Music' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Recordings' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Music/5 Stars' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='5 Stars' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>I think I should start with  <a href='http://en.wikipedia.org/wiki/J.S._Bach'>J.S. Bach</a>, since we have a special relationship. BWV 131 is one of his cantatas, based on <i>Aus der Tiefen rufe ich, Herr, zu dir</i> (from Psalm 130), composed in 1707, and if you buy it you&#x2019;ll like it. <i>(&#x201c;5&#x272d;&#x266b;&#x201d; series introduction <a href='/ongoing/When/200x/2006/01/23/5-Star-Music'>here</a>; with <a href='/ongoing/When/200x/2006/01/23/5-Star-Music#p-1'>an explanation</a> of why the title may look broken.)</i></div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>I think I should start with 
+<a href="http://en.wikipedia.org/wiki/J.S._Bach">J.S. Bach</a>, since we
+have a special relationship.
+BWV 131 is one of his cantatas, based on
+<i>Aus der Tiefen rufe ich, Herr, zu dir</i> (from
+Psalm 130), composed in 1707,
+and if you buy it you’ll like it.
+<i>(“5✭♫” series introduction <a href="/ongoing/When/200x/2006/01/23/5-Star-Music">here</a>;
+with <a href="/ongoing/When/200x/2006/01/23/5-Star-Music#p-1">an
+explanation</a> of why the title may look broken.)</i></p>
+<p>That “special relationship” is, first of all, just because I really like a
+lot of 
+Bach’s music, and second, because I was a student of the cello for some years,
+and all cellists perforce get a lot of hands-on time with old Sebastian.</p>
+<h2 id='p-3'>BWV</h2>
+<p>Some of Bach’s works have been lost but over a thousand remain, and 
+the
+<a href="http://en.wikipedia.org/wiki/BWV">BWV</a> numbers are used to
+keep track of them.  
+They are assigned thematically not chronologically; it so happens that the
+cantatas come first in the sequence, BWV 1-224.</p>
+<h2 id='p-4'>Context</h2>
+<p>For much of his adult life, Bach’s employment
+required him to provide music for each week’s divine worship, some
+proportion of it being new on any given Sunday.  This usually took the form of
+a
+<a href="http://en.wikipedia.org/wiki/Cantata">cantata</a>, with a handful of
+movements lasting less than a half-hour.
+We citizens
+of earth owe the eighteenth-century Lutheran church our thanks for
+these onerous terms of employment, because
+many of 
+<a href="http://en.wikipedia.org/wiki/List_of_cantatas_by_Johann_Sebastian_Bach">the 200
+or so cantatas</a> written for this purpose are extremely good.</p>
+<p>BWV 131 is among the earliest—maybe the earliest—of the known cantatas,
+written while Bach was in his early twenties.</p>
+<h2 id='p-2'>The Music</h2>
+<p>The melody is passed back and forth among the woodwinds, bass and tenor
+soloists, and the choir.  I gave five stars to the middle three of the five
+movements; each of which features a well-sung solo part with the choir’s lines
+behind either rising slowly like an upwelling of joy, or drifting down like
+ten thousand silver feathers through twilit air.</p>
+<h2 id='p-1'>How to Sample It</h2>
+<p>It turns out that there’s an excellent
+<a href="http://www.bach-cantatas.com/">Bach Cantatas Website</a>,
+which I only discovered in researching this piece; it seems remarkably
+complete.  The
+<a href="http://www.bach-cantatas.com/BWV131.htm">coverage of BWV
+131</a> includes 
+<a href="http://www.bach-cantatas.com/Mus/BWV131-Mus.htm">downloadable
+music</a>; the m4u didn’t work for me and the RealAudio is only 32k/sec,
+hardly high fidelity, but you can get the idea.</p>
+<img class="inline" src="Herreweghe-Kantaten.jpg" alt="J.S. Bach, Cantatas 131, 73, and 105, featuring Philippe Herreweghe and the Collegium Vocale of Ghent" />
+<h2 id='p-5'>Getting It</h2>
+<p>The Cantata site also lists a huge number of recordings; the one I have is 
+from 1992, by Philippe Herreweghe and the Collegium Vocale of Ghent,
+Virgin Classics 0 7777 59237 2 8; just now Amazon 
+<a href="http://www.amazon.com/gp/product/B00000DNWA/002-9351053-7203258?n=5174">says
+it’s out of print</a> (while offering samples), but I totally recommend it if
+you can find it; among other things, it includes 
+<a href="http://www.bach-cantatas.com/BWV105.htm">BWV 105</a>, whose third
+movement also got five stars.
+Hmm, if they’re declining to sell the music, why shouldn’t I be able to post
+it?
+But I digress.
+An Amazon search for “Herreweghe 131” yields a few other options.</p>
+<p>Here’s the
+great thing about Bach: his music is really hard to screw up.  Most of his
+works are available in a bunch of different recordings, all selling well
+because they’re good.  So if you visit your favourite shiny-disc emporium and
+buy something that’s advertised as having BWV 131 on it, you’ll probably be
+happy with what you take home.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/23/5-Star-Music'>
+  <title>5 &#x272d; &#x266b; Mondays</title>
+  <link href='5-Star-Music' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/23/5-Star-Music</id>
+  <published>2006-01-23T12:00:00-08:00</published>
+  <updated>2006-01-23T10:21:44-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Music/Recordings' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Music' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Recordings' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Music/5 Stars' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='5 Stars' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>The idea  <a href='http://jwz.livejournal.com/578440.html'>came from JWZ</a>  in late 2005: why not rate all the music in your jukebox?  If your jukebox is iTunes, you create an &#x201c;unrated&#x201d; smart-playlist containing all the tunes with no stars, then you set up the Party Shuffle to draw from it, then you rate them as they go by except when you&#x2019;re not listening, and after a few months, you have  them all rated.  I haven&#x2019;t got them all rated, but I have quite a few  labeled &#x272d;&#x272d;&#x272d;&#x272d;&#x272d;, which means &#x201c;a tune that in some way gives me as much pleasure as music can.&#x201d;   I care a lot about (and am reasonably literate about) music, so I decided I to share some of this five-star stuff with the world. I&#x2019;ll try to post something most Mondays. <i>[Does the title look broken? <a href='/ongoing/When/200x/2006/01/23/5-Star-Music#p-1'>Here&#x2019;s why.</a>]</i></div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>The idea 
+<a href="http://jwz.livejournal.com/578440.html">came from JWZ</a> 
+in late 2005: why not rate all the music in your
+jukebox?  If your jukebox is iTunes, you create an “unrated” smart-playlist
+containing all the tunes with no stars, then you set up the Party Shuffle to
+draw from it, then you rate them as they go by except when you’re not
+listening, and after a few months, you have 
+them all rated.  I haven’t got them all rated, but I have quite a few 
+labeled ✭✭✭✭✭, which means “a tune that
+in some way gives me as much pleasure as music can.”  
+I care a lot about (and am reasonably literate about) music,
+so I decided I to share some of this five-star stuff with the world.
+I’ll try to post something most Mondays.
+<i>[Does the title look broken?
+<a href="/ongoing/When/200x/2006/01/23/5-Star-Music#p-1">Here’s why.</a>]</i></p>
+<img src="Five-Star-Mondays.png" class="inline" alt="How the title should look" />
+<h2 id='p-1'>Title Broken?</h2>
+<p>The title is supposed to look something like this picture.  It works fine
+on all the Mac browsers I’ve tried, on most recent Linuxes, and on Windows if
+you’re using Firefox.  I’m told that on most versions of Windows, it’s broken
+in IE.  I’m not going to fix it here, because it’s correct and I like the way
+it looks.  Get a better browser.</p>
+<h2 id='p-2'>Old, But Good</h2>
+<p>A lot of the music I’ll describe is really old; as I progressed through
+my forties I managed to outgrow my angst at not being hip and
+up-to-the-minute in my tastes; I do manage to fall in love with the occasional
+current hit, but no longer worry about a lot of my faves being from 
+1977 or 1866 or 1755.  
+Having said that, there are a few 21st-century cuts here, and I hope the
+number grows. </p>
+<h2 id='p-3'>Covering the Waterfront</h2>
+<p>The music on my computer is a tiny and random
+sliver of the music on my shelves, selected by impulse-grabbing random disks.
+Plus there’s a selection of real obscurities dating from the golden
+days of Napster — all of which I have in some other medium or would buy given
+an opportunity.
+So, the music has no common thread; but 
+some songs come with stories.</p>
+<p>My tastes are broad rather than deep; while I listen to more <em>kinds</em>
+of music than anyone I know, I’m not an <em>authority</em> on Fifties
+<a href="http://en.wikipedia.org/wiki/Hard_bop">hard-bop</a>
+or
+<a href="http://en.wikipedia.org/wiki/Trip_hop">Bristol Trip-Hop</a> or the
+<a href="http://en.wikipedia.org/wiki/Second_Viennese_School">Vienna
+School</a> or any of the others.
+Except maybe for J.S. Bach, with whom I have a special relationship;
+but this will <em>not</em> be all-classical; I will cover
+most genres, excepting
+<a href="http://en.wikipedia.org/wiki/Operetta">operetta</a> and 
+hip-hop.</p>
+<h2 id='p-4'>Try, Then Buy (On Disk, Please)</h2>
+<p>So the idea is, most Mondays, to introduce some music that maybe you don’t
+know about, and to avoid both wilful obscurity and greatest-hits pandering.
+Many weeks I’ll recommend a single song, but I’ll also do aggregations
+(albums, compositions, micro-genres) which have multiple 5-✭ members.</p>
+<p>The following will sound like bragging, but: I’ve noticed over the years that
+when I’ve told
+someone “Listen to this, you’ll like it”, most times they do.
+I’ll provide pointers to help track down online versions of the music for
+sampling purposes.
+If you like what you hear, please go buy it on an uncompressed,
+un-rights-restricted Compact Disc, then it’ll be yours for the
+long term.  
+Good music deserves nothing less.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/22/Washington-Post-Goof'>
+  <title>Washington Post Screws Up</title>
+  <link href='Washington-Post-Goof' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/22/Washington-Post-Goof</id>
+  <published>2006-01-22T12:00:00-08:00</published>
+  <updated>2006-01-22T14:23:36-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Journalism' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Journalism' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Internet' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Internet' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>The Washington Post has noticed the brewing storm over the two-tier
+Internet;
+<a href="http://doc.weblogs.com/">Doc Searls</a> gets the long-term credit for
+<a href="http://www.linuxjournal.com/article/8673">starting the storm
+brewing</a>.
+The WaPo piece,
+<a href="http://www.washingtonpost.com/wp-dyn/content/article/2006/01/21/AR2006012100094.html">The
+Coming Tug of War Over the Internet</a>, is clueless, at a trivial level in
+alleging that the debate is happening “on obscure blogs”, but most of all in
+the outrageous claim that “Companies like Google and Yahoo pay some fees to
+connect to their servers to the Internet, but AT&amp;T will collect little if any
+additional revenue when Yahoo starts offering new features that take up lots
+of bandwidth on the Internet. When Yahoo’s millions of customers download huge
+blocks of video or play complex video games, AT&amp;T ends up carrying that
+increased digital traffic without additional financial compensation.”
+While the details of the deals by which the big boys buy bandwidth are
+closely-guarded secrets, the notion that any of them can dramatically increase
+their net traffic without paying for it, that notion is just wacko.
+I’ve sent Christopher Stern, the author, an email, but this silliness is already
+on the streets of Washington in a few hundred thousand dead-tree instances.
+The difference between blogs and the mainstream media is that when we screw
+up, we can mostly repair the damage.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2004/12/12/BMS'>
+  <title>Statistics</title>
+  <link href='BMS' />
+  <id>http://www.tbray.org/ongoing/When/200x/2004/12/12/BMS</id>
+  <published>2004-12-12T12:00:00-08:00</published>
+  <updated>2006-01-22T10:37:22-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Publishing' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Publishing' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Web' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Web' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Almost every Sunday I grab the week&#x2019;s <span class="o">ongoing</span> logfiles and update my numbers. I find it interesting and maybe others will too, so  this entry is now the charts&#x2019; permanent home. I&#x2019;ll update it most weeks, probably. <i>[Updated: 2006/01/22.]</i></div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Almost every Sunday I grab the week’s <span class='o'>ongoing</span>
+logfiles and update my numbers.
+I find it interesting
+and maybe others will too, so 
+this entry is now the charts’ permanent home. I’ll update it most weeks,
+probably.
+<i>[Updated: 2006/01/22.]</i></p>
+<img src="Browser-Market-Share.png" alt="Browser market shares at ‘ongoing’" />
+<div class="caption"><p>Browsers visiting <span class='o'>ongoing</span>,
+percent.</p></div>
+<img src="Browsers-via-search.png" alt="Browser market shares at ‘ongoing’, visitors via search engines" />
+<div class="caption"><p>Browsers visiting <span class='o'>ongoing</span> via
+search engines, percent.</p></div>
+<img src="Search-Engines.png" alt="Search engine market shares at ‘ongoing’" />
+<div class="caption"><p>Search referrals to <span
+class='o'>ongoing</span>.</p></div>
+<img src="Feeds.png" alt="Rss and Atom feed fetches" />
+<div class="caption"><p>Fetches of the RSS 2.0 and Atom 1.0 feeds.</p></div>
+
+<p>The notes on usage and source code will return in coming weeks when I get
+the cycles to rewrite this whole article.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/20/Glassfish-Aquarium'>
+  <title>The Aquarium</title>
+  <link href='Glassfish-Aquarium' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/20/Glassfish-Aquarium</id>
+  <published>2006-01-20T12:00:00-08:00</published>
+  <updated>2006-01-20T19:19:49-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Java' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Java' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Publishing' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Publishing' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Web/Services' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Web' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Services' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>People have been asking for it since forever, and recent releases of
+<a href="http://www.rollerweblogger.org/">Roller</a> now have a group-blogging
+feature.  I’ve always been skeptical of the idea, which redefines “blog”
+from being 
+about an individual voice to being about a shared interest; because people are
+bigger and more interesting than their interests.  But over the last couple of
+weeks, my attention has several times been drawn to pieces in
+<a href="http://blogs.sun.com/roller/page/theaquarium">The Aquarium</a>, which
+is a group blog about
+<a href="http://java.sun.com/javaee/glassfish/">GlassFish</a>. 
+While I’m not really an EE kinda guy, I can see how someone who cares
+about that stuff could find this kind of a resource useful.  For example,
+check out
+<a href="http://blogs.sun.com/roller/page/theaquarium?entry=publishing_a_restful_web_service">this
+pointer</a> to an over-elaborated but nonetheless useful article about doing
+REST in in JAX.
+Maybe “group blogs” have legs.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/20/FSS'>
+  <title>FSS: Feather, Gauze, Vase</title>
+  <link href='FSS' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/20/FSS</id>
+  <published>2006-01-20T12:00:00-08:00</published>
+  <updated>2006-01-20T19:07:09-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Photos' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Photos' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Friday Slide Scan #19 is from around 1990 and is well-described by this fragment&#x2019;s title; it&#x2019;s really very pretty.</div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Friday Slide Scan #19 is from around 1990 and is well-described by this
+fragment’s title; it’s really very pretty.</p>
+<img src="1034.png" alt="Feather and vase through sheer curtain" />
+<p>I’m pretty sure that vase was picked up at a craft fair, something I
+visited regularly in an earlier life, but now we have no room for more
+decorations.</p>
+<p>Images in the Friday Slide Scans are from 35mm slides taken between 1953
+and 2003 by (in rough chronological order)
+<a href="http://www.textuality.com/BillBray/">Bill Bray</a>, 
+<a href="http://www.tbray.org/ongoing/When/200x/2004/08/11/MomsGarden">Jean Bray</a>, Tim Bray, Cath
+Bray, and
+<a href="http://www.laurenwood.org/anyway/">Lauren Wood</a>; when I know
+exactly who took one, I’ll say.
+Most but not all of the slides were on Kodachrome; they were digitized using
+a Nikon CoolScan 4000 ED scanner and cleaned up by a combination of the Nikon
+scanning software and PhotoShop Elements.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/20/Marketing-Truth'>
+  <title>Marketing Truth</title>
+  <link href='Marketing-Truth' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/20/Marketing-Truth</id>
+  <published>2006-01-20T12:00:00-08:00</published>
+  <updated>2006-01-20T14:17:15-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Business/Marketing' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Business' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Marketing' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>I get peeved at
+<a href="http://www.nicholasgcarr.com/">Nicholas Carr</a> sometimes, but he’s
+done a superb piece of work pushing hard on
+<a href="http://www.roughtype.com/archives/2006/01/saps_truthstret.php">SAP</a>
+and <a href="http://www.roughtype.com/archives/2006/01/oracles_funny_n.php">Oracle</a>
+for using statistics in their ads in a way that is at
+best non-transparent and at worst, well let’s not go there.
+It’s got to the point that whenever I see a quantitative claim in an ad I
+assume it’s a lie.  There should be penalties; public ridicule feels
+appropriate.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/20/Java-One'>
+  <title>Upcoming Gig: JavaOne</title>
+  <link href='Java-One' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/20/Java-One</id>
+  <published>2006-01-20T12:00:00-08:00</published>
+  <updated>2006-01-20T12:59:46-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Java' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Java' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Tim Bray' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Tim Bray' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Hah, I’m delighted. <a href="http://java.sun.com/javaone/sf/index.jsp">JavaOne</a> accepted my talk, entitled <cite>Sigrid: The simplest
+possible grid computing platform</cite>.  See you in San Fran in May!</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/17/GPL3-Draft'>
+  <title>GPL3 Draft</title>
+  <link href='GPL3-Draft' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/17/GPL3-Draft</id>
+  <published>2006-01-17T12:00:00-08:00</published>
+  <updated>2006-01-19T13:28:23-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Business/Intellectual Property' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Business' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Intellectual Property' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>The GNU Public License is an important piece of our 
+infrastructure these days, so I read
+<a href="http://blogs.sun.com/roller/page/webmink?entry=gpl_v3_released">Simon
+Phipps’ report</a> with interest, and decided I should give the
+<a href="http://gplv3.fsf.org/draft">V3 draft</a> a good close read.
+Unfortunately, while the text may be sensible, the HTML is an unreadable
+stinking heap of Plone dung; I attempted to print out a human-usable version
+and the results were unprintable.
+So I cleaned it up by hand, inserted a tiny bit of minimal styling to make it
+a bit more human readable, made sure it was validated, and here it is:
+<a href="http://www.tbray.org/gpl/gpl3-draft.html">GPL3 Draft of January
+2006</a>.
+<i>[Update: On Simon Phipps’ suggestion, I equipped the draft with 
+<a href="/ongoing/When/200x/2004/05/31/PurpleAgain">purple pilcrows</a>, so
+each paragraph has its own URL.</i>]</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/19/Sunbeams'>
+  <title>Sunbeams: Fallen Eucalypt</title>
+  <link href='Sunbeams' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/19/Sunbeams</id>
+  <published>2006-01-19T12:00:00-08:00</published>
+  <updated>2006-01-19T11:05:22-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Life Online/Sun' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Life Online' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Sun' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Back in 2004 when we were just getting blogging going at Sun, I had this
+<a href="/ongoing/What/The%20World/Life%20Online/Sun/">Sunbeams</a> series,
+where I highlighted interesting sunblog posts.  Just now, I had a few browser
+tabs I was thinking of writing about, and noticed that four of them qualified, thus
+this revival.  <i>Item:</i>
+<a href="http://www.opensolaris.org/jive/thread.jspa?threadID=3788&amp;tstart=60">mod_dtrace</a>;
+there’ve been times I would have paid big money for something like this.
+<i>Item:</i>
+<a href="http://blogs.sun.com/roller/page/robogeek?entry=corporate_it_security_at_sun">Neutering
+WinXP</a> to make it safe.
+<i>Item:</i>
+<a href="http://blogs.sun.com/roller/page/timcaynes?entry=a_medley_of_sausage">a
+medley of sausage</a>.  
+<i>Item:</i> JohnnyL
+<a href="http://blogs.sun.com/roller/page/johnnyl?entry=what_i_did_on_my">has
+a really bad day</a> (illustrated).  Yow.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/19/Good-Suit'>
+  <title>Surprising the Eye</title>
+  <link href='Good-Suit' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/19/Good-Suit</id>
+  <published>2006-01-19T12:00:00-08:00</published>
+  <updated>2006-01-19T00:26:18-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Puzzling Evidence' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Puzzling Evidence' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Photos' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Photos' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>What happened was, I was speaking at a conference, sharing the stage with the Chairman of the SEC (by video) and (in the flesh) the SEC&#x2019;s CIO and the FDIC&#x2019;s Deputy CIO. No pointers because it deserves serious coverage.  For the  occasion, I (obviously) wore my best custom-made Italian suit (grey) and an understated-but-strong tie (mostly blue), along with my dapper new <a href='http://www.baileyhats.com/'>Bailey&#x2019;s</a> fedora.   Then I took off for two heavy-geek meetings at Sun campuses and a visit to Technorati.  When I pulled into the Sun parking lot, I thought about pulling the tie off and the jeans on but decided  it would do &#x2019;em good to see a geek in a suit, and I have to say I got as many blank-faced <em>WTF-is-this</em> looks as anyone could want. But then, at the end of all my meetings, while I was trudging down a <a href='http://en.wikipedia.org/wiki/South_of_Market_%28San_Francisco%29'>SoMa</a> street to my  alarmingly-huge Avis van ($20 in gas for a day going up &#x26; down Route 101; dear America, something&#x2019;s wrong), I saw something really alarming.</div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>What happened was, I was speaking at a conference, sharing the stage
+with the Chairman of the SEC (by video) and (in the flesh) the SEC’s CIO and
+the FDIC’s Deputy CIO. No pointers because it deserves serious coverage.  For
+the 
+occasion, I (obviously) wore my best custom-made Italian suit (grey) and an
+understated-but-strong tie (mostly blue), along with my dapper new
+<a href="http://www.baileyhats.com/">Bailey’s</a> fedora.  
+Then I took off for two heavy-geek
+meetings at Sun campuses and a visit to Technorati.  When I pulled into the
+Sun parking lot, I thought about pulling the tie off and the jeans on but
+decided 
+it would do ’em good to see a geek in a suit, and I have to say I got as
+many blank-faced <em>WTF-is-this</em> looks as anyone could want.
+But then, at the end of all my meetings, while I was trudging down a
+<a href="http://en.wikipedia.org/wiki/South_of_Market_%28San_Francisco%29">SoMa</a>
+street to my 
+alarmingly-huge Avis van ($20 in gas for a day going up &amp; down Route 101;
+dear America, something’s wrong), I saw something really alarming.</p>
+<img src="IMG_4317.png" alt="Puzzling evidence, SoMa in San Francisco" />
+<p>I stood there taking a bunch of pictures of these guys loading the truck
+and suddenly they noticed me and got real tense, so I left.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/18/Photocasting-Problems'>
+  <title>Photo RSS, Sort Of</title>
+  <link href='Photocasting-Problems' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/18/Photocasting-Problems</id>
+  <published>2006-01-18T12:00:00-08:00</published>
+  <updated>2006-01-18T22:11:24-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Syndication' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Syndication' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Apple’s latest software bundle wraps RSS together with photo-publishing and
+they call it “Photocasting”.  Reasonable enough.
+<a href="http://scripting.wordpress.com/2006/01/11/welcome-to-the-wonderful-wacky-world-of-apple-rss/">Dave
+Winer</a> and
+<a href="http://www.sitepoint.com/blogs/2006/01/17/apple-photocasting-mac-only-uses-invalid-rss/">Kevin
+Yank</a> have pointed out that there are some real problems with the RSS.
+So Mark Pilgrim did a deep-dive and it’s not just bad, it’s
+<a href="http://lists.apple.com/archives/syndication-dev/2006/Jan/msg00020.html">spectacularly
+bad</a>.  To quote Mark: <i>To sum up, the “photocasting” feature centers
+around a single 
+undocumented extension element in a namespace that doesn’t need to be
+declared.  iPhoto 6 doesn’t understand the first thing about HTTP, the
+first thing about XML, or the first thing about RSS.  It ignores
+features of HTTP that Netscape 4 supported in 1996, and mis-implements
+features of XML that Microsoft got right in 1997.  It ignores 95% of
+RSS and Atom and gets most of the remaining 5% wrong.</i>
+This is really hard to understand.
+<i>[Update: The mob howling at Apple may have been a bit over-excited; check
+out Sam Ruby’s
+<a href="http://www.intertwingly.net/blog/2006/01/18/Photocasting-Hyperbole">careful
+and balanced</a> look at the situation, including the follow-up comments.
+And I apologize for leaping to
+conclusions; those with painful knowledge of the history of syndication
+politics will perhaps understand why, when the people listed at the top of this
+entry are all saying the same thing, one might assume that it’s probably
+true.]</i>
+</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/16/Open-Source-Community'>
+  <title>Open-Source Whatever</title>
+  <link href='Open-Source-Community' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/16/Open-Source-Community</id>
+  <published>2006-01-16T12:00:00-08:00</published>
+  <updated>2006-01-16T23:19:05-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Business/Open Source' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Business' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Open Source' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Life Online/People' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Life Online' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='People' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Over at O’Reilly, John Mark Walker writes
+<a href="http://www.onlamp.com/pub/a/onlamp/2006/01/12/no_oss_community.html?page=1">There
+Is No Open Source Community</a>, and Nicholas Carr, who enjoys decrying, 
+well, anything popular, chimes in with
+<a href="http://www.roughtype.com/archives/2006/01/the_amorality_o_1.php">The
+Amorality of Open Source</a>.
+They both paint a picture of misguided innocents who believe in some
+starry-eyed vision of post-capitalist intellectual collectivism, but are
+actually pawns in the hands of larger economic forces.
+They’re both really wrong.  Granted: Open
+Source is <em>not</em> 
+a nation or a corporation or a political party or a religion.  (While there are
+“movement people”, organized into the skeptical-of-each-other Open Source and
+Free Software sects, they are a tiny—albeit noisy—minority.)
+Absent those things, what is left?  A collection
+of people who like working on software and look for opportunities,
+preferably but not necessarily paid, to do so.
+If that isn’t a “community”, what is?  And furthermore, I would recommend
+that Walker and 
+Carr spend some time hanging out in the IRC channels and pizza parties and
+conferences and mailing lists and wikis where the Open-Source people actually,
+you know, are.  
+They would discover, now what’s the word I’m looking for...
+people who actively seek out their own kind, who share jargon and jokes
+and tools and thought leaders and enemies.
+The word I’m looking for is “community”.
+And anyone who thinks that this community would go away if Sun and IBM and
+Novell and so on were to stop funding it is nuts.  Open Source
+Software is its own reward; that, and hanging out with people who share our
+passions. We don’ need no steenkin’ economics.  Or
+ideologies either.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/15/Football-Sunshine-Sex'>
+  <title>Football, Beans, Sunshine, Sex</title>
+  <link href='Football-Sunshine-Sex' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/15/Football-Sunshine-Sex</id>
+  <published>2006-01-15T12:00:00-08:00</published>
+  <updated>2006-01-15T20:58:54-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Photos' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Photos' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Sports/Football' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Sports' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Football' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='The World/Places/Vancouver' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='The World' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Places' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Vancouver' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>What happened was, we had some friends over for the Sunday football games, and the day turned out very pleasantly in a bunch of ways; herewith an illustrated narrative.</div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>What happened was, we had some friends over for the Sunday football games,
+and the day turned out very pleasantly in a bunch of ways; herewith an
+illustrated narrative.</p>
+<h2 id='p-1'>Football</h2>
+<p>Oh my goodness gracious, that Indy-Steelers game was something.  It turned
+out that our party was solidly packed with Pittsburgh fans and, despite the
+wildly-randomized happenstances of the last five minutes, they won the game
+fair and square.  For my money, the defining play was the Colts’
+late fourth-down gamble; they knew the rush was coming and had to be prepared
+for it and they still got slaughtered.  It looked to me like three
+of them were blocking Polamalu; when Manning went down there were like five
+white shirts around him.  If Indy can’t handle that Steelers defensive front,
+who can?</p>
+<p>Give the Steelers credit too for thinking; for coming out with an
+all-aerial attack featuring repeated strikes to that eight-foot-tall rookie
+tight end
+whom I’d never heard of and whose name I’ve already forgotten.  
+The Colts’ surprise lasted long enough to give Pittsburgh a  
+fourteen-point head start, which turned out to be (barely) enough.</p>
+<p>And like Roethlisberger said after the game, Bettis doesn’t fumble much and
+he doesn’t tackle much, but that desperation ankle-grab won’t be forgotten
+soon.  Jerome better send him flowers.</p>
+<h2 id='p-2'>Beans</h2>
+<p>I got up and started doing lunch prep sometime in the 
+last quarter, but then had to put it on hold to catch the denouement.  Even so,
+it was fine; to complement Lauren’s signature beef stew I tried
+making Malaysian-style Sambhal green beans, and they came out great.  A little
+bit of work: you chop ’em and boil ’em and dry ’em and stir-fry
+’em at the last minute with some shallots and garlic, then glaze ’em with
+oyster and fish and chili sauce plus a bit of cornstarch.  Mmm, spicy and
+tasty.</p>
+<img src="IMGP2879.png" alt="Spring sunshine magnolia-branch shadows" />
+<h2 id='p-4'>Sunshine</h2>
+<p>Our quest for the
+<a href="/ongoing/When/200x/2006/01/12/Rain">rain record</a> is still in
+effect but the sun came out and stayed out during the game, so after lunch I
+said “How about a walk” and we went for a lazy amble around the neighborhood.
+On the way down the front walk I got this year’s first picture of our
+much-photographed magnolia (above), just shadowbranches but there are lots of
+buds.</p>
+<p>Main Street in Vancouver is trying furiously to gentrify itself, but its
+grubby history is pushing back; here’s a house a block off Main that I
+bet is torn down in favor of chi-chi condos within five years.</p>
+<img src="IMGP2883.png" alt="Old house near Main Street in Vancouver" />
+<h2 id='p-6'>Sex</h2>
+<p>Well, there are signs of Spring, and we all know what young men’s fancy
+turns to thoughts of; and mine too.  Even given that, I thought this stump
+remnant embedded in the grass was coming it a bit high; I suspect it’s due for
+censorship before too long.</p>
+<img src="IMGP2888.png" alt="Vaguely obscene stump embedded in grass" />
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/14/Naked-Conversations'>
+  <title>Naked Conversations</title>
+  <link href='Naked-Conversations' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/14/Naked-Conversations</id>
+  <published>2006-01-14T12:00:00-08:00</published>
+  <updated>2006-01-14T15:51:06-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology/Publishing' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Publishing' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Business/Blogging' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Business' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Blogging' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Subtitled <i>How Blogs are Changing the Way Businesses Talk with Customers</i>,  by Robert Scoble and Shel Israel. I got an advance copy of this a couple of months ago, with a note saying &#x201c;Can we have a quote for the cover by Wednesday?&#x201d;  But I didn&#x2019;t get around to reading it until several Wednesdays later. Summary: Lots of people will benefit from reading this; especially &#x201c;Communications Professionals&#x201d;.  Most people who read  <span class="o">ongoing</span> won&#x2019;t learn much, but they might enjoy it anyhow.  Read on for more details.</div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Subtitled <i>How Blogs are Changing the Way Businesses Talk with
+Customers</i>, 
+by Robert Scoble and Shel Israel.
+I got an advance copy of this a couple of months ago, with a note saying “Can
+we have a quote for the cover by Wednesday?”  But I didn’t get
+around to reading it until several Wednesdays later.
+Summary: Lots of people will benefit from reading this; especially
+“Communications Professionals”.  Most people who read 
+<span class='o'>ongoing</span> won’t learn much, but they might enjoy it
+anyhow.  Read on for more details.</p>
+<img src="NC.png" class="inline" alt="Naked Conversations" />
+<h2 id='p-1'>Good Stuff</h2>
+<p>The best thing is that there’s little abstraction or theorizing; it’s all
+real stories about real people and their ventures into the blogosphere.
+They do draw some lessons, but never at too-great length, and it never reads
+like they’re lecturing.</p>
+<p>Another strong point is that there’s first-rate coverage of business
+blogging outside of North America.  Granted, there isn’t very much of that
+happening yet, but some of the stories—in particular, the stories out of
+France—are rich with lessons that I think would apply anywhere.
+Some of those stories are 100% new to me and would be, I suspect, to most of
+my readers.</p>
+<p>Their conclusion is bold and one I agree with, although probably a little
+bit in advance of all the evidence being in: Blogging is good for good
+companies and bad for bad companies.  Disclosure: I’m pretty sure that I
+didn’t invent that phrase, which
+doesn’t actually appear in <cite>Naked Conversations</cite>; I seem to recall
+reading it somewhere but can’t find the reference.</p>
+<p>My personal favorite fragment, unsurprisingly, is the one I appear in: <i>One
+competitor we know about, speaking off the record, told us “We had counted Sun
+out.  We assumed by now they would be dead or irrelevant.  They’re back.  I
+think it’s their [expletive deleted] blogs.  We just went into a customer
+meeting and they were asking us about some stuff that Tim Bray had posted that
+morning.”</i>
+So far, Scoble has politely ignored my whining, begging, pleading, and offers
+of huge bribes to find out who the competitor is.  Hmm... I wonder if
+Maryam can be subverted?</p>
+<p>Another really good thing is that while <cite>Naked Conversations</cite>
+unabashedly sings the virtues of blogging, it tries hard to avoid being sucked
+into uncritical boosterism, pointing specifically at cases where what
+seemed like a horde of bloggers turned out to be just a few people in an echo
+chamber.</p>
+<h2 id='p-2'>Problems</h2>
+<p>I don’t know how big a problem this will be for readers in general, but it
+bothered me a lot that while Rob and Shel obviously worked together to build
+the book, Shel wrote it.  Which means it totally isn’t in Rob’s
+earnest high-velocity style, but rather a cool, neutral
+tone with lots of commas and subordinate clauses.  I’m a big fan of Rob’s
+writing but, given that this book is aimed at people who still need to be
+convinced about blogging, maybe combining the medium and the message would
+have been asking too much of the reader.  And to be fair, Scoble does have a
+day job.</p> 
+<p>I was also irritated by occasional lapses into Microsoft-party-line-ism,
+for example: <i>Corporate customers have long understood that in enterprise
+environments freeware is often expensive to use because of the problems it can
+cause.</i>  It would be nice for Redmond if that were true.</p>
+<p>Oh, and a quibble.  They say: <i>...in 1988 a couple of Stanford
+kids came up with Google, which dramatically improved search results by
+employing intelligent algorithms rather than simple keywords...</i>.  Oh,
+please; all search has been based on dumb algorithms since day one, and so is
+Google’s; their mojo is based on link-count-based relevance ranking, an idea
+they were the first to apply, combined with a really user-friendly UI 
+(i.e., less is more) and
+outstanding operational skills (i.e. it’s fast and reliable).</p>
+<p>Finally, I kind of wish that Rob and Shel had written a book, not about
+business blogging, but about blogging’s wider cultural and societal impacts.
+This is, at the end of the day, a good book about business blogging.
+But
+really, I think the most interesting parts of this great big complicated
+global Naked Conversation have nothing to do with business.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/14/On-Intel'>
+  <title>On Intel</title>
+  <link href='On-Intel' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/14/On-Intel</id>
+  <published>2006-01-14T12:00:00-08:00</published>
+  <updated>2006-01-14T09:28:13-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Business/Marketing' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Business' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Marketing' />
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Technology' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>I was reading the big <cite>Business Week</cite> story on Intel, and it
+quoted CEO 
+Paul Otellini: “He lays particular emphasis on marketing expertise because he
+thinks the only way Intel can succeed in new markets is by communicating more
+clearly what the technology can do for customers. ‘To sell technology now, you
+have to do it in a way where it’s much more simple,’ says Otellini. ‘You can’t
+talk about the bits and the bytes.’”  This seems deeply wrong to me on a whole
+bunch of levels.  People already know what computers and game consoles and
+telephones and all the other things with CPUs in them can do for them, and if
+they 
+don’t, it’s not Intel’s job to explain, that belongs to the people who build
+the boxes that the consumers slap down their plastic for.   
+Once the buyers understand, they care mostly about price, except for
+bleeding-edge gamers and other CPU hogs, who perforce <em>do</em> care about
+bits and bytes. Intel’s real
+customers are Apple and Intel and Dell and HP and IBM, and I guarantee those
+guys care about bits and bytes (and wattage), and even more about dollars per
+unit.  So it looks to me like Intel’s charging off in the wrong direction with
+Viiv and Core and so on.  Having said that, I suspect the Intel engineering
+tribe is
+maniacally focused on catching and beating AMD, and I wouldn’t want to bet
+against them in the long term; so they’ll probably do OK.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/13/FSS'>
+  <title>FSS: Roads</title>
+  <link href='FSS' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/13/FSS</id>
+  <published>2006-01-13T12:00:00-08:00</published>
+  <updated>2006-01-14T09:27:28-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Photos' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Photos' />
+<summary type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>Friday Slide Scan #18 is from my  <a href='http://www.textuality.com/BillBray/'>Dad&#x2019;s</a> &#x201c;Roads&#x201d; category; three pictures spanning three countries, two continents, and two decades.</div></summary>
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>Friday Slide Scan #18 is from my 
+<a href="http://www.textuality.com/BillBray/">Dad’s</a> “Roads” category;
+three pictures spanning three countries, two continents, and two decades.</p>
+<p>Below is the trading post in Meander River, not far from
+<a href="http://en.wikipedia.org/wiki/High_Level">High Level, Alberta</a>; my
+parents and friends passed through on a vacation drive north to
+<a href="http://en.wikipedia.org/wiki/Great_Slave_Lake">Great Slave
+Lake</a> from 
+<a href="http://en.wikipedia.org/wiki/Fort_Vermilion">Fort Vermilion</a> on
+vacation in the summer of 1956.</p>
+<img src="A9006.png" alt="Meander River, Alberta, trading post, 1956" />
+<p>Next is the Baldock Freeway between Eugene and Tigard, Oregon, a precursor
+of I-5, sometime in the late fifties.  I still have a vague memory of that old
+Chevy; I
+lounged in the capacious back seat <i>sans</i> seatbelts.</p>
+<img src="A9009.png" alt="Baldock Freeway, Oregon, late fifties" />
+<p>Finally, an April 1964 shot from near the top of the Western
+slope of the pass over
+<a href="http://en.wikipedia.org/wiki/Mount_Lebanon">Mount Lebanon</a> 
+from Beirut to the
+Beka’a valley, looking back at the sun on the Mediterranean.</p>
+<img src="A9010.png" alt="Pass over the Lebanon range, 1964" />
+<p>Images in the Friday Slide Scans are from 35mm slides taken between 1953
+and 2003 by (in rough chronological order)
+<a href="http://www.textuality.com/BillBray/">Bill Bray</a>, 
+<a href="http://www.tbray.org/ongoing/When/200x/2004/08/11/MomsGarden">Jean Bray</a>, Tim Bray, Cath
+Bray, and
+<a href="http://www.laurenwood.org/anyway/">Lauren Wood</a>; when I know
+exactly who took one, I’ll say; in this case, Bill and/or Jean Bray. 
+Most but not all of the slides were on Kodachrome; they were digitized using
+a Nikon CoolScan 4000 ED scanner and cleaned up by a combination of the Nikon
+scanning software and PhotoShop Elements.</p>
+</div></content></entry>
+ <entry xml:base='When/200x/2006/01/12/Rain'>
+  <title>Rain and Silence and Reggaet&#xf3;n</title>
+  <link href='Rain' />
+  <id>http://www.tbray.org/ongoing/When/200x/2006/01/12/Rain</id>
+  <published>2006-01-12T12:00:00-08:00</published>
+  <updated>2006-01-12T17:53:36-08:00</updated>
+  <category scheme='http://www.tbray.org/ongoing/What/' term='Arts/Music' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Arts' />
+<category scheme='http://www.tbray.org/ongoing/What/' term='Music' />
+<content type='xhtml'><div xmlns='http://www.w3.org/1999/xhtml'>
+<p>If it lasts through Sunday, Vancouver (and Seattle just down the road) will
+break a 1953 record for continuous rainy days.  Recently there’s not much
+rattling around inside asking to be written and I partly blame all those
+clouds and, weirdly, the fact that
+it’s been weeks since I saw anything that I wanted to take a picture of.
+I have this great big queue of interesting Web stuff to write about, but you
+know, if I don’t someone else will and if they don’t it probably didn’t
+need writing.  The Web’s like that.  But today I was driving up 101 heading
+for SFO and didn’t like what KFOG was playing and hit Seek and listened to
+half an hour of
+<a href="http://www.univision.com/content/channel.jhtml?chid=9598&amp;schid=9793">La
+Kalle</a> which plays
+<a href="http://en.wikipedia.org/wiki/Reggaeton">Reggaetón</a>, and the DJs
+veer back and forth between Spanish and English three times in the average
+hyperenthusiastic sentence.  The music’s complicatedly trying to be
+Latino-sentimental and hip-hop-tough and reggae-happy all at once, which
+leaves gaps it occasionally falls into, 
+but more of it is good than bad, and a couple of times it had
+me hoppin’ back and forth on my butt in the driver’s seat.  When I stopped to
+gas up the rental the song they were playing was too good to turn off so I
+cranked that sucker and entertained the whole gas station while I did my bit
+for the Saudi economy.
+A young dude in a good blue suit and haircut gassing <em>his</em> rental
+raised an eyebrow 
+at the grey-bearded gringo honkey gettin’ down.  As if I cared.</p>
+</div></content></entry>
+</feed>

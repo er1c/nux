@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+
+<!-- ================================================================= -->
+<!-- Definition of content of generated documentation.                 -->
+<!-- In particular logobar, header, footer, left and right navigation bar. -->
+<!-- $Id: navigation.xml,v 1.65 2005/12/07 20:08:43 hoschek3 Exp $          -->
+<!-- ================================================================= -->
+<project name="Nux" href="http://dsd.lbl.gov/nux" css="style.css">
+	<title>Nux</title> 
+
+	<header>
+		<left>
+			<a href="http://dsd.lbl.gov/nux">
+				<img src="images/proj.jpg" border="0" alt="" />
+				<!-- width="130" height="80" -->
+			</a>
+		</left>
+		<center>
+			<img src="images/proj-title.jpg" alt="" /> 
+		</center>
+		<right>
+			<a href="http://www.lbl.gov">
+				<img src="images/lbl-logo.gif" border="0" alt="" />
+			</a>
+		</right>
+	</header>
+
+	<body menuWidth="140">
+		<links currentVersion="1.6" lastPublished="Jun 18, 2006">
+			<item name="Nux" href="/index.html"/>
+			<item name="Sea" href="http://dsd.lbl.gov/sea/"/>
+			<item name="Firefish" href="http://dsd.lbl.gov/firefish/"/>
+			<!-- <item name="Overlay" href="http://dsd.lbl.gov/overlay/"/> -->
+			<item name="pyGridWare" href="http://dsd.lbl.gov/gtg/projects/pyGridWare/"/>
+			<item name="Bro" href="http://www.bro-ids.org/"/>
+			<item name="NetLogger" href="http://dsd.lbl.gov/NetLogger/"/>
+			<item name="Scishare" href="http://dsd.lbl.gov/P2P/file-share/"/>
+			<!-- <item name="Rsgc" href="http://dsd.lbl.gov/rsgc/"/> -->
+			<item name="Colt" href="http://dsd.lbl.gov/~hoschek/colt"/>
+		</links>
+
+		<menu name="Software">
+			<item name="Home" href="/index.html"/>
+			<item name="Download" href="http://dsd.lbl.gov/nux-download"/>
+			<!-- <item name="Installation" href="/install.html"/> -->
+			<item name="Readme" href="/readme.html"/>
+			<!-- <item name="Getting Started" href="/gettingstarted.html"/> -->
+			<item name="Changelog" href="/changelog.html"/>
+			<item name="FAQ / Related" href="/related.html"/>
+			
+			<!-- uncomment the next block to see more navigation elements -->
+			<!--
+				<item name="hr"/>
+				<item name="Other Tutorials">
+					<subitem name="subTutorial1" href="/tutorials.html"/>
+					<subitem name="subTutorial2" href="/tutorials.html"/>
+				</item>	
+				<item name="hr"/>
+			-->			
+		</menu>
+		
+		<menu name="Development">
+			<item name="Dependencies" href="/dependencies.html"/>
+			<item name="Javadoc API" href="/api/index.html"/>
+			<item name="Mailing List" href="/mailing.html"/>
+			<!-- <item name="CVS Repository" href="/cvs.html"/> -->
+			<!-- <item name="ToDo List" href="/todo.html"/> -->
+			<item name="License" href="/license.html"/>
+		</menu>
+		
+		<!-- uncomment the next block to see more navigation elements -->
+		<!-- <menuSeparator/> -->
+		
+		<menu name="Research">
+			<!-- <item name="Related Work" href="/relatedwork.html"/> -->
+			<!-- <item name="Scalable Secure P2P" href="http://dsd.lbl.gov/P2P/file-share/"/> -->
+			<item name="DSD Department" href="http://dsd.lbl.gov"/>
+		</menu>
+		
+		<menu name="Search">
+			<item name="GoogleSearch" href="dsd.lbl.gov"/>
+		</menu>
+
+	</body>
+
+	<!-- uncomment the next block to see more navigation elements -->
+	<!--
+	<rightbody>
+		<menu name="Search">
+			<item name="Related Work"		href="/relatedwork.html"/>
+			<item name="Scalable Secure P2P" href="http://dsd.lbl.gov/P2P/file-share/"/>
+			<item name="DSD Department"		href="http://dsd.lbl.gov"/>
+		</menu>
+	</rightbody>
+	-->
+
+	<footer> 
+		<left>
+			<font color="#525D76" size="-1">
+				<em><a href="mailto:wolfgang.hoschek.AT.mac.DOT.com">Contact us</a></em>
+			</font>
+		</left>
+		
+		<center>
+			<font color="#525D76" size="-1">
+				<em>
+					&#169; 2005, <a href="http://www.lbl.gov/">Lawrence Berkeley	National Laboratory</a>
+				</em>
+			</font>
+			<!-- <img src="images/nux-title.jpg" alt="" /> -->
+			<!-- <font face="arial"><h2> Nux </h2></font> -->
+		</center>
+		
+		<right>
+			<a href="http://validator.w3.org/check/referer"><img src="images/valid-html401.png" alt="Valid HTML 4.01!" width="88" height="31" border="0"/> </a>
+			<a href="http://jigsaw.w3.org/css-validator/"><img src="images/valid-css.png" alt="Valid CSS!" width="88" height="31" border="0" /> </a>
+		</right>
+	</footer>
+
+</project>

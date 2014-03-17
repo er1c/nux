@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- $Id: mailing.xml,v 1.14 2006/02/09 21:17:47 hoschek3 Exp $          -->
+<document>
+	<properties>
+		<author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+		<title>Mailing List</title>
+	</properties>
+	<body>
+		<!-- ##################################################################################### -->
+		<section name="Mailing List">
+			There is no separate mailing list for Nux.
+			<p> 
+			Instead, communication takes place on the 
+			<a href="http://lists.ibiblio.org/pipermail/xom-interest/">
+			XOM mailing list</a> as well as the
+			<a href="http://lists.sourceforge.net/lists/listinfo/saxon-help">
+			Saxon mailing list</a>.
+			</p>
+			<p>
+			In case of problems, make sure to first check the 
+			<a href="http://www.saxonica.com/documentation/documentation.html">
+			Saxon documentation</a> and <a href="http://www.xom.nu/">
+			XOM documentation</a>.
+			If applicable, consult the 
+			<a target="_blank" href="http://www.saxonica.com/documentation/functions/intro.html">Saxon Library Function Index</a>
+			documenting standard XQuery functions.
+			Finally, check the 
+			<a href="http://xquery.com/pipermail/talk/">xquery-talk mailing list archives</a> and
+			<a href="http://www.xslt.com/html/xsl-list/">XSL/XPath mailing list archives</a>.
+			
+			
+			<!-- <a href="http://www.biglist.com/lists/xsl-list/archives/">XSL/XPath mailing list archives</a>. -->
+			</p>
+			<!-- 
+			For now,
+			CVS commits with diffs get automatically mailed to:
+<pre class="source">
+nuxcvs@george.lbl.gov
+</pre>
+			-->
+		</section>
+	</body>
+</document>

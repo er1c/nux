@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!-- $Id: dependencies.xml,v 1.38 2006/06/18 21:44:34 hoschek Exp $          -->
+<document>
+	<properties>
+		<author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+		<title>Dependencies, Versions and their Homepages</title>
+	</properties>
+	<body>
+		<!-- ##################################################################################### -->
+		<section name="Dependencies, Versions and their Homepages">
+				<p>Nux should happily run on any Unix and any Windows with Java <a
+					href="http://java.sun.com/j2se/">jdk-1.4.x</a> or higher (including JDK 1.5).
+					Currently, we know it runs at least on MacOSX, Linux, Solaris and Windows 2000
+					or higher.
+				</p>		
+				<p>For your convenience the download contains all dependencies and jar files
+					necessary to run the software "out of the box" with zero installation and
+					configuration effort. A single download and untar step will get
+					you operational.</p>
+				<p>Developers, admins and advanced users want to know the dependency set, and tinker
+					with it in interesting ways. The following dependencies exist (left component
+					depends on right component):</p>
+				<table border="0" cellspacing="0" cellpadding="2" width="100%">
+					<xtbody>
+						<tr>
+							<xth>Product</xth>
+							<xth>Dependency and Homepage</xth>
+							<xth>Javadoc</xth>
+							<xth>License</xth>
+						</tr>
+						<!-- ##################################################################################### -->
+						<tr>
+							<td>nux</td>
+							<td/>
+							<td>
+								<a href="api/index.html">javadoc</a>
+							</td>
+							<td>
+								<a href="license.html">BSD</a>
+							</td>
+						</tr>
+						<!--
+						<tr>
+							<td> </td>
+							<td> <a href="http://java.sun.com/j2se/1.4/download.html">jdk-1.4.x</a> or higher (Not included in the download)</td>
+							<td> <a href="http://java.sun.com/j2se/1.4/docs/api/">javadoc</a> </td>
+							<td> <a href="licenses/jre.LICENSE.txt">JRE Sun Binary Code</a> </td>
+						</tr>
+						-->
+						<tr>
+							<td/>
+							<td>
+								<a href="http://www.xom.nu/">xom-1.1.x</a> or xom-1.2.x or xom-1.0.x with compatible 
+				<a href="http://dsd.lbl.gov/~hoschek/xom-1.2-patches">performance patches</a> (required)
+							</td>
+							<td>
+								<a href="http://www.xom.nu/apidocs/">javadoc</a>
+							</td>
+							<td>
+								<a href="licenses/xom.LICENSE.html">LGPL</a>
+							</td>
+						</tr>
+						<tr>
+							<td/>
+							<td>
+								<a href="http://saxon.sourceforge.net/">saxonb-8.7.3</a> or 8.3 - 8.7.1 (optional, for XQuery support only)
+								<br>Nux does not care whether it is an open-source or commercial Saxon version; both should work.
+								Include saxon8.jar in your classpath. saxon8-xom.jar is nomore needed as its contents are directly 
+								compiled into nux.jar, improving simplicity and reliability.</br>
+							</td>
+							<td>
+								<a href="http://dsd.lbl.gov/%7Ehoschek/javatree/share/xml/saxonb-8.7.3/doc/javadoc/">javadoc</a>
+							</td>
+							<td>
+								<a href="licenses/saxon.LICENSE.txt">Mozilla</a>
+							</td>
+						</tr>
+						<tr>
+							<td/>
+							<td>
+								<a href="http://lucene.apache.org/java/docs/">lucene-2.0.0</a> (optional, for fulltext search only)
+							</td>
+							<td>
+								<a href="http://lucene.apache.org/java/docs/api/">javadoc</a>
+							</td>
+							<td>
+								<a href="licenses/lucene.LICENSE.txt">Apache</a>
+							</td>
+						</tr>
+						<tr>
+							<td/>
+							<td>
+								<a href="http://www.urbanophile.com/%7Earenn/hacking/download.html">gnu-getopt-1.0.7</a> (optional, for some command-line tests only)
+							</td>
+							<td>
+								<a href="http://www.urbanophile.com/%7Earenn/hacking/getopt/Package-gnu.getopt.html">javadoc</a>
+							</td>
+							<td>
+								<a href="licenses/gnu-getopt.LICENSE.txt">LGPL</a>
+							</td>
+						</tr>
+					</xtbody>
+				</table>
+				<p>Jar files marked as "optional" can be omitted from the classpath if desired. 
+                 For example, if you only need support for binary XML or Builder pools, you only need 
+				to include <code>nux.jar</code> and <code>xom.jar</code>.				
+				</p>
+<!--
+				<p> Chances are good that Nux will also run with earlier or later versions of
+					the above components - just drop them in. We can not guarantee that such
+					other versions will work, of course. We are interested in feedback as to what
+					does or does not work for you.</p>
+-->
+				<p> Before you submit bug reports, please check if the bug is reproducible with the
+					jar files shipping with the download, and let us know.</p>
+		</section>
+	</body>
+</document>

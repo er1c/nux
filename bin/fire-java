@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# Shell script to execute java programs with the right classpath.
+# Example invocation: 
+#
+# 	fire-java nux.xom.tests.XQueryCommand arg1 arg2 .. argN
+#
+# author: whoschek@lbl.gov
+#
+
+# detect the directory containing this file (the root of this installation)
+MYDIR="`dirname $0`"
+#echo MYDIR=$MYDIR
+
+# convert to absolute path (need this for log4j config option)
+#MYABSDIR="`cd $MYDIR; pwd`"
+#echo $MYABSDIR
+
+# auto detect location of JAVA_HOME, JAVA, JDK_OS
+. $MYDIR/util-find-jdk.sh
+
+FIRE_HOME=$MYDIR/..
+FIRE_LIB=$FIRE_HOME/lib
+
+CLASSPATH=$CLASSPATH:$FIRE_HOME/build/classes
+#$FIRE_HOME/build/classes
+
+for i in "$FIRE_LIB"/*.jar; do
+#	if [ "$i" != "$FIRE_LIB"/nux.jar ] ; then
+#		echo "JAR is $i"
+		CLASSPATH="$CLASSPATH":"$i"
+#	fi
+done
+CLASSPATH="$CLASSPATH":"$FIRE_HOME"/lib-for-build/stax-api-1.0.1.jar
+CLASSPATH="$CLASSPATH":"$FIRE_HOME"/lib-for-build/junit.jar
+
+opts=""
+#opts="-Dlog4j.configuration=file://$MYABSDIR/../log4j.properties -Dfirefish.configuration=$MYDIR/../firefish.properties"
+#opts="$opts -Djavax.net.debug=ssl:handshake"
+#opts="$opts -Dlog4j.debug"
+
+if [ "$JAVA_OPTS" ] ; then
+	opts="$JAVA_OPTS $opts"
+fi
+#echo $opts
+
+export JAVA_HOME
+export CLASSPATH
+#echo "CLASSPATH is $CLASSPATH"
+
+exec $JAVA $opts -cp $CLASSPATH ${1+"$@"}

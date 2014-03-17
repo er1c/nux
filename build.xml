@@ -1,0 +1,824 @@
+<!-- $Author: hoschek $, $Revision: 1.94 $, $Date: 2006/06/19 02:02:48 $ -->
+<!-- See "help" target for instructions on how to build the software. -->
+
+<project name="nux" default="help" basedir="." >
+
+<!-- Give user a chance to override property values without editing this file
+	(and without typing -D each time we run) -->
+<property file=".ant.${ant.project.name}.properties"/>
+<property file="${user.home}/.ant.${ant.project.name}.properties"/>
+	
+<property name="version" value="1.6"/>
+
+<!-- The base directory relative to which most targets are built (not needed actually)-->
+<!-- <property name="base" value="."/> -->
+
+<!-- Read system environment vars into properties prefixed with "env" -->	
+<property environment="env"/> 
+		
+<!--<property name="dist.download.dir" value="/tmp/${ant.project.name}-download"/> -->
+<property name="dist.download.dir" value="${user.home}/unix/www/${ant.project.name}-download"/>
+
+<property name="dist.website" value="${user.home}/unix/www/${ant.project.name}"/>
+<!-- <property name="dist.website" value="/tmp/${ant.project.name}-www"/> -->
+
+<property name="proj.title" value="Nux"/>
+
+<!-- The directory where *.java files are stored. -->
+<property name="javac.src" value="src"/>
+
+<!-- Destination for *.class files -->
+<property name="javac.dest" value="build/classes"/>
+
+<!-- Source directory for xml docs -->
+<property name="xdocs.src" value="xdocs"/>
+ 
+<!-- Destination for documentation files -->
+<property name="doc.dest" value="doc"/>
+
+<!-- Destination for javadoc generated files -->
+<property name="javadoc" value="${doc.dest}/api"/>
+
+<!-- Location of jar files -->
+<property name="jar.dir" value="lib"/>
+
+<!-- Location of jar files only needed to compile (not for running) -->
+<property name="jar.dir.for.build" value="lib-for-build"/>
+	
+<!-- The jar file that the jar task will generate -->
+<property name="jar.filename" value="${ant.project.name}.jar"/>
+<property name="saxon-xom.jar.filename" value="saxon8-xom.jar"/>
+
+<!-- Directory for temporary files. -->
+<property name="dist.tmp" value="${java.io.tmpdir}/${ant.project.name}-tmp"/>
+
+<!-- file patterns to be excluded from tar in dist targets -->
+<property name="tar.excludes" value="**/CVS **/.* **/*~ **/*.bak **/*.BAK **/*.jpage **/.ant.${ant.project.name}.properties"/>
+
+<!-- Construct classpath for compilation -->
+<path id="javac.classpath">
+	<fileset dir="${jar.dir}">
+		<include name="**/*.jar"/>
+		<exclude name="${jar.filename}"/>
+		<exclude name="${saxon-xom.jar.filename}"/>
+	</fileset>
+	<fileset dir="${jar.dir.for.build}">
+		<include name="*.jar"/>
+		<exclude name="cvs-saxon8.jar"/>
+	</fileset>
+</path>
+
+<path id="test.classpath">
+	<pathelement location="${javac.dest}"/>
+	<path refid="javac.classpath"/>
+</path>
+
+<!-- ================================================================= -->
+<!-- Default target                                                    -->
+<!-- ================================================================= -->
+<target name="help">
+<echo>
+Type one of the following to build the software:
+
+	ant -help         - Print help on general ant usage
+	ant help          - Print this help text
+	ant build         - Compile, generate jars, deploy
+	ant doc           - Generate documentation
+	ant dist          - Build and generate distribution downloads
+
+Further individual targets used internally by above targets:
+	
+	javac             - Compile all *.java files into .class files
+	javadoc           - Generate javadoc files from *.java
+	jar               - Generate jar file(s) from *.class files
+	style             - Generate website into doc directory
+</echo>
+</target>
+	
+
+<!-- ================================================================= -->
+<!-- Initialize variables                                              -->
+<!-- ================================================================= -->
+<target name="init">
+	<tstamp/>
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Remove all generated (compiled) class files.                      -->
+<!-- ================================================================= -->
+<target name="clean">
+	<!-- <delete dir="${javac.dest}" /> -->
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Clean all in preparation for a complete distribution.             -->
+<!-- ================================================================= -->
+<target name="cleanall">
+	<delete verbose="true">
+		<fileset dir=".">
+			<patternset>
+				<include name="**/*.bak"/>
+				<include name="**/*.BAK"/>
+				<include name="**/*~"/>
+			</patternset>
+		</fileset>
+	</delete>
+	
+	<delete dir="build" />
+	<delete dir="${dist.tmp}" />
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Build the software (without generating a distribution)            -->
+<!-- ================================================================= -->
+<target name="build" depends="javac, jar, fixcrlf">
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Compile all *.java files                                          -->
+<!-- ================================================================= -->
+<target name="javac" depends="clean">         
+	<!-- replace version string with current version -->
+	<!--
+	<replaceregexp file="${javac.src}/gov/lbl/dsd/firefish/client/FireCmdLineProgram.java"
+                         match="getVersion\(\) \{.*\}"
+                         replace="getVersion() { return &quot;${version}&quot;; }"
+                         />
+    -->
+ 
+ 	<mkdir dir="${javac.dest}" />
+	<javac srcdir="${javac.src}" destdir="${javac.dest}"
+		includes="**/*.java"
+		excludes="gov/lbl/dsd/nux/nio/trash/*.java, **/UnitTest*.java"
+		deprecation="off"
+        source="1.4"
+        target="1.4"
+		optimize="off"
+		debug="on">
+		
+		<classpath refid="javac.classpath"/>
+	</javac>
+	<!-- source="1.5" -->
+	
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Generate jar file(s) from *.class files                           -->
+<!-- ================================================================= -->
+<target name="jar" depends="javac">
+
+	<!-- <delete file="${jar.dir}/${jar.filename}" /> -->
+	
+	<jar jarfile="${jar.dir}/${jar.filename}" basedir="${javac.dest}"
+		excludes="**/*UnitTest.class"
+		index="yes"
+		compress="yes">
+<!--		excludes="net/** **/*UnitTest.class" -->
+		<manifest>
+			<attribute name="Built-By" value="${user.name}"/>
+			<attribute name="Specification-Title"    value="${proj.title}"/>
+			<attribute name="Specification-Version"  value="${version}"/>
+			<attribute name="Specification-Vendor"   value="Wolfgang Hoschek whoschek@lbl.gov"/>
+			<attribute name="Implementation-Title"   value="${proj.title}"/>
+			<attribute name="Implementation-Version" value="${version}"/>
+			<attribute name="Implementation-Vendor"  value="Wolfgang Hoschek whoschek@lbl.gov"/>          
+			<section name="nux/xom/xquery/"/>
+		</manifest>
+	</jar>
+	
+<!--
+	<jar jarfile="${jar.dir}/${saxon-xom.jar.filename}" basedir="${javac.dest}"
+		excludes="nux/** org/** **/*UnitTest.class"
+		index="yes"
+		compress="yes"
+	/>
+-->	
+</target>
+
+
+<!-- =================================================================  -->
+<!-- Just generate binary xml jar file(s) from *.class files            -->
+<!-- Minimizes jar file size for impoverished devices, e.g. wireless    -->
+<!-- =================================================================  -->
+<target name="jar-bnux" depends="javac">
+	<jar jarfile="${jar.dir}/bnux.jar" basedir="${javac.dest}"
+		includes="nux/xom/binary/**"
+		index="yes"
+		compress="yes"
+	/>
+</target>
+
+	
+<!-- ================================================================= -->
+<!-- Generate experimental version of saxon8.jar with Mike's latest source fixes    -->
+<!-- Do not use this for production unless forced!                     -->	
+<!-- ================================================================= -->
+<target name="jar-cvs-saxon">
+
+	<delete file="${jar.dir}/cvs-saxon8.jar" />
+	
+	<jar jarfile="${jar.dir.for.build}/cvs-saxon8.jar" basedir="${user.home}/unix/java/share/xml/saxonb-8.7.3/build/classes"
+		excludes="net/sf/saxon/xom/** net/sf/saxon/dom/** net/sf/saxon/dom4j/** net/sf/saxon/dotnet/** net/sf/saxon/jdom/** net/sf/saxon/xpath/** net/sf/saxon/sql/** META-INF/services/javax.xml.xpath.XPathFactory META-INF/services/javax.xml.validation.SchemaFactory"
+		index="no"
+		compress="no">
+		<manifest>
+			<attribute name="Main-Class" value="net.sf.saxon.Transform"/>
+		</manifest>
+	</jar>
+</target>
+
+<target name="cp-memory">
+	<copy todir="${javac.src}" overwrite="true">
+		<fileset dir="../lucene-svn2/contrib/memory/src/java"
+			includes="**/*.java, **/*.html*" 
+			excludes="**/*.txt, **/*.svn"/>		
+		<fileset dir="../lucene-svn2/contrib/memory/src/test"
+			includes="**/*.java, **/*.html*" 
+			excludes="**/*.txt, **/*.svn"/>		
+	</copy>
+</target>
+	
+<!-- ================================================================= -->
+<!-- Generate documentation                                            -->
+<!-- ================================================================= -->
+<target name="doc" depends="style, doc-usage, javadoc">
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Build the documentation files using XSLT                          -->
+<!-- derived from http://jakarta.apache.org/site/jakarta-site2.html    -->
+<!-- ================================================================= -->                                                                          
+<target name="style">
+	<!-- copy images, stylesheets, etc to documentation output dir -->
+	<copy todir="${doc.dest}">
+		<fileset dir="${xdocs.src}"
+			includes="**" 
+			excludes="*.xml, *.xsl"/>		
+	</copy>
+
+	<!-- replace lastUpdated tag on web site with current date -->
+	<tstamp>
+		<format property="dateformat" pattern="MMM d, yyyy"/>
+	</tstamp>
+	<replaceregexp file="${xdocs.src}/navigation.xml"
+                         match="lastPublished=&quot;.*?&quot;"
+                         replace="lastPublished=&quot;${dateformat}&quot;"
+                         />
+	
+	<!-- replace version tag on web site navigation bar with current version -->
+	<replaceregexp file="${xdocs.src}/navigation.xml"
+                         match="currentVersion=&quot;.*?&quot;"
+                         replace="currentVersion=&quot;${version}&quot;"
+                         />
+	<!-- now generate documentation from xdocs via XSLT -->
+	<style basedir="${xdocs.src}" 
+			destdir="${doc.dest}"
+			extension=".html" 
+			style="${xdocs.src}/style.xsl"
+			force="true"
+			excludes="navigation.xml"
+			includes="*.xml">
+		<outputproperty name="doctype-public" value="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+		<outputproperty name="doctype-system" value="http://www.w3.org/TR/html4/loose.dtd"/>
+	</style>
+
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Generate javadoc files from *.java files                          -->
+<!-- ================================================================= -->
+<target name="javadoc" unless="env.NO_JAVADOC">
+
+	<delete dir="${javadoc}" />
+	<mkdir dir="${javadoc}" />
+	
+	<javadoc sourcepath="${javac.src}" destdir="${javadoc}"
+		public="false"
+		author="true"
+		use="true"
+		splitIndex="false"
+		version="false"
+		windowtitle="${proj.title} ${version} - API Specification"
+		header="&lt;b&gt;${proj.title} ${version}&lt;/b&gt;">
+<!--	
+		<packageset dir="${javac.src}" 
+			excludes="net/sf/saxon/xom/ org/apache/lucene/index/memory/" 
+		/>
+-->
+		<packageset dir="${javac.src}" 
+			excludes="net/sf/saxon/xom/" 
+		/>
+		<link href="http://java.sun.com/j2se/1.4/docs/api/"/>
+		<link href="http://www.xom.nu/apidocs/"/>
+		<link href="http://java.sun.com/products/servlet/2.3/javadoc/"/>
+		<link href="https://stax-utils.dev.java.net/nonav/javadoc/api/"/>
+		<link href="http://java.sun.com/webservices/docs/1.6/api/"/>
+		<link href="http://lucene.apache.org/java/docs/api/"/>
+		<!-- <link href="http://ws.apache.org/jaxme/apidocs/"/> -->
+		<link href="http://dsd.lbl.gov/%7Ehoschek/javatree/share/xml/saxonb-8.7.3/doc/javadoc/"/>
+		<!-- <link href="http://dsd.lbl.gov/%7Ehoschek/javatree/share/xml/saxonb-8.1.1/doc/javadoc/"/> -->
+		<!-- <link href="http://www.saxonica.com/documentation/javadoc/"/> -->
+		<!-- <link href="http://www.junit.org/junit/javadoc/3.8.1/"/> -->	
+		
+		<classpath refid="javac.classpath"/>
+	</javadoc>
+</target>
+
+
+<!--The directory where downloaded test files should be stored -->
+<property name="testdata" value="../nux-testdata"/>
+
+<!-- ================================================================= -->
+<!-- Download 50000 XML files for (de)serialization tests.             -->
+<!-- ================================================================= -->		
+<target name="download-testdata">
+	<mkdir dir="${testdata}"/>
+	<echo message="Now downloading about 50000 XML files from various public testsuites into ${testdata}"/>
+	<echo message="This may take half an hour. Have some coffee..."/>
+	
+	<!-- 
+	todo: add xerces SVN or xerces-2.8.0-src (data/ misses tests/) http://archive.apache.org/dist/xml/xerces-j/Xerces-J-src.2.8.0.zip 
+	-->	
+		
+	<cvs cvsRoot=":pserver:anonymous@cvs.sourceforge.net:/cvsroot/jibx"
+		package="core/build/test/data/"
+		dest="${testdata}"
+	/>
+
+	<!-- http://switch.dl.sourceforge.net/sourceforge/xbis/fullxbis-0.9.5.zip -->
+	<!--
+	<cvs cvsRoot=":pserver:anonymous@cvs.sourceforge.net:/cvsroot/xbis"
+		package="xbis/data"
+		dest="${testdata}"
+	/>
+	-->
+
+	<cvs cvsRoot=":pserver:guest@cvs.dev.java.net:/cvs"
+		package="fi/RoundTripTests/data/XBC"
+		dest="${testdata}"
+	/>
+	
+	<!-- cvs -d :pserver:anonymous@dev.w3.org:/sources/public login     [use password=anonymous] -->
+	<cvs cvsRoot=":pserver:anonymous@dev.w3.org:/sources/public"
+		package="2002/ws/desc"
+		dest="${testdata}"
+	/>
+	
+	<!-- cvs -d :pserver:anonymous@dev.w3.org:/sources/public login     [use password=anonymous] -->
+	<cvs cvsRoot=":pserver:anonymous@dev.w3.org:/sources/public"
+		package="2004/ws/addressing"
+		dest="${testdata}"
+	/>
+	
+	<!-- svn co https://svn.sourceforge.net/svnroot/feedvalidator/trunk/feedvalidator feedvalidator -->
+	<get src="http://feedvalidator.org/download/2006-06-18.zip" 
+		dest="${testdata}/feedvalidator-2006-06-18.zip" usetimestamp="true" ignoreerrors="true"/>
+	<unzip src="${testdata}/feedvalidator-2006-06-18.zip" dest="${testdata}" overwrite="false"/>
+	
+	<get src="http://www.cafeconleche.org/XOM/xom-1.1.zip" 
+		dest="${testdata}/xom-1.1.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/xom-1.1.zip" dest="${testdata}" overwrite="false"/>
+	
+	<get src="http://sunsite.mff.cuni.cz/MIRRORS/metalab.unc.edu/pub/sun-info/standards/xml/eg/shakespeare.1.10.xml.zip" 
+		dest="${testdata}/shakespeare.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/shakespeare.zip" dest="${testdata}" overwrite="false"/>
+		
+	<get src="http://sunsite.mff.cuni.cz/MIRRORS/metalab.unc.edu/pub/sun-info/standards/xml/eg/religion.1.10.xml.zip" 
+		dest="${testdata}/religion.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/religion.zip" dest="${testdata}/religion" overwrite="false"/>
+	
+	<get src="http://www.tux.org/pub/net/apache/dist/xml/batik/batik-1.6.zip" 
+		dest="${testdata}/batik.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/batik.zip" dest="${testdata}/batik" overwrite="false"/>
+	
+	<get src="http://www.w3.org/XML/Query/test-suite/XQTS_0_9_4.zip" 
+		dest="${testdata}/xqts.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/xqts.zip" dest="${testdata}/xqts" overwrite="false"/>
+	
+	<get src="http://www.w3.org/XML/Test/xmlts20031210.zip" 
+		dest="${testdata}/xmlconf.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/xmlconf.zip" dest="${testdata}/xmlconf" overwrite="false"/>
+	
+	<get src="http://www.oasis-open.org/committees/download.php/12171/XSLT-testsuite-04.ZIP" 
+		dest="${testdata}/oasis-xslt-testsuite.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/oasis-xslt-testsuite.zip" dest="${testdata}/oasis-xslt-testsuite" overwrite="false"/>
+
+	<get src="http://www.w3.org/XML/Test/XInclude/XIncl20041103.zip" 
+		dest="${testdata}/xinclude.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/xinclude.zip" dest="${testdata}/xinclude" overwrite="false"/>			
+	
+	<get src="http://www.oasis-open.org/committees/download.php/16336/UBL-2.0-SBS-20060120-XPath.zip" 
+		dest="${testdata}/ubl-xpath.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/ubl-xpath.zip" dest="${testdata}/ubl-xpath" overwrite="false"/>	
+
+	<get src="http://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2004-01-14/xsts-2004-01-14.tar.gz" 
+		dest="${testdata}/xsts.tar.gz" usetimestamp="true"/>
+	<untar compression="gzip" src="${testdata}/xsts.tar.gz" dest="${testdata}/xsts" overwrite="false"/>
+		
+	<get src="http://xmlsoft.org/sources/libxml2-tests-2.6.23.tar.gz" 
+		dest="${testdata}/libxml2-tests.tar.gz" usetimestamp="true"/>
+	<untar compression="gzip" src="${testdata}/libxml2-tests.tar.gz" dest="${testdata}" overwrite="false"/>
+	
+	<get src="http://xmlsoft.org/sources/libxslt-1.1.15.tar.gz" 
+		dest="${testdata}/libxslt.tar.gz" usetimestamp="true"/>
+	<untar compression="gzip" src="${testdata}/libxslt.tar.gz" dest="${testdata}" overwrite="false"/>	
+	
+	<get src="ftp://ftp.globus.org/pub/gt4/4.0/4.0.1/ws-core/src/ws-core-4.0.1-src.zip" 
+		dest="${testdata}/ws-core.zip" usetimestamp="true" verbose="on"/>
+	<unzip src="${testdata}/ws-core.zip" dest="${testdata}" overwrite="false"/>	
+		
+	<get src="http://www.w3.org/Math/testsuite/testsuite.zip" 
+		dest="${testdata}/mathml.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/mathml.zip" dest="${testdata}/mathml" overwrite="false"/>	
+
+	<get src="http://www.w3.org/2000/10/rdf-tests/rdfcore/all_20031114.zip" 
+		dest="${testdata}/rdf.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/rdf.zip" dest="${testdata}/rdf" overwrite="false"/>	
+
+	<get src="http://www.w3.org/2005/SMIL21/testsuite/testsuite.zip" 
+		dest="${testdata}/smil.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/smil.zip" dest="${testdata}/smil" overwrite="false"/>	
+
+	<get src="http://www.w3.org/Graphics/SVG/Test/20030813/archives/W3C_SVG_1.1_FullTestsEmbeddedTestinfo.tgz" 
+		dest="${testdata}/svg11.tar.gz" usetimestamp="true"/>
+	<untar compression="gzip" src="${testdata}/svg11.tar.gz" dest="${testdata}/svg11" overwrite="false"/>
+	
+	<get src="http://dist.codehaus.org/activemq/distributions/activemq-3.2.2-src.zip"
+		dest="${testdata}/activemq.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/activemq.zip" dest="${testdata}" overwrite="false"/>	
+	
+	<get src="http://www.apache.org/dist/geronimo/1.0/geronimo-1.0-src.zip"
+		dest="${testdata}/geronimo.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/geronimo.zip" dest="${testdata}/geronimo" overwrite="false"/>
+
+	<get src="http://switch.dl.sourceforge.net/sourceforge/feedparser/feedparser-tests-4.1.zip" 
+		dest="${testdata}/feedparser-tests-4.1.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/feedparser-tests-4.1.zip" dest="${testdata}/feedparser" overwrite="false"/>
+	
+	<get src="http://switch.dl.sourceforge.net/sourceforge/dom4j/dom4j-1.6.1.zip" 
+		dest="${testdata}/dom4j-1.6.1.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/dom4j-1.6.1.zip" dest="${testdata}" overwrite="false"/>
+	
+	<get src="http://www.apache.org/dist/xmlbeans/source/xmlbeans-2.1.0-src.zip" 
+		dest="${testdata}/xmlbeans-2.1.0-src.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/xmlbeans-2.1.0-src.zip" dest="${testdata}" overwrite="false"/>
+	
+	<!-- <get src="http://dist.codehaus.org/servicemix/distributions/servicemix-2.1-SNAPSHOT-src.zip" -->
+	<get src="http://dist.codehaus.org/servicemix/distributions/servicemix-2.0.2-src.zip" 
+		dest="${testdata}/servicemix-src.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/servicemix-src.zip" dest="${testdata}" overwrite="false"/>
+		
+	<get src="http://dist.codehaus.org/activesoap/distributions/activesoap-1.0-SNAPSHOT-src.zip" 
+		dest="${testdata}/activesoap.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/activesoap.zip" dest="${testdata}" overwrite="false"/>
+	
+	<get src="http://www.apache.org/dist/cocoon/cocoon-2.1.8-src.zip" 
+		dest="${testdata}/cocoon-2.1.8-src.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/cocoon-2.1.8-src.zip" dest="${testdata}" overwrite="false"/>
+
+	<get src="http://www.apache.org/dist/lenya/SOURCES/apache-lenya-1.2.4-src.zip" 
+		dest="${testdata}/apache-lenya-1.2.4-src.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/apache-lenya-1.2.4-src.zip" dest="${testdata}" overwrite="false"/>
+
+	<get src="http://www.apache.org/dist/ws/pubscribe/1.1/src/pubscribe-1.1-src.zip" 
+		dest="${testdata}/pubscribe-1.1-src.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/pubscribe-1.1-src.zip" dest="${testdata}" overwrite="false"/>
+	
+	<get src="http://www.apache.org/dist/ws/axis/1_3/axis-src-1_3.zip" 
+		dest="${testdata}/axis-src-1_3.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/axis-src-1_3.zip" dest="${testdata}" overwrite="false"/>	
+		
+	<!-- See http://www.relaxng.org/#test-suites -->
+	<get src="http://thaiopensource.com/relaxng/testSuite.zip" 
+		dest="${testdata}/relaxng-testSuite.zip" usetimestamp="true"/>
+	<unzip src="${testdata}/relaxng-testSuite.zip" dest="${testdata}/relaxng-testSuite" overwrite="false"/>
+	
+	<get src="http://www.snee.com/xml/xmlcom/xqueryEnginesData.zip" 
+		dest="${testdata}/xqueryEnginesData.zip" usetimestamp="true" ignoreerrors="true"/>
+	<unzip src="${testdata}/xqueryEnginesData.zip" dest="${testdata}/xqueryEnginesData" overwrite="false"/>
+</target>
+	
+
+<!-- ================================================================= -->
+<!-- Run testsuite bundle (may take several hours to complete)         -->
+<!-- ================================================================= -->
+<target name="test" depends="download-testdata, test-xqts, test-bnux, test-staxbuilder, test-staxserializer">
+</target>
+
+<!-- ================================================================= -->
+<!-- Run W3C XQuery testsuite                                          -->
+<!-- ================================================================= -->
+<target name="test-xqts" depends="detect-os">
+	<exec dir="." executable="bin/fire-java${extension}">
+		<arg value="nux.xom.tests.XQueryTestSuiteW3C"/>
+		<arg value="${testdata}/xqts"/>
+	</exec>
+</target>
+				
+<!-- ============= Run StAX/SAX compatibility tests ==================
+cd nux
+ant download-testdata
+cp /path/to/woodstox/lib/wstx-asl-2.9.2.jar lib/
+export JAVA_OPTS='-Xmx200m -Djava.endorsed.dirs=/Users/hoschek/unix/java/share/apache/xerces-2.8.0/'
+ant test-staxbuilder
+====================================================================== -->		
+<property name="testdata-dirs" value="${testdata}/relaxng-testSuite samples/data samples/data-ant samples/data-atom samples/data-fpml samples/data-ubl samples/fulltext samples/shakespeare samples/xmark samples/xpath ${testdata}/xqueryEnginesData ${testdata}/core ${testdata}/feedparser/tests/wellformed ${testdata}/feedvalidator/docs-xml ${testdata}/feedvalidator/news ${testdata}/feedvalidator/testcases ${testdata}/oasis-xslt-testsuite/testsuite/TESTS ${testdata}/oasis-xslt-testsuite/testsuite/TOOLS ${testdata}/religion ${testdata}/shakespeare.1.10.xml ${testdata}/xbis ${testdata}/xinclude ${testdata}/xmlconf ${testdata}/XOM ${testdata}/2002/ws ${testdata}/2004 ${testdata}/ubl-xpath ${testdata}/fi/RoundTripTests/data/XBC ${testdata}/libxml2-2.6.23/test ${testdata}/xerces2/tests ${testdata}/libxslt-1.1.15 ${testdata}/ws-core-4.0.1 ${testdata}/cocoon-2.1.8 ${testdata}/axis-1_3 ${testdata}/apache-lenya-1.2.4-src ${testdata}/dom4j-1.6.1 ${testdata}/xmlbeans-2.1.0 ${testdata}/activemq-3.2.2 ${testdata}/activesoap-1.0-SNAPSHOT ${testdata}/servicemix-2.0.2 ${testdata}/geronimo ${testdata}/rdf ${testdata}/xsts/Tests/Datatypes ${testdata}/mathml ${testdata}/smil ${testdata}/batik/batik-1.6/samples ${testdata}/svg11"/>
+<target name="test-staxbuilder" depends="detect-os">
+	<!-- <echo message="ext is ${extension}"/> -->
+	<echo message="testdata-dirs: ${testdata-dirs}"/>
+	<exec dir="." executable="bin/fire-java${extension}">
+		<arg value="nux.xom.sandbox.StaxBuilderTest"/>
+		<arg line="${testdata-dirs}"/>
+	</exec>
+</target>
+	
+<target name="test-staxserializer" depends="detect-os">
+	<echo message="testdata-dirs: ${testdata-dirs}"/>
+	<exec dir="." executable="bin/fire-java${extension}">
+		<arg value="nux.xom.sandbox.StaxSerializerTest"/>
+		<arg value="wood"/>
+		<arg line="${testdata-dirs}"/>
+	</exec>
+</target>	
+	
+<!-- ================================================================= -->
+<!-- Run Binary XML testsuite                                          -->
+<!-- ================================================================= -->
+<target name="test-bnux" depends="detect-os">
+	<!-- <property name="compression" value="1"/> -->
+	<property name="compression" value="0"/>
+	<exec dir="." executable="bin/fire-java${extension}">
+		<arg value="nux.xom.sandbox.BinaryXMLTest"/>
+		<arg line="test bnux ${compression} 1 1"/>
+		<arg line="${testdata-dirs}"/>
+	</exec>
+</target>
+		
+			
+<!-- ================================================================= -->
+<!-- Run other legacy unit tests                                       -->
+<!-- ================================================================= -->
+<property name="test.outputFormat" value="plain"/>
+<property name="test.output.dir" value="${java.io.tmpdir}/nux-test"/>
+<target name="test-small">
+	<delete dir="${test.output.dir}" />
+	<mkdir dir="${test.output.dir}" />
+	<junit printsummary="on" fork="yes" dir="" showoutput="on" maxmemory="128m">
+		<!--
+		<jvmarg value="-Djava.endorsed.dirs=/Users/hoschek/unix/java/share/apache/xerces-2.8.0"/>
+		<sysproperty key="java.endorsed.dirs" value="/Users/hoschek/unix/java/share/apache/xerces-2.8.0"/>
+		-->
+		<classpath refid="test.classpath" />
+		<formatter type="${test.outputFormat}" />
+		<batchtest fork="yes" todir="${test.output.dir}">
+			<fileset dir="${javac.src}">
+<!--				<include name="**/XQueryUseCasesTest.java" /> -->
+<!--				<include name="**/UnitTestTry.java" />-->
+				<include name="**/StaxBuilderTest.java" />
+			</fileset>
+		</batchtest>
+	</junit>
+</target>
+
+	
+<target name="test-lucene">
+	<junit printsummary="on" fork="yes" dir="../lucene-svn2/contrib/memory">
+		<classpath refid="test.classpath" />
+		<formatter type="${test.outputFormat}" />
+		<batchtest fork="yes" todir="${test.output.dir}">
+			<fileset dir="${javac.src}">
+<!--				<include name="**/XQueryUseCasesTest.java" /> -->
+				<include name="org/**/MemoryIndexTest.java" />
+				<include name="org/**/PatternAnalyzerTest.java" />
+			</fileset>
+		</batchtest>
+	</junit>
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Run XML deserialization/serialization benchmarks                  -->
+<!-- ================================================================= -->
+<property name="cmd" value="deser"/>
+<target name="bnux-bench">
+	<delete file="${java.io.tmpdir}/${cmd}.xml"/>
+	<delete file="${java.io.tmpdir}/${cmd}.xml.csv"/>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NV"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-V"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0-NV"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux1"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux9"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="saxon"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="dom"/></antcall>	
+</target>	
+
+<target name="bnux-bench-foo">
+	<!--<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-wstx"/></antcall>-->
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-wood"/></antcall>
+	<!--<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-sun"/></antcall>-->
+</target>
+	
+<target name="bnux-bench-stax-stream-deser">
+	<delete file="${java.io.tmpdir}/${cmd}.xml"/>
+	<delete file="${java.io.tmpdir}/${cmd}.xml.csv"/>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0-NNF"/></antcall>
+    <antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF-stax-wstx"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF-stax-wood"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF-stax-sun"/></antcall>
+	<!--<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF-stax-bea"/></antcall>-->
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0-NNF-stax"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-NNF-stax"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF-pool"/></antcall>
+</target>	
+
+<target name="bnux-bench-stax-tree-ser">
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-wstx"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-wood"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-sun"/></antcall>
+	<!--<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-bea"/></antcall>-->
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0-stax"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-stax"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NV"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NV-pool"/></antcall>
+</target>	
+	
+<target name="bnux-bench-fi1">
+	<delete file="${java.io.tmpdir}/${cmd}.xml"/>
+	<delete file="${java.io.tmpdir}/${cmd}.xml.csv"/>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-stax"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-NNF-stax"/></antcall>
+</target>	
+
+<target name="bnux-bench-xom-bnux-fi1">
+	<delete file="${java.io.tmpdir}/${cmd}.xml"/>
+	<delete file="${java.io.tmpdir}/${cmd}.xml.csv"/>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NV"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-NNF"/></antcall>
+</target>	
+
+	
+<target name="bnux-bench-mac">
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-stax-wstx"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NV"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="bnux0-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF-stax-wstx"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="xom-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi1-NNF"/></antcall>
+	<antcall target="fire-bnux-bench"><param name="mode" value="fi0-NNF"/></antcall>
+</target>	
+
+	
+<target name="fire-bnux-bench" depends="detect-os">
+	<echo message="fire-bnux-bench cmd=${cmd} mode=${mode}"/>
+	<property name="data.dir" value="samples/data"/>
+	
+	<exec dir="." executable="bin/fire-java${extension}">
+		<arg value="nux.xom.sandbox.BinaryXMLBench"/>
+		<arg value="${cmd}"/>
+		<arg value="${mode}"/>
+		<arg value="${java.io.tmpdir}"/>
+		<arg value="${data.dir}"/>
+	</exec>
+</target>
+	
+	
+<!-- ================================================================= -->
+<!-- Generate web help files for command line options of tools         -->
+<!-- ================================================================= -->
+<target name="doc-usage" depends="fixcrlf, detect-os">
+	
+	<mkdir dir="${javac.src}/nux/xom/tests/doc-files" />
+	<exec dir="." executable="bin/fire-xquery${extension}" output="${javac.src}/nux/xom/tests/doc-files/fire-xquery-usage.txt"/>
+	<mkdir dir="${javac.src}/nux/xom/xquery/doc-files" />
+	<exec dir="." executable="bin/fire-java${extension}" output="${javac.src}/nux/xom/xquery/doc-files/update-examples.txt">
+		<arg line="nux.xom.sandbox.XQueryUpdateTest"/>
+	</exec>
+	
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Fix permissions & carriage return / linefeed for unix and windows.-->
+<!-- ================================================================= -->
+<target name="fixcrlf">
+<!--
+	<fixcrlf srcdir="bin" eol="lf" includes="*" excludes="*.bat" />
+	<fixcrlf srcdir="bin" eol="crlf" includes="*.bat" />
+-->
+	<chmod dir="bin" perm="+x" includes="*" excludes="*.bat" />
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Generate distribution downloads and copy to life website          -->
+<!-- ================================================================= -->
+<target name="dist" depends="dist-web, dist-snapshot">
+	<!-- 
+scp -r ~/unix/www/nux grolsch.lbl.gov:www/; scp ~/unix/www/nux-download/snapshots/nux-1.5* grolsch.lbl.gov:www/nux-download/releases/	
+	-->
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Copy documentation to life website                                -->
+<!-- ================================================================= -->
+<target name="dist-web" depends="doc">
+
+	<!-- <delete dir="${dist.website}" /> -->
+	<mkdir dir="${dist.website}" />
+	<copy todir="${dist.website}">
+		<fileset dir="${doc.dest}"/>
+	</copy>
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Build a complete distribution. Results go to ${dist.download.dir} -->
+<!-- ================================================================= -->
+<target name="dist-snapshot" depends="build, doc, cleanall">
+	<!--<delete dir="${dist.tmp}" />-->
+	<mkdir dir="${dist.tmp}" />
+
+	<!-- ============================================================= -->	
+	<!-- Generate tar.gz file -->
+	<basename property="proj.basename" file="."/>	
+	<tar tarfile="${dist.tmp}/${ant.project.name}-${version}.tar.gz" 
+		basedir=".." includes="${proj.basename}/" excludes="${tar.excludes}"
+		compression="gzip" longfile="gnu" 
+	/>	
+
+	<!-- ============================================================= -->
+	<!-- Generate zip file -->
+	<basename property="proj.basename" file="."/>	
+	<zip zipfile="${dist.tmp}/${ant.project.name}-${version}.zip" 
+		basedir=".." includes="${proj.basename}/" excludes="${tar.excludes}"
+	/>
+		
+	<!-- ============================================================= -->
+	<mkdir dir="${dist.download.dir}/snapshots" />
+	<move todir="${dist.download.dir}/snapshots">
+		<fileset dir="${dist.tmp}"> <include name="*"/> </fileset>
+	</move>
+	
+	<delete dir="${dist.tmp}" />
+</target>
+
+
+<!-- ================================================================= -->
+<!-- Set ${extension} variable depening on operating system            -->
+<!-- ================================================================= -->
+<target name="detect-os">	
+	<!-- ant equivalent of: if windows then extension=".bat" else extension="" -->
+	<condition property="extension" value=".bat">
+		<os family="windows"/>
+	</condition>
+	<property name="extension" value=""/>
+</target>
+		
+		
+<!-- ================================================================= -->
+<!-- Old garbage                                                       -->
+<!-- ================================================================= -->
+
+<!--
+rm-cvs:
+        find . -type d -name CVS -exec rm -fr {} \; 
+        
+echo-cvs:
+        find . -type d -name CVS -exec echo {} \; 
+        
+#compute lines of code over directory tree        
+find . -exec cat {} \; | wc -l
+-->
+
+
+</project>

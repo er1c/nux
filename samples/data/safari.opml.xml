@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+    <head>
+        <title>Safari OPML Export</title>
+    </head>
+    <body>
+        <outline text="Safari Feeds">
+            <outline type="rss" text="" title="Apple Hot News" xmlUrl="http://www.apple.com/main/rss/hotnews/hotnews.rss"/>
+            <outline type="rss" text="" title="iTunes 25 New Releases" xmlUrl="http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/newreleases/limit=25/rss.xml"/>
+            <outline type="rss" text="" title="NYT &gt; Home Page" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml"/>
+            <outline type="rss" text="" title="A Section" xmlUrl="http://www.washingtonpost.com/wp-srv/print/a1/rssheadlines.xml"/>
+            <outline type="rss" text="" title="CNET News.com" xmlUrl="http://news.com.com/2547-1_3-0-5.xml"/>
+            <outline type="rss" text="" title="Wired News: Technology" xmlUrl="http://wired.com/news/feeds/rss2/0,2610,3,00.xml"/>
+            <outline type="rss" text="" title="CNN.com" xmlUrl="http://rss.cnn.com/rss/cnn_topstories.rss"/>
+            <outline type="rss" text="" title="Washington Post" xmlUrl="http://www.washingtonpost.com/wp-srv/topnews/rssheadlines.xml"/>
+            <outline type="rss" text="" title="Yahoo! News: Top Stories" xmlUrl="http://rss.news.yahoo.com/rss/topstories"/>
+            <outline type="rss" text="" title="BBC News" xmlUrl="http://news.bbc.co.uk/rss/newsonline_world_edition/front_page/rss091.xml"/>
+            <outline type="rss" text="" title="TIME Magazine Online: Top Stories" xmlUrl="http://www.time.com/time/rss/top/0,20326,,00.xml"/>
+            <outline type="rss" text="" title="The New York Times - National" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/National.xml"/>
+            <outline type="rss" text="" title="CNN.com - U.S." xmlUrl="http://rss.cnn.com/rss/cnn_us.rss"/>
+            <outline type="rss" text="" title="Washington Post - Nation" xmlUrl="http://www.washingtonpost.com/wp-srv/nation/rssheadlines.xml"/>
+            <outline type="rss" text="" title="TIME - Nation" xmlUrl="http://www.time.com/time/rss/nation/0,20326,,00.xml"/>
+            <outline type="rss" text="" title="ABC News - US" xmlUrl="http://my.abcnews.go.com/rsspublic/us_rss20.xml"/>
+            <outline type="rss" text="" title="Yahoo! News - U.S." xmlUrl="http://rss.news.yahoo.com/rss/us"/>
+            <outline type="rss" text="" title="CBS MarketWatch" xmlUrl="http://www.marketwatch.com/rss/topstories/"/>
+            <outline type="rss" text="" title="CNN/Money" xmlUrl="http://rss.cnn.com/rss/money_topstories.rss"/>
+            <outline type="rss" text="" title="The Motley Fool" xmlUrl="http://www.fool.com/xml/foolnews_rss091.xml"/>
+            <outline type="rss" text="" title="Washington Post - Business" xmlUrl="http://www.washingtonpost.com/wp-srv/business/rssheadlines.xml"/>
+            <outline type="rss" text="" title="The New York Times - Business" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Business.xml"/>
+            <outline type="rss" text="" title="The New York Times - Media &amp; Advertising" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/MediaandAdvertising.xml"/>
+            <outline type="rss" text="" title="Time - Business" xmlUrl="http://www.time.com/time/rss/business/0,20326,,00.xml"/>
+            <outline type="rss" text="" title="BBC News - Business" xmlUrl="http://news.bbc.co.uk/rss/newsonline_world_edition/business/rss091.xml"/>
+            <outline type="rss" text="" title="ABC News - Business" xmlUrl="http://my.abcnews.go.com/rsspublic/business_rss20.xml"/>
+            <outline type="rss" text="" title="Wired News - Business" xmlUrl="http://wired.com/news/feeds/rss2/0,2610,1,00.xml"/>
+            <outline type="rss" text="" title="Yahoo! News - Business" xmlUrl="http://rss.news.yahoo.com/rss/business"/>
+            <outline type="rss" text="" title="Fast Company" xmlUrl="http://www.fastcompany.com/rss.xml"/>
+            <outline type="rss" text="" title="Red Herring" xmlUrl="http://redherring.com/RssXml.aspx"/>
+            <outline type="rss" text="" title="Inc.com" xmlUrl="http://www.inc.com/rss.xml"/>
+            <outline type="rss" text="" title="CNET News" xmlUrl="http://news.com.com/2547-1_3-0-20.xml"/>
+            <outline type="rss" text="" title="CNET News - Personal Technology" xmlUrl="http://news.com.com/2547-1040_3-0-5.xml"/>
+            <outline type="rss" text="" title="The New York Times - Technology" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Technology.xml"/>
+            <outline type="rss" text="" title="The New York Times - Circuits" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Circuits.xml"/>
+            <outline type="rss" text="" title="Wired News" xmlUrl="http://wired.com/news/feeds/rss2/0,2610,,00.xml"/>
+            <outline type="rss" text="" title="Washington Post - Technology" xmlUrl="http://www.washingtonpost.com/wp-srv/technology/rssheadlines.xml"/>
+            <outline type="rss" text="" title="Yahoo! News - Technology" xmlUrl="http://rss.news.yahoo.com/rss/tech"/>
+            <outline type="rss" text="" title="ABC News - SciTech" xmlUrl="http://my.abcnews.go.com/rsspublic/scitech_rss20.xml"/>
+            <outline type="rss" text="" title="BBC News - Technology" xmlUrl="http://news.bbc.co.uk/rss/newsonline_world_edition/technology/rss091.xml"/>
+            <outline type="rss" text="" title="Slashdot" xmlUrl="http://slashdot.org/index.rss"/>
+            <outline type="rss" text="" title="O'Reilly Network" xmlUrl="http://www.oreillynet.com/meerkat/?_fl=atom&amp;t=ALL&amp;c=916"/>
+            <outline type="rss" text="" title="eWEEK Technology News" xmlUrl="http://rssnewsapps.ziffdavis.com/tech.xml"/>
+            <outline type="rss" text="" title="Wired News: Cult of Mac" xmlUrl="http://wired.com/news/feeds/rss2/0,2610,76,00.xml"/>
+            <outline type="rss" text="" title="VersionTracker: Mac OS X" xmlUrl="http://www.versiontracker.com/macosx/recent.rss"/>
+            <outline type="rss" text="" title="MacCentral News" xmlUrl="http://www.macworld.com/news/rss.xml"/>
+            <outline type="rss" text="" title="Inside Mac Games" xmlUrl="http://www.insidemacgames.com/news/rss.php"/>
+            <outline type="rss" text="" title="Macworld Reviews" xmlUrl="http://www.macworld.com/reviews/rss.xml"/>
+            <outline type="rss" text="" title="eWEEK Macintosh" xmlUrl="http://rssnewsapps.ziffdavis.com/eweekmac.xml"/>
+            <outline type="rss" text="" title="Apple Press Releases" xmlUrl="http://www.apple.com/main/rss/hotnews/pr.rss"/>
+            <outline type="rss" text="" title="New Mac OS X Products" xmlUrl="http://guide.apple.com/rss/newarrivals.rss"/>
+            <outline type="rss" text="" title="Mac OS X Knowledge Base Documents" xmlUrl="http://docs.info.apple.com/rss/macosx.rss"/>
+            <outline type="rss" text="" title="Mac OS X Hot Downloads" xmlUrl="http://www.apple.com/main/rss/downloads/hot_downloads.rss"/>
+            <outline type="rss" text="" title="Mac OS X Downloads" xmlUrl="http://www.apple.com/main/rss/downloads/downloads.rss"/>
+            <outline type="rss" text="" title="HowStuffWorks.com" xmlUrl="http://www.howstuffworks.com/feature-article-feed.htm"/>
+            <outline type="rss" text="" title="ESPN.com" xmlUrl="http://sports.espn.go.com/espn/rss/news"/>
+            <outline type="rss" text="" title="CNN Sports Illustrated" xmlUrl="http://rss.cnn.com/rss/si_topstories.rss"/>
+            <outline type="rss" text="" title="The New York Times" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Sports.xml"/>
+            <outline type="rss" text="" title="Yahoo! News" xmlUrl="http://rss.news.yahoo.com/rss/sports"/>
+            <outline type="rss" text="" title="Washington Post" xmlUrl="http://www.washingtonpost.com/wp-srv/sports/rssheadlines.xml"/>
+            <outline type="rss" text="" title="ABC News" xmlUrl="http://my.abcnews.go.com/rsspublic/sports_rss20.xml"/>
+            <outline type="rss" text="" title="The New York Times - Books" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Books.xml"/>
+            <outline type="rss" text="" title="The New York Times - Dining and Wine" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/DiningandWine.xml"/>
+            <outline type="rss" text="" title="The New York Times - Fashion &amp; Style" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/FashionandStyle.xml"/>
+            <outline type="rss" text="" title="Yahoo! News - Entertainment" xmlUrl="http://rss.news.yahoo.com/rss/entertainment"/>
+            <outline type="rss" text="" title="ABC News - Entertainment" xmlUrl="http://my.abcnews.go.com/rsspublic/entertainment_rss20.xml"/>
+            <outline type="rss" text="" title="BBC News - Entertainment" xmlUrl="http://news.bbc.co.uk/rss/newsonline_world_edition/entertainment/rss091.xml"/>
+            <outline type="rss" text="" title="The New York Times - Movies" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Movies.xml"/>
+            <outline type="rss" text="" title="Netflix Top 100" xmlUrl="http://rss.netflix.com/Top100RSS"/>
+            <outline type="rss" text="" title="Netflix New Releases This Week" xmlUrl="http://rss.netflix.com/NewReleasesRSS"/>
+            <outline type="rss" text="" title="RollingStone.com DVD Reviews" xmlUrl="http://www.rollingstone.com/rssxml/dvd_reviews.xml"/>
+            <outline type="rss" text="" title="RollingStone.com Movie Reviews" xmlUrl="http://www.rollingstone.com/rssxml/Movie_reviews.xml"/>
+            <outline type="rss" text="" title="iTunes Top 25 Songs" xmlUrl="http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/topsongs/limit=25/rss.xml"/>
+            <outline type="rss" text="" title="iTunes Top 25 Albums" xmlUrl="http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/topalbums/limit=25/rss.xml"/>
+            <outline type="rss" text="" title="iTunes 25 Just Added Albums" xmlUrl="http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/justadded/limit=25/rss.xml"/>
+            <outline type="rss" text="" title="iTunes 25 Featured &amp; Exclusive Albums" xmlUrl="http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/featuredalbums/limit=25/rss.xml"/>
+            <outline type="rss" text="" title="The New York Times - Travel" xmlUrl="http://www.nytimes.com/services/xml/rss/nyt/Travel.xml"/>
+            <outline type="rss" text="" title="ABC News - Travel" xmlUrl="http://my.abcnews.go.com/rsspublic/travel_rss20.xml"/>
+            <outline type="rss" text="" title="Baltimore Sun - Travel" xmlUrl="http://www.baltimoresun.com/templates/misc/blogxml.jsp?slug=/travel"/>
+        </outline>
+    </body>
+</opml>

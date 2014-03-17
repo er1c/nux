@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="OGSI" targetNamespace="http://www.gridforum.org/namespaces/2003/03/OGSI" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:gwsdl="http://www.gridforum.org/namespaces/2003/03/gridWSDLExtensions" xmlns:ogsi="http://www.gridforum.org/namespaces/2003/03/OGSI" xmlns:sd="http://www.gridforum.org/namespaces/2003/03/serviceData" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+             
+<types>
+  <schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.gridforum.org/namespaces/2003/03/OGSI" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gwsdl="http://www.gridforum.org/namespaces/2003/03/gridWSDLExtensions" xmlns:ogsi="http://www.gridforum.org/namespaces/2003/03/OGSI" xmlns:sd="http://www.gridforum.org/namespaces/2003/03/serviceData" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!-- Common Types --> 
+    <simpleType name="ExtendedDateTimeType">
+      <union memberTypes="ogsi:InfinityType dateTime"/>
+    </simpleType>
+
+    <simpleType name="InfinityType">
+      <restriction base="string">
+        <enumeration value="infinity"/>
+      </restriction>
+    </simpleType>
+
+    <attribute name="goodFrom" type="ogsi:ExtendedDateTimeType"/>
+    <attribute name="goodUntil" type="ogsi:ExtendedDateTimeType"/>
+    <attribute name="availableUntil" type="ogsi:ExtendedDateTimeType"/>
+
+    <attributeGroup name="LifeTimePropertiesGroup">
+      <attribute ref="ogsi:goodFrom" use="optional"/>
+      <attribute ref="ogsi:goodUntil" use="optional"/>
+      <attribute ref="ogsi:availableUntil" use="optional"/>
+    </attributeGroup>
+
+    <element name="reference" type="ogsi:ReferenceType"/>
+    <complexType abstract="true" name="ReferenceType">
+      <attribute ref="ogsi:goodFrom" use="optional"/>
+      <attribute ref="ogsi:goodUntil" use="optional"/>
+    </complexType> 
+
+    <!-- The content of this type MUST be a wsdl:definitions element 
+    with a single wsdl:service child element -->
+    <complexType name="WSDLReferenceType">
+      <complexContent>
+        <extension base="ogsi:ReferenceType">
+          <sequence>
+            <any maxOccurs="1" minOccurs="1" namespace="http://schemas.xmlsoap.org/wsdl/" processContents="lax"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType> 
+
+    <element name="handle" type="ogsi:HandleType"/>
+    <simpleType name="HandleType">
+      <restriction base="anyURI"/>
+    </simpleType>
+   
+    <element name="locator" type="ogsi:LocatorType"/>
+    <complexType name="LocatorType">
+      <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" ref="ogsi:handle"/>
+          <element maxOccurs="unbounded" minOccurs="0" ref="ogsi:reference"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="interface" type="QName"/>
+      </sequence>
+    </complexType> 
+
+
+    <!-- Grid Service Types -->
+    <complexType name="ExtensibilityType">
+      <sequence>
+        <any namespace="##any"/>
+      </sequence>
+    </complexType>
+    
+    <!-- Grid Service Service Data Types -->
+    <complexType name="OperationExtensibilityType">
+      <attribute name="inputElement" type="QName" use="optional"/>
+    </complexType>
+
+    <complexType name="TerminationTimeType">
+      <attribute name="after" type="ogsi:ExtendedDateTimeType" use="optional"/>
+      <attribute name="before" type="ogsi:ExtendedDateTimeType" use="optional"/>
+      <attribute name="timestamp" type="dateTime" use="optional"/>
+    </complexType> 
+
+    <element name="queryByServiceDataNames" type="ogsi:QNamesType"/>
+
+    <element name="deleteByServiceDataNames" type="ogsi:QNamesType"/>
+
+    <element name="setByServiceDataNames" type="ogsi:ExtensibilityType"/>
+
+    <complexType name="QNamesType">
+      <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="name" type="QName"/>
+      </sequence>
+    </complexType>
+
+    <!-- Grid Service Message Types -->
+    <element name="findServiceData">
+      <complexType>
+        <sequence>
+          <element name="queryExpression" type="ogsi:ExtensibilityType"/> 
+        </sequence>
+      </complexType>
+    </element>
+    <element name="findServiceDataResponse">
+      <complexType>
+        <sequence>
+          <element name="result" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="setServiceData">
+      <complexType>
+        <sequence>
+          <element name="updateExpression" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="setServiceDataResponse">
+      <complexType>
+        <sequence>
+          <element name="result" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="requestTerminationBefore">
+      <complexType>
+        <sequence> 
+          <element name="terminationTime" type="ogsi:ExtendedDateTimeType"/>
+        </sequence> 
+      </complexType>
+    </element>
+    <element name="requestTerminationBeforeResponse">
+      <complexType>
+        <sequence> 
+          <element name="currentTerminationTime" type="ogsi:TerminationTimeType"/>
+        </sequence> 
+      </complexType>
+    </element>
+    <element name="requestTerminationAfter">
+      <complexType>
+        <sequence> 
+          <element name="terminationTime" type="ogsi:ExtendedDateTimeType"/>
+        </sequence> 
+      </complexType>
+    </element>
+    <element name="requestTerminationAfterResponse">
+      <complexType>
+        <sequence> 
+          <element name="currentTerminationTime" type="ogsi:TerminationTimeType"/>
+        </sequence> 
+      </complexType>
+    </element>
+    <element name="destroy">
+      <complexType/>
+    </element>
+    <element name="destroyResponse">
+      <complexType/>
+    </element>
+
+    <!-- Grid Service Fault Types -->
+    <element name="fault" type="ogsi:FaultType"/>
+    <complexType name="FaultType">
+      <sequence>
+        <element maxOccurs="unbounded" minOccurs="0" name="description" type="string"/>
+        <element maxOccurs="1" minOccurs="1" name="originator" type="ogsi:LocatorType"/>
+        <element maxOccurs="1" minOccurs="1" name="timestamp" type="dateTime"/>
+        <element maxOccurs="unbounded" minOccurs="0" name="faultcause" type="ogsi:FaultType"/> 
+        <element maxOccurs="1" minOccurs="0" name="faultcode" type="ogsi:FaultCodeType"/>
+        <element maxOccurs="1" minOccurs="0" name="extension" type="ogsi:ExtensibilityType"/>
+      </sequence>
+    </complexType>
+    <complexType name="FaultCodeType">
+      <simpleContent>
+        <extension base="string">
+          <attribute name="faultscheme" type="anyURI" use="required"/>
+        </extension>
+      </simpleContent>
+    </complexType>      
+    <element name="serviceNotDestroyedFault" type="ogsi:ServiceNotDestroyedFaultType"/>
+    <complexType name="ServiceNotDestroyedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="extensibilityTypeFault" type="ogsi:ExtensibilityTypeFaultType"/>
+    <complexType name="ExtensibilityTypeFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="extensibilityNotSupportedFault" type="ogsi:ExtensibilityNotSupportedFaultType"/>
+    <complexType name="ExtensibilityNotSupportedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="targetInvalidFault" type="ogsi:TargetInvalidFaultType"/> 
+    <complexType name="TargetInvalidFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="cardinalityViolationFault" type="ogsi:CardinalityViolationFaultType"/>
+    <complexType name="CardinalityViolationFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="mutabilityViolationFault" type="ogsi:MutabilityViolationFaultType"/>      
+    <complexType name="MutabilityViolationFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="modifiabilityViolationFault" type="ogsi:ModifiabilityViolationFaultType"/>
+    <complexType name="ModifiabilityViolationFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="typeViolationFault" type="ogsi:TypeViolationFaultType"/>
+    <complexType name="TypeViolationFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="incorrectValueFault" type="ogsi:IncorrectValueFaultType"/> 
+    <complexType name="IncorrectValueFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="partialFailureFault" type="ogsi:PartialFailureFaultType"/> 
+    <complexType name="PartialFailureFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType">
+          <sequence>
+            <element name="failedServiceData" type="ogsi:QNamesType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType> 
+    <element name="terminationTimeUnchangedFault" type="ogsi:TerminationTimeUnchangedFaultType"/> 
+    <complexType name="TerminationTimeUnchangedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>    
+
+    <!-- Handle Resolver Message Types -->
+    <element name="findByHandle">
+      <complexType>
+        <sequence>
+          <element name="handleSet" type="ogsi:LocatorType"/>
+          <element maxOccurs="1" minOccurs="0" name="gsrExclusionSet" type="ogsi:LocatorType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="findByHandleResponse">
+      <complexType>
+        <sequence>
+          <element ref="ogsi:locator"/>
+        </sequence>
+      </complexType>
+    </element>
+
+    <!-- Handle Resolver Fault Types -->
+    <element name="invalidHandleFault" type="ogsi:InvalidHandleFaultType"/>
+    <complexType name="InvalidHandleFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="noAdditionalReferencesAvailableFault" type="ogsi:NoAdditionalReferencesAvailableFaultType"/>
+    <complexType name="NoAdditionalReferencesAvailableFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="noReferencesAvailableFault" type="ogsi:NoReferencesAvailableFaultType"/>
+    <complexType name="NoReferencesAvailableFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="redirectionFault" type="ogsi:RedirectionFaultType"/>
+    <complexType name="RedirectionFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType">
+          <sequence>
+            <element ref="ogsi:locator"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType> 
+    <element name="noSuchServiceFault" type="ogsi:NoSuchServiceFaultType"/>
+    <complexType name="NoSuchServiceFaultType">
+      <complexContent>
+        <extension base="ogsi:NoReferencesAvailableFaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="noSuchServiceStartedFault" type="ogsi:NoSuchServiceStartedFaultType"/>
+    <complexType name="NoSuchServiceStartedFaultType">
+      <complexContent>
+        <extension base="ogsi:NoReferencesAvailableFaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="serviceHasTerminatedFault" type="ogsi:ServiceHasTerminatedFaultType"/>
+    <complexType name="ServiceHasTerminatedFaultType">
+      <complexContent>
+        <extension base="ogsi:NoReferencesAvailableFaultType"/>
+      </complexContent>
+    </complexType> 
+    <element name="temporarilyUnavailableFault" type="ogsi:TemporarilyUnavailableFaultType"/>
+    <complexType name="TemporarilyUnavailableFaultType">
+      <complexContent>
+        <extension base="ogsi:NoReferencesAvailableFaultType">
+          <sequence>
+            <element name="available" type="dateTime"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType> 
+
+    <!-- Notification Source Service Data Types -->
+    <element name="subscribeByServiceDataNames" type="ogsi:SubscribeByNameType"/>
+    <complexType name="SubscribeByNameType">
+      <complexContent>
+        <extension base="ogsi:QNamesType">
+          <attribute name="minInterval" type="duration" use="optional"/>
+          <attribute name="maxInterval" type="ogsi:MaxIntervalType"/>
+        </extension>
+      </complexContent>
+    </complexType>
+
+    <simpleType name="MaxIntervalType">
+      <union memberTypes="ogsi:InfinityType duration"/>
+    </simpleType>
+
+    <!-- Notification Source Message Types -->
+    <element name="subscribe">
+      <complexType> 
+        <sequence>
+          <element name="subscriptionExpression" type="ogsi:ExtensibilityType"/>
+          <element name="sink" type="ogsi:LocatorType"/>
+          <element name="expirationTime" type="ogsi:ExtendedDateTimeType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="subscribeResponse">  
+      <complexType>
+        <sequence>
+          <element name="subscriptionInstanceLocator" type="ogsi:LocatorType"/>
+          <element name="currentTerminationTime" type="ogsi:TerminationTimeType"/>
+        </sequence>
+      </complexType>
+    </element>
+
+    <!-- Notification Sink Message Types -->
+    <element name="deliverNotification">
+      <complexType>
+        <sequence>
+          <element name="message" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+
+    <!-- Factory Service Data Types -->
+    <complexType name="CreateServiceExtensibilityType">
+      <complexContent>
+        <extension base="ogsi:OperationExtensibilityType">
+          <sequence>
+            <element maxOccurs="unbounded" minOccurs="1" name="createsInterface" type="QName"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+
+    <!-- Factory Message Types -->
+    <element name="createService">
+      <complexType>
+        <sequence>
+          <element maxOccurs="1" minOccurs="0" name="terminationTime" type="ogsi:TerminationTimeType"/>
+          <element maxOccurs="1" minOccurs="0" name="creationParameters" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="createServiceResponse">
+      <complexType>
+        <sequence>
+          <element name="locator" type="ogsi:LocatorType"/>
+          <element name="currentTerminationTime" type="ogsi:TerminationTimeType"/>
+          <element maxOccurs="1" minOccurs="0" name="extensibilityOutput" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+
+    <!-- Factory Fault Types -->
+    <element name="serviceAlreadyExistsFault" type="ogsi:ServiceAlreadyExistsFaultType"/>
+    <complexType name="ServiceAlreadyExistsFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType">
+          <sequence>
+            <element name="existingService" type="ogsi:LocatorType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+
+    <!-- Service Group Service Data Types -->
+    <complexType name="MembershipContentRuleType">
+      <sequence>
+        <element maxOccurs="1" minOccurs="1" name="memberInterface" type="QName"/>
+        <element maxOccurs="unbounded" minOccurs="0" name="content" type="QName"/>
+      </sequence>
+    </complexType>
+    <complexType name="EntryContentType">
+      <sequence>
+        <any maxOccurs="unbounded" minOccurs="0" namespace="##any"/>
+      </sequence>     
+    </complexType>
+        
+    <complexType name="EntryType">
+      <sequence>
+        <element maxOccurs="1" minOccurs="1" name="serviceGroupEntryLocator" nillable="true" type="ogsi:LocatorType"/>      
+        <element maxOccurs="1" minOccurs="1" name="memberServiceLocator" type="ogsi:LocatorType"/> 
+        <element maxOccurs="1" minOccurs="1" name="content" type="ogsi:EntryContentType"/> 
+      </sequence>     
+    </complexType>
+
+
+    <!-- Service Group Registration Service Data Types -->
+    <element name="matchByLocatorEquivalence" type="ogsi:MatchByLocatorEquivalenceType"/>
+    <complexType name="MatchByLocatorEquivalenceType">
+      <sequence>
+        <element maxOccurs="unbounded" minOccurs="0" name="locator" type="ogsi:LocatorType"/>
+      </sequence>
+    </complexType>
+
+    <!-- Service Group Registration Message Types -->
+    <element name="add">
+      <complexType>
+        <sequence>
+          <element name="serviceLocator" type="ogsi:LocatorType"/>
+          <element name="content" type="ogsi:ExtensibilityType"/>
+          <element maxOccurs="1" minOccurs="0" name="terminationTime" type="ogsi:TerminationTimeType"/>
+        </sequence> 
+      </complexType>
+    </element>
+    <element name="addResponse">
+      <complexType>
+        <sequence>
+          <element name="serviceLocator" type="ogsi:LocatorType"/>
+          <element name="currentTerminationTime" type="ogsi:TerminationTimeType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="remove">
+      <complexType>
+        <sequence>
+          <element name="matchExpression" type="ogsi:ExtensibilityType"/>
+        </sequence>
+      </complexType>
+    </element>
+    <element name="removeResponse">
+      <complexType/>
+    </element>
+
+    <!-- Service Group Registration Fault Types -->
+    <element name="contentCreationFailedFault" type="ogsi:ContentCreationFailedFaultType"/>  
+    <complexType name="ContentCreationFailedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="unsupportedMemberInterfaceFault" type="ogsi:UnsupportedMemberInterfaceFaultType"/>  
+    <complexType name="UnsupportedMemberInterfaceFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="addRefusedFault" type="ogsi:AddRefusedFaultType"/>  
+    <complexType name="AddRefusedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="matchFailedFault" type="ogsi:MatchFailedFaultType"/>  
+    <complexType name="MatchFailedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+    <element name="removeFailedFault" type="ogsi:RemoveFailedFaultType"/>  
+    <complexType name="RemoveFailedFaultType">
+      <complexContent>
+        <extension base="ogsi:FaultType"/>
+      </complexContent>
+    </complexType>
+  </schema>
+</types>
+
+<!-- Grid Service Messages -->
+<message name="FindServiceDataInputMessage">
+  <part element="ogsi:findServiceData" name="parameters"/>
+</message>
+<message name="FindServiceDataOutputMessage">
+  <part element="ogsi:findServiceDataResponse" name="parameters"/>
+</message>
+<message name="SetServiceDataInputMessage">
+  <part element="ogsi:setServiceData" name="parameters"/>
+</message>
+<message name="SetServiceDataOutputMessage">
+  <part element="ogsi:setServiceDataResponse" name="parameters"/>
+</message>
+<message name="RequestTerminationBeforeInputMessage">
+  <part element="ogsi:requestTerminationBefore" name="parameters"/>
+</message>
+<message name="RequestTerminationBeforeOutputMessage">
+  <part element="ogsi:requestTerminationBeforeResponse" name="parameters"/>
+</message>
+<message name="RequestTerminationAfterInputMessage">
+  <part element="ogsi:requestTerminationAfter" name="parameters"/>
+</message>
+<message name="RequestTerminationAfterOutputMessage">
+  <part element="ogsi:requestTerminationAfterResponse" name="parameters"/>
+</message>
+<message name="DestroyInputMessage">
+  <part element="ogsi:destroy" name="parameters"/>
+</message>
+<message name="DestroyOutputMessage">
+  <part element="ogsi:destroyResponse" name="parameters"/>
+</message>
+
+<!-- Grid Service Fault Messages -->
+<message name="FaultMessage">
+  <part element="ogsi:fault" name="fault"/>
+</message>
+<message name="ServiceNotDestroyedFaultMessage">
+  <part element="ogsi:serviceNotDestroyedFault" name="fault"/>
+</message>
+<message name="ExtensibilityTypeFaultMessage">
+  <part element="ogsi:extensibilityTypeFault" name="fault"/>
+</message>
+<message name="ExtensibilityNotSupportedFaultMessage">
+  <part element="ogsi:extensibilityNotSupportedFault" name="fault"/>
+</message>
+<message name="TargetInvalidFaultMessage">
+  <part element="ogsi:targetInvalidFault" name="fault"/>
+</message>
+<message name="CardinalityViolationFaultMessage">
+  <part element="ogsi:cardinalityViolationFault" name="fault"/>
+</message>
+<message name="MutabilityViolationFaultMessage">
+  <part element="ogsi:mutabilityViolationFault" name="fault"/>
+</message>
+<message name="ModifiabilityViolationFaultMessage">
+  <part element="ogsi:modifiabilityViolationFault" name="fault"/>
+</message>
+<message name="TypeViolationFaultMessage">
+  <part element="ogsi:typeViolationFault" name="fault"/>
+</message>
+<message name="IncorrectValueFaultMessage">
+  <part element="ogsi:incorrectValueFault" name="fault"/>
+</message>
+<message name="PartialFailureFaultMessage">
+  <part element="ogsi:partialFailureFault" name="fault"/>
+</message>
+<message name="TerminationTimeUnchangedFaultMessage">
+  <part element="ogsi:terminationTimeUnchangedFault" name="fault"/>
+</message>
+
+<!-- HandleResolver Messages -->
+<message name="FindByHandleInputMessage">
+  <part element="ogsi:findByHandle" name="parameters"/>
+</message>
+<message name="FindByHandleOutputMessage">
+  <part element="ogsi:findByHandleResponse" name="parameters"/>
+</message>
+
+<!-- HandleResolver Fault Messages -->
+<message name="InvalidHandleFaultMessage">
+  <part element="ogsi:invalidHandleFault" name="fault"/>
+</message> 
+<message name="NoAdditionalReferencesAvailableFaultMessage">
+  <part element="ogsi:noAdditionalReferencesAvailableFault" name="fault"/>
+</message> 
+<message name="NoReferencesAvailableFaultMessage">
+  <part element="ogsi:noReferencesAvailableFault" name="fault"/>
+</message> 
+<message name="RedirectionFaultMessage">
+  <part element="ogsi:redirectionFault" name="fault"/>
+</message> 
+<message name="NoSuchServiceFaultMessage">
+  <part element="ogsi:noSuchServiceFault" name="fault"/>
+</message> 
+<message name="NoSuchServiceStartedFaultMessage">
+  <part element="ogsi:noSuchServiceStartedFault" name="fault"/>
+</message> 
+<message name="ServiceHasTerminatedFaultMessage">
+  <part element="ogsi:serviceHasTerminatedFault" name="fault"/>
+</message> 
+<message name="TemporarilyUnavailableFaultMessage">
+  <part element="ogsi:temporarilyUnavailableFault" name="fault"/>
+</message> 
+
+<!-- Factory Messages -->
+<message name="CreateServiceInputMessage">
+  <part element="ogsi:createService" name="parameters"/>
+</message>
+<message name="CreateServiceOutputMessage">
+  <part element="ogsi:createServiceResponse" name="parameters"/>
+</message>
+
+<!-- Factory Fault Messages -->
+<message name="ServiceAlreadyExistsFaultMessage">
+  <part element="ogsi:serviceAlreadyExistsFault" name="fault"/>
+</message>
+
+<!-- NotificaitonSource Messages -->
+<message name="SubscribeInputMessage">
+  <part element="ogsi:subscribe" name="parameters"/>
+</message>
+<message name="SubscribeOutputMessage">
+  <part element="ogsi:subscribeResponse" name="parameters"/>
+</message>
+
+<!-- NotificationSink Messages -->
+<message name="DeliverNotificationInputMessage">
+  <part element="ogsi:deliverNotification" name="parameters"/>
+</message>
+
+<!-- ServiceGroupRegistration Messages -->
+<message name="AddInputMessage">
+  <part element="ogsi:add" name="parameters"/>
+</message>
+<message name="AddOutputMessage">
+  <part element="ogsi:addResponse" name="parameters"/>
+</message>
+<message name="removeInputMessage">
+  <part element="ogsi:remove" name="parameters"/>
+</message>
+<message name="removeOutputMessage">
+  <part element="ogsi:removeResponse" name="parameters"/>
+</message>
+
+<!-- ServiceGroupRegistration Fault Messages -->
+<message name="ContentCreationFailedFaultMessage">
+  <part element="ogsi:contentCreationFailedFault" name="faults"/>
+</message>
+<message name="UnsupportedMemberInterfaceFaultMessage">
+  <part element="ogsi:unsupportedMemberInterfaceFault" name="faults"/>
+</message>
+<message name="AddRefusedFaultMessage">
+  <part element="ogsi:addRefusedFault" name="faults"/>
+</message>
+<message name="MatchFailedFaultMessage">
+  <part element="ogsi:matchFailedFault" name="faults"/>
+</message>
+<message name="RemoveFailedFaultMessage">
+  <part element="ogsi:removeFailedFault" name="faults"/>
+</message>
+
+<!-- Grid Service Port Type -->
+<portType name="GridService"><operation name="setServiceData">
+    <input message="ns6:SetServiceDataInputMessage" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns7:SetServiceDataOutputMessage" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns9:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns10:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns11:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns12:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns13:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns15:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns16:FaultMessage" name="Fault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns25:DestroyInputMessage" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns26:DestroyOutputMessage" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns27:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns28:FaultMessage" name="Fault" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns17:RequestTerminationAfterInputMessage" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns18:RequestTerminationAfterOutputMessage" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns20:FaultMessage" name="Fault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns21:RequestTerminationBeforeInputMessage" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns22:RequestTerminationBeforeOutputMessage" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns23:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns24:FaultMessage" name="Fault" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns0:FindServiceDataInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:FindServiceDataOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:FaultMessage" name="Fault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType name="GridService">
+  
+  
+  
+  
+  
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="constant" name="interface" nillable="false" type="xsd:QName"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="0" modifiable="false" mutability="mutable" name="serviceDataName" nillable="false" type="xsd:QName"/>
+  <sd:serviceData maxOccurs="1" minOccurs="1" modifiable="false" mutability="mutable" name="factoryLocator" nillable="true" type="ogsi:LocatorType"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="0" modifiable="false" mutability="extendable" name="gridServiceHandle" nillable="false" type="ogsi:HandleType"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="mutable" name="gridServiceReference" nillable="false" type="ogsi:ReferenceType"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="static" name="findServiceDataExtensibility" nillable="false" type="ogsi:OperationExtensibilityType"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="static" name="setServiceDataExtensibility" nillable="false" type="ogsi:OperationExtensibilityType"/>
+  <sd:serviceData maxOccurs="1" minOccurs="1" modifiable="false" mutability="mutable" name="terminationTime" nillable="false" type="ogsi:TerminationTimeType"/>
+  <sd:staticServiceDataValues>
+    <ogsi:findServiceDataExtensibility inputElement="ogsi:queryByServiceDataNames"/>
+    <ogsi:setServiceDataExtensibility inputElement="ogsi:setByServiceDataNames"/>
+    <ogsi:setServiceDataExtensibility inputElement="ogsi:deleteByServiceDataNames"/>
+  </sd:staticServiceDataValues>
+</gwsdl:portType>
+
+
+<!-- HandleResolver Port Type -->
+<portType name="HandleResolver"><operation name="findByHandle">
+    <input message="ns0:FindByHandleInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:FindByHandleOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:InvalidHandleFaultMessage" name="InvalidHandleFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:NoAdditionalReferencesAvailableFaultMessage" name="NoAdditionalReferencesAvailableFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:NoReferencesAvailableFaultMessage" name="NoReferencesAvailableFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:NoSuchServiceFaultMessage" name="NoSuchServiceFault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns6:NoSuchServiceStartedFaultMessage" name="NoSuchServiceStartedFault" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns7:ServiceHasTerminatedFaultMessage" name="ServiceHasTerminatedFault" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:TemporarilyUnavailableFaultMessage" name="TemporarilyUnavailableFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns9:RedirectionFaultMessage" name="RedirectionFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns10:FaultMessage" name="Fault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="setServiceData">
+    <input message="ns17:SetServiceDataInputMessage" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns18:SetServiceDataOutputMessage" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns20:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns21:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns22:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns23:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns24:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns25:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns26:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns27:FaultMessage" name="Fault" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns36:DestroyInputMessage" xmlns:ns36="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns37:DestroyOutputMessage" xmlns:ns37="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns38:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns38="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns39:FaultMessage" name="Fault" xmlns:ns39="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns28:RequestTerminationAfterInputMessage" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns29:RequestTerminationAfterOutputMessage" xmlns:ns29="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns30:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns30="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns31:FaultMessage" name="Fault" xmlns:ns31="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns32:RequestTerminationBeforeInputMessage" xmlns:ns32="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns33:RequestTerminationBeforeOutputMessage" xmlns:ns33="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns34:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns34="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns35:FaultMessage" name="Fault" xmlns:ns35="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns11:FindServiceDataInputMessage" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns12:FindServiceDataOutputMessage" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns13:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns15:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns16:FaultMessage" name="Fault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:GridService" name="HandleResolver">
+  
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="mutable" name="handleResolverScheme" nillable="true" type="xsd:anyURI"/>
+</gwsdl:portType>
+
+<!-- Factory PortType -->
+<portType name="Factory"><operation name="createService">
+    <input message="ns0:CreateServiceInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:CreateServiceOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:ServiceAlreadyExistsFaultMessage" name="ServiceAlreadyExistsFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:FaultMessage" name="Fault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="setServiceData">
+    <input message="ns12:SetServiceDataInputMessage" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns13:SetServiceDataOutputMessage" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns15:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns16:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns17:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns18:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns20:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns21:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns22:FaultMessage" name="Fault" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns31:DestroyInputMessage" xmlns:ns31="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns32:DestroyOutputMessage" xmlns:ns32="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns33:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns33="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns34:FaultMessage" name="Fault" xmlns:ns34="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns23:RequestTerminationAfterInputMessage" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns24:RequestTerminationAfterOutputMessage" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns25:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns26:FaultMessage" name="Fault" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns27:RequestTerminationBeforeInputMessage" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns28:RequestTerminationBeforeOutputMessage" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns29:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns29="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns30:FaultMessage" name="Fault" xmlns:ns30="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns6:FindServiceDataInputMessage" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns7:FindServiceDataOutputMessage" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns9:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns10:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns11:FaultMessage" name="Fault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:GridService" name="Factory">
+  
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="static" name="createServiceExtensibility" nillable="false" type="ogsi:CreateServiceExtensibilityType"/>
+</gwsdl:portType>
+
+<!-- NotificationSource PortType -->
+<portType name="NotificationSource"><operation name="subscribe">
+    <input message="ns0:SubscribeInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:SubscribeOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:FaultMessage" name="Fault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="setServiceData">
+    <input message="ns12:SetServiceDataInputMessage" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns13:SetServiceDataOutputMessage" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns15:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns16:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns17:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns18:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns20:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns21:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns22:FaultMessage" name="Fault" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns31:DestroyInputMessage" xmlns:ns31="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns32:DestroyOutputMessage" xmlns:ns32="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns33:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns33="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns34:FaultMessage" name="Fault" xmlns:ns34="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns23:RequestTerminationAfterInputMessage" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns24:RequestTerminationAfterOutputMessage" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns25:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns26:FaultMessage" name="Fault" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns27:RequestTerminationBeforeInputMessage" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns28:RequestTerminationBeforeOutputMessage" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns29:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns29="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns30:FaultMessage" name="Fault" xmlns:ns30="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns6:FindServiceDataInputMessage" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns7:FindServiceDataOutputMessage" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns9:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns10:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns11:FaultMessage" name="Fault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:GridService" name="NotificationSource">
+    
+  <sd:serviceData maxOccurs="unbounded" minOccurs="0" modifiable="false" mutability="mutable" name="notifiableServiceDataName" nillable="false" type="xsd:QName"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiability="false" mutability="static" name="subscribeExtensibility" nillable="false" type="ogsi:OperationExtensibilityType"/>
+  <sd:staticServiceDataValues>
+    <ogsi:subscribeExtensibility inputElement="ogsi:subscribeByServiceDataNames"/>
+  </sd:staticServiceDataValues>
+</gwsdl:portType>
+
+<!-- Notification Sink PortType -->
+<portType name="NotificationSink"><operation name="deliverNotification">
+    <input message="ns0:DeliverNotificationInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType name="NotificationSink">
+  
+</gwsdl:portType>
+
+<!-- NotificationSubscription PortType -->
+<portType name="NotificationSubscription"><operation name="setServiceData">
+    <input message="ns6:SetServiceDataInputMessage" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns7:SetServiceDataOutputMessage" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns9:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns10:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns11:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns12:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns13:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns15:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns16:FaultMessage" name="Fault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns25:DestroyInputMessage" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns26:DestroyOutputMessage" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns27:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns28:FaultMessage" name="Fault" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns17:RequestTerminationAfterInputMessage" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns18:RequestTerminationAfterOutputMessage" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns20:FaultMessage" name="Fault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns21:RequestTerminationBeforeInputMessage" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns22:RequestTerminationBeforeOutputMessage" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns23:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns24:FaultMessage" name="Fault" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns0:FindServiceDataInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:FindServiceDataOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:FaultMessage" name="Fault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:GridService" name="NotificationSubscription">
+  <sd:serviceData maxOccurs="1" minOccurs="1" modifiable="false" mutability="mutable" name="subscriptionExpression" nillable="false" type="xsd:anyType"/>
+  <sd:serviceData maxOccurs="1" minOccurs="1" modifiable="false" mutability="mutable" name="sinkLocator" nillable="false" type="ogsi:LocatorType"/>
+</gwsdl:portType>
+
+<!-- ServiceGroupEntry PortType -->
+<portType name="ServiceGroupEntry"><operation name="setServiceData">
+    <input message="ns6:SetServiceDataInputMessage" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns7:SetServiceDataOutputMessage" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns9:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns10:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns11:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns12:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns13:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns15:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns16:FaultMessage" name="Fault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns25:DestroyInputMessage" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns26:DestroyOutputMessage" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns27:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns28:FaultMessage" name="Fault" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns17:RequestTerminationAfterInputMessage" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns18:RequestTerminationAfterOutputMessage" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns20:FaultMessage" name="Fault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns21:RequestTerminationBeforeInputMessage" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns22:RequestTerminationBeforeOutputMessage" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns23:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns24:FaultMessage" name="Fault" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns0:FindServiceDataInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:FindServiceDataOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:FaultMessage" name="Fault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:GridService" name="ServiceGroupEntry">
+  <sd:serviceData maxOccurs="1" minOccurs="1" modifiable="false" mutability="mutable" name="memberServiceLocator" nillable="false" type="ogsi:LocatorType"/>
+  <sd:serviceData maxOccurs="1" minOccurs="1" modifiable="false" mutability="mutable" name="content" nillable="false" type="ogsi:EntryContentType"/>
+</gwsdl:portType>
+
+<!-- ServiceGroup PortType -->
+<portType name="ServiceGroup"><operation name="setServiceData">
+    <input message="ns6:SetServiceDataInputMessage" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns7:SetServiceDataOutputMessage" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns8:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns9:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns10:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns11:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns12:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns13:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns15:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns16:FaultMessage" name="Fault" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns25:DestroyInputMessage" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns26:DestroyOutputMessage" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns27:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns28:FaultMessage" name="Fault" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns17:RequestTerminationAfterInputMessage" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns18:RequestTerminationAfterOutputMessage" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns20:FaultMessage" name="Fault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns21:RequestTerminationBeforeInputMessage" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns22:RequestTerminationBeforeOutputMessage" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns23:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns24:FaultMessage" name="Fault" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns0:FindServiceDataInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:FindServiceDataOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:FaultMessage" name="Fault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:GridService" name="ServiceGroup">
+        <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="constant" name="membershipContentRule" nillable="false" type="ogsi:MembershipContentRuleType"/>
+        <sd:serviceData maxOccurs="unbounded" minOccurs="0" modifiable="false" mutability="mutable" name="entry" nillable="false" type="ogsi:EntryType"/>
+</gwsdl:portType>
+
+<!-- ServiceGroupRegistration PortType -->
+<portType name="ServiceGroupRegistration"><operation name="remove">
+    <input message="ns8:removeInputMessage" xmlns:ns8="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns9:removeOutputMessage" xmlns:ns9="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns10:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns10="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns11:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns11="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns12:MatchFailedFaultMessage" name="MatchFailedFault" xmlns:ns12="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns13:RemoveFailedFaultMessage" name="RemoveFailedFault" xmlns:ns13="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns14:FaultMessage" name="Fault" xmlns:ns14="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="setServiceData">
+    <input message="ns21:SetServiceDataInputMessage" xmlns:ns21="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns22:SetServiceDataOutputMessage" xmlns:ns22="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns23:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns23="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns24:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns24="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns25:CardinalityViolationFaultMessage" name="CadinalityViolationFault" xmlns:ns25="http://www.gridforum.org/namespaces/2003/03/OGSI"/>  
+    <fault message="ns26:MutabilityViolationFaultMessage" name="MutabilityViolationFault" xmlns:ns26="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns27:ModifiabilityViolationFaultMessage" name="ModifabilityViolationFault" xmlns:ns27="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns28:TypeViolationFaultMessage" name="TypeViolationFault" xmlns:ns28="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns29:IncorrectValueFaultMessage" name="IncorrectValueFault" xmlns:ns29="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns30:PartialFailureFaultMessage" name="PartialFailureFault" xmlns:ns30="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns31:FaultMessage" name="Fault" xmlns:ns31="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="destroy">
+    <input message="ns40:DestroyInputMessage" xmlns:ns40="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns41:DestroyOutputMessage" xmlns:ns41="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns42:ServiceNotDestroyedFaultMessage" name="ServiceNotDestroyedFault" xmlns:ns42="http://www.gridforum.org/namespaces/2003/03/OGSI"/>      
+    <fault message="ns43:FaultMessage" name="Fault" xmlns:ns43="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationAfter">
+    <input message="ns32:RequestTerminationAfterInputMessage" xmlns:ns32="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns33:RequestTerminationAfterOutputMessage" xmlns:ns33="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns34:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns34="http://www.gridforum.org/namespaces/2003/03/OGSI"/>    
+    <fault message="ns35:FaultMessage" name="Fault" xmlns:ns35="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="add">
+    <input message="ns0:AddInputMessage" xmlns:ns0="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns1:AddOutputMessage" xmlns:ns1="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns2:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns2="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns3:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns3="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns4:ContentCreationFailedFaultMessage" name="ContentCreationFailedFault" xmlns:ns4="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns5:UnsupportedMemberInterfaceFaultMessage" name="UnsupportedMemberInterfaceFault" xmlns:ns5="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns6:AddRefusedFaultMessage" name="AddRefusedFault" xmlns:ns6="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns7:FaultMessage" name="Fault" xmlns:ns7="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="requestTerminationBefore">
+    <input message="ns36:RequestTerminationBeforeInputMessage" xmlns:ns36="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns37:RequestTerminationBeforeOutputMessage" xmlns:ns37="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns38:TerminationTimeUnchangedFaultMessage" name="TerminationTimeUnchangedFault" xmlns:ns38="http://www.gridforum.org/namespaces/2003/03/OGSI"/> 
+    <fault message="ns39:FaultMessage" name="Fault" xmlns:ns39="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation><operation name="findServiceData">
+    <input message="ns15:FindServiceDataInputMessage" xmlns:ns15="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <output message="ns16:FindServiceDataOutputMessage" xmlns:ns16="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns17:ExtensibilityNotSupportedFaultMessage" name="ExtensibilityNotSupportedFault" xmlns:ns17="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns18:ExtensibilityTypeFaultMessage" name="ExtensibilityTypeFault" xmlns:ns18="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns19:TargetInvalidFaultMessage" name="TargetInvalidFault" xmlns:ns19="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+    <fault message="ns20:FaultMessage" name="Fault" xmlns:ns20="http://www.gridforum.org/namespaces/2003/03/OGSI"/>
+  </operation></portType><gwsdl:portType extends="ogsi:ServiceGroup" name="ServiceGroupRegistration">
+    
+  
+  <sd:serviceData maxOccurs="unbounded" minOccurs="0" modifiable="false" mutability="static" name="addExtensibility" nillable="false" type="ogsi:OperationExtensibilityType"/>
+  <sd:serviceData maxOccurs="unbounded" minOccurs="1" modifiable="false" mutability="static" name="removeExtensibility" nillable="false" type="ogsi:OperationExtensibilityType"/>
+  <sd:staticServiceDataValues>
+    <ogsi:removeExtensibility inputElement="ogsi:matchByLocatorEquivalence"/>
+  </sd:staticServiceDataValues>
+</gwsdl:portType>
+
+</definitions>

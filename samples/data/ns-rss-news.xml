@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+  <rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://purl.org/rss/1.0/"
+  >
+
+  <channel rdf:about="http://www.artima.com/news/feeds/java.rss">
+    <title>Artima Java News</title>
+    <link>http://www.artima.com/news/community.jsp?forum=136</link>
+    <description>
+Your source for Java news and discussion.
+    </description>
+    <image rdf:resource="http://www.artima.com/images/artima88x33.gif"/>
+    <items>
+      <rdf:Seq>
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119122" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119114" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119106" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119102" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119084" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119077" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119075" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119062" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119060" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119056" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119046" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119041" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119003" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=118983" />
+        <rdf:li resource="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=118964" />
+      </rdf:Seq>
+    </items>
+  </channel>
+
+  <image rdf:about="http://www.artima.com/images/artima88x33.gif">
+    <title>Artima.com</title>
+    <url>http://www.artima.com/images/artima88x33.gif</url>
+    <link>http://www.artima.com/</link>
+  </image>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119122">
+    <title>Capriva 0.6.2</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119122</link>
+    <description>
+The Capriva project, which manages and sync files and directories across remote computers, had updated to version 0.6.2 with major feature enhancements. &quot;This release supports synchronizing files by comparing MD5 and SHA-1 hash values. The plugin for the Windows filesystem has been updated to compare timestamps of files on FAT and NTFS even...
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119114">
+    <title>Sun expands RFID portfolio</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119114</link>
+    <description>
+Sun has released a new version of its Java System RFID software, which is designed to help enterprises reduce reliance on middleware in RFID systems.
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119106">
+    <title>Web Data Access Developer - Eclipse Plugin</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119106</link>
+    <description>
+IBM's alphaWorks has released the Web Data Access Developer plugin for Eclipse. &quot;The Web Data Access Developer provides a single package, based on the Eclipse framework, that bundles both a development environment and a run-time environment. This tool has a simple point-and-click interface that generates a Web-based data access client without...
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119102">
+    <title>Mike Spille on Overreacting</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119102</link>
+    <description>
+Mike Spille, in &quot;Action Hippo Rangers!,&quot; has written up a good analysis of the &quot;overreaction syndrome,&quot; starting with 'Beware the 180 degree turn. Be wary of the knee-jerk reaction. Recognize that one data point does not a curve make. All things in moderation, especially moderation.'
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119084">
+    <title>For Your Pleasure</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119084</link>
+    <description>
+Wide-open feedback channels... also: Weblogs: JMX feedback, servlets feedback, and catapults Also in Java Today: Maven and a J2ME news client Projects and Communities: WSDL and GNOME GUI's Forum Postings: Tools forum opens and Java SE size
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119077">
+    <title>Sun to Open-Source Single Sign-on Code</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119077</link>
+    <description>
+Sun Microsystems has announced that they will be releasing the source code to its single sign-on application. &quot;The company will release the source code to its Web authentication and Web single sign-on technology as part of a new project called Open Web Single Sign-On (Open SSO), Sun representatives said. The release also will include software...
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119075">
+    <title>Parasoft JTest 7 generates JUnit tests from running apps</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119075</link>
+    <description>
+Parasoft last week released JTest 7, the latest version of their automated testing and error prevention tool. The big new feature in v7 is &quot;Sniffer&quot;, an add-on that monitors a running application and generates complete JUnit test suites based on actual application useage. Sniffer provides an easy, fast way to build a regression test suite.
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119062">
+    <title>Tech Talk with Dave Thomas on the 'knowledge portfolio'</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119062</link>
+    <description>
+Dave Thomas, one of the Pragmatic Programmers, talks about ways to improve programming proficiency by diversifying the &quot;knowledge portfolio,&quot; and discusses the place of Ruby, Python, and Groovy in the developer's tool belt.
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119060">
+    <title>Getting Started With JavaSpaces Technology</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119060</link>
+    <description>
+JavaSpaces technology is a powerful high-level tool that provides an expressive yet easy-to-learn API for building distributed and collaborative applications.
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119056">
+    <title>Interview with Patrick Chanezon, co-author of ROME</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119056</link>
+    <description>
+inkBlots has posted an interview with Patrick Chanezon, co-author of ROME, an RSS parser/generator hosted at java.net. The interview covers the history of ROME, obviously, and also goes into where RSS is used at Sun and other companies, future trends, and advice for companies trying to figure out what this RSS thing is and how it can be used.
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119046">
+    <title>Ruby on Rails and J2EE technical comparison</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119046</link>
+    <description>
+Aaron Rustad published a technical, hype-free comparison of Rails and the typical J2EE webapp stack, looking at how the frameworks compare, including MVC and persistence. Aaron points out that the core architecture of Rails follows the basic patterns found in J2EE, but they have philosophical differences, such as Rails preferring explicit code...
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119041">
+    <title>First look at Java 5 support in AspectJ, and other new features</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119041</link>
+    <description>
+Now in its second milestone build, a major focus of AspectJ 5 is on providing support for the new Java language features introduced in Java 5, including annotations and generics. Adrian Colyer just published an article on DeveloperWorks looking at the new features of AspectJ 5.
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119003">
+    <title>uDig 1.0 - GIS Viewer</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=119003</link>
+    <description>
+The uDig, GIS spatial data viewer project, has announced version 1.0.0 and initial release. &quot;User-friendly Desktop Internet GIS (uDig) is an open source spatial data viewer/editor, with special emphasis on the OpenGIS standards for internet GIS, the Web Map Server and Web Feature Server standards. uDig will provide a common Java platform for...
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=118983">
+    <title>Daffodil CRM 1.2</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=118983</link>
+    <description>
+Daffodil Software has announced the release of version 1.2 of Daffodil CRM, it's contact and leads management solution. They write in, &quot;This version has been enhanced with the help of the reporting and export facilities provided, without any additional cost. The reporting feature in v1.2, in addition to customizable views, makes it now possible...
+    </description>
+  </item>
+
+  <item rdf:about="http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=118964">
+    <title>BindMark Project - New Results</title>
+    <link>http://www.artima.com/forums/flat.jsp?forum=136&amp;thread=118964</link>
+    <description>
+The BindMark project, which provides quantitative comparison of time and memory performance of various Java XML binding tools, has released their second round of results. They write in, &quot;Since the first release, three new libraries have been added (Eclipse Modeling Framework, XMLSpy Enterprise edition and XmlIO), as well as new release of...
+    </description>
+  </item>
+
+</rdf:RDF>

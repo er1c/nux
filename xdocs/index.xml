@@ -1,0 +1,667 @@
+<?xml version="1.0"?>
+<!-- $Id: index.xml,v 1.141 2006/06/18 21:44:15 hoschek Exp $          -->
+<document>
+	<properties>
+		<author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+		<title>Overview</title>
+	</properties>
+	<body>
+		<!-- ##################################################################################### -->
+		<section name="Efficient and Powerful XML Processing Made Easy">
+                 <p>
+				Nux is an open-source Java toolkit making efficient and powerful XML processing easy.
+				It is geared towards embedded use in 
+				high-throughput XML messaging middleware such as large-scale Peer-to-Peer 
+				infrastructures, message queues, publish-subscribe and matchmaking systems 
+				for Blogs/newsfeeds, text chat, data acquisition and distribution systems, 
+				application level routers, firewalls, classifiers, etc. 
+                 </p>
+				<p>
+				Have you ever tried to take advantage of a robust and natural commodity Java tool set for 
+				XML, XQuery, XPath, schema validation, binary XML, fuzzy fulltext similarity search and related technologies,
+				yet were not ready to accept a significant performance penalty? Chances are most tool sets 
+				turned out not to be particularly robust and natural, that they incurred dramatic penalties
+				when used in straightforward manners, and that their complex idiosyncracies had a strong 
+				tendency to distract from the real job and use cases you wanted to get done in a timely
+				manner.
+				</p>
+				<p>				
+				Nux helps to avoid XML nightmares, enabling you to mix and match powerful main-memory
+				XML tools in natural, straightforward, seamless, 
+				effective and standards compliant manners.
+				</p>
+				<p>				
+				Nux reliably processes whatever data fits into main memory (even, say, 250 MB messages), 
+				but it is not an XML database system, and does not attempt to be one.
+				Nux integrates best-of-breed components, containing extensions of the 
+				<a href="http://www.xom.nu/">XOM</a>,  
+                 <a href="http://saxon.sourceforge.net/">Saxon</a> and
+                 <a href="http://lucene.apache.org/java/docs/">Lucene</a> open-source libraries.
+				</p>
+				
+
+				<table border="0" cellspacing="0" cellpadding="2" width="100%">
+					<xtbody>
+						<tr>
+							<xth>Feature&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</xth>
+							<xth>Summary</xth>
+							<xth>API</xth>
+						</tr>
+						<!-- ##################################################################################### -->
+						<tr>
+							<td>XQuery/XPath</td>
+							<td>
+								Seamless, complete, standards compliant and efficient W3C XQuery and XPath support for XOM.
+								Also see the <a href="api/nux/xom/tests/doc-files/fire-xquery-usage.txt ">nux/bin/fire-xquery</a> 
+								command line test tool 
+								and <a href="api/nux/xom/sandbox/XQueryBenchmark.html">XQueryBenchmark</a>.
+							</td>
+							<td>
+								<a href="api/nux/xom/xquery/XQuery.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>In-place update</td>
+							<td>
+								Simple yet powerful and efficient in-place <i>morphing </i> for use as an
+								XQuery/XPath insert, update and delete facility; particularly useful for
+								structurally small tree transformations without requiring (potentially
+								huge) XML tree copies. 
+							</td>
+							<td>
+								<a href="api/nux/xom/xquery/XQueryUtil.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Fulltext search</td>
+							<td>
+								Fulltext search (fuzzy similarity queries) for on-the-fly matchmaking
+								in realtime streaming applications combining structured and unstructured queries.
+								Arbitrary Lucene fulltext queries can be run from Java or 
+								from XQuery/XPath/XSLT via a simple extension function.
+							</td>
+							<td>
+								<a href="api/nux/xom/pool/FullTextUtil.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Pooling</td>
+							<td>
+								Efficient and flexible pools 
+								and factories for documents, XQueries, XSL Transforms, as well as 
+								document Builders that validate against various schema languages, including W3C XML Schemas, DTDs, RELAX NG, Schematron, etc.
+							</td>
+							<td>
+								<a href="api/nux/xom/pool/package-summary.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Binary XML</td>
+							<td>
+								Optional serialization and deserialization of XOM XML documents to and from
+								an efficient and compact custom binary XML data format (<i>bnux</i>
+								format), without loss or change of any information.
+								Serialization and deserialization is much faster than with the standard textual XML format, 
+								and the resulting binary data is more compressed than textual XML.
+							</td>
+							<td>
+								<a href="api/nux/xom/binary/BinaryXMLCodec.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Streaming XQuery</td>
+							<td>
+								For simple and complex continuous queries and/or transformations over very 
+								large or infinitely long XML input,
+								a convenient streaming path filter API combines full XQuery and XPath support with 
+								straightforward filtering.
+							</td>
+							<td>
+								<a href="api/nux/xom/xquery/StreamingPathFilter.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Streaming Serialization</td>
+							<td>
+								Using memory consumption close to zero, streaming serialization enables writing arbitrarily large XML documents 
+								 onto a destination, such as an 
+								<code>OutputStream</code>, both for standard textual XML as well as binary XML.
+							</td>
+							<td>
+								<a href="api/nux/xom/io/StreamingSerializer.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Pluggable SAX and StAX</td>
+							<td>
+								A XOM Builder implementation that uses a StAX parser (e.g. <a href="http://woodstox.codehaus.org/">Woodstox</a>) 
+								instead of a SAX parser (e.g. Xerces) can be used interchangeably.
+							</td>
+							<td>
+								<a href="api/nux/xom/io/package-summary.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>JAXB and HTML</td>
+							<td>
+								Conversion from XOM to JAXB and vice-versa, serving as an intermediary for 
+								XML &lt;--&gt; Object mapping tools. 
+								XQueries over ill-formed HTML.
+							</td>
+							<td>
+								<a href="api/nux/xom/pool/XOMUtil.html">API</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Open Source</td>
+							<td>BSD style license</td>
+							<td/>
+						</tr>
+					</xtbody>
+				</table>
+				
+		</section>
+<p></p>			
+		<!-- ##################################################################################### -->
+		<section name="Motivation">
+				<p>
+				Have you ever tried to do queries and/or transformations over XML data sources?
+				Chances are that manual SAX/DOM processing was cumbersome at best, that XPath was not powerful or flexible enough,
+				or XSLT perhaps too complicated, and that most related APIs have a steep learning curve, and 
+				contain quite a few bugs.
+				</p>
+				<p>				
+				This is where the power and simplicity of XQuery comes in. 
+				Nux provides seamless XQuery support for XOM, leveraging the 
+				standards compliance, efficiency and maturity of the <a href="http://saxon.sourceforge.net/">Saxon</a> engine, 
+				in combination with a robust, lean and mean adapter for XOM that Nux contributed to Saxon.
+				Since XQuery is a superset of XPath 2.0 it
+				can also be used with plain XPath expressions as queries.
+				It implements W3C Candidate Recommendation, 3 November 2005 
+				and passes several exhaustive test suites. 
+				Like Saxon-B, Nux XQuery is not schema aware, unlike the commercial Saxon SA version.
+				</p>
+				<p>
+				Have you ever tried to build an XML system that is straightforward, works correctly <i>and</i> 
+				processes tens of thousands of small XML messages per second in non-trivial ways? Chances are you've encountered lots of 
+				non-obvious obstacles down that path. For that scenario, Nux couples the simplicity and correctness qualities of XOM with 
+				efficient and flexible pools 
+				and factories for documents, XQueries, XSL Transforms, as well as 
+				document Builders that validate against various schema languages, including
+				W3C XML Schemas (leveraging <a href="http://xml.apache.org/xerces2-j/">Xerces</a>),
+				RELAX NG, Schematron, etc. (leveraging <a href="http://msv.dev.java.net/">MSV</a>).
+				</p>
+				<p>
+				For particularly stringent performance requirements
+				an option for lightning-fast binary XML serialization and deserialization
+				is offered. 
+				XML &lt;--&gt; Object mapping glue for integration with 
+				<a href="http://jaxb.dev.java.net/">JAXB</a> 
+				and for queries over ill-formed HTML is also provided.
+				</p>
+		</section>
+<p></p>						
+
+
+		<section name="Architecture Overview / Technology Layers">
+<p>
+In a nutshell, the involved technologies are layered as follows:
+<p/>
+<img src="images/architecture.jpg" width="80%" alt="Technology layers"/>
+</p>
+</section>
+
+
+		<section name="Command Line Usage">
+<p>
+To get started, you can use 
+<a href="api/nux/xom/tests/doc-files/fire-xquery-usage.txt ">nux/bin/fire-xquery</a>,
+a flexible command line test tool that runs a given XQuery against a set of files 
+and prints the result sequence. For example:
+
+<listing name="List the titles of Tim Bray's blog articles via the Atom feed">
+fire-xquery --query='{declare namespace atom = "http://www.w3.org/2005/Atom"; 
+    doc("http://www.tbray.org/ongoing/ongoing.atom")/atom:feed/atom:entry/atom:title}'
+</listing>
+
+<p></p>
+
+<listing name="Example Output">
+&lt;title xmlns="http://www.w3.org/2005/Atom">nbextras.org&lt;/title>
+&lt;title xmlns="http://www.w3.org/2005/Atom">Election Day&lt;/title>
+&lt;title xmlns="http://www.w3.org/2005/Atom">Washington Post Screws Up&lt;/title>
+&lt;title xmlns="http://www.w3.org/2005/Atom">Marketing Truth&lt;/title>
+&lt;title xmlns="http://www.w3.org/2005/Atom">Upcoming Gig: JavaOne&lt;/title>
+&lt;title xmlns="http://www.w3.org/2005/Atom">GPL3 Draft&lt;/title>
+</listing>
+
+<p></p>
+
+The command line tool also supports schema validation, XInclude (via XOM), 
+an XQuery update facility, malformed HTML parsing (via TagSoup) and much more.
+It's available for Unix and Windows, and works like any other decent Unix command line tool. 
+The source code can be found in class <code>nux.xom.tests.XQueryCommand</code>.
+</p>
+
+</section>
+
+
+		<section name="Basic API Usage">
+<p>
+More interestingly, here are examples demonstrating basic API usage:
+</p>
+
+<listing name="Parsing, Constructing and Serializing a Document with XOM">
+  // parse a file document with XOM:
+  Document doc = new Builder().build(new File("samples/data/periodic.xml"));
+  System.out.println(doc.toXML());
+  System.out.println(XOMUtil.toPrettyXML(doc));
+  
+  // parse a string document:
+  String xml = 
+    "&lt;foo>" +
+      "&lt;bar size='123'>" +
+        "hello world" +
+      "&lt;/bar>" +
+    "&lt;/foo>";
+  Document doc = XOMUtil.toDocument(xml);
+  System.out.println(doc.toXML());
+  System.out.println(XOMUtil.toPrettyXML(doc));
+  
+  // construct a XOM document (main memory tree):
+  Element bar = new Element("bar");
+  bar.addAttribute(new Attribute("size", "123"));
+  bar.appendChild(new Text("hello world"));
+  Element foo = new Element("foo");
+  foo.appendChild(bar);
+  Document doc = new Document(foo);  
+  System.out.println(doc.toXML());
+  System.out.println(XOMUtil.toPrettyXML(doc));
+  
+  // serialize a document with XOM onto an OutputStream:
+  OutputStream out = new FileOutputStream("samples/data/periodic2.xml");
+  Serializer ser = new Serializer(out);
+  // ser.setIndent(4); // optional pretty printing 
+  ser.write(doc);
+  out.close(); 
+</listing>
+<p></p>
+<listing name="Pluggable SAX and StAX parser">
+  // parse a document with XOM, either using SAX or StAX:
+  InputStream in = new FileInputStream("samples/data/articles.xml");
+  boolean useSAX = true;
+  // boolean useSAX = false;
+  
+  Builder builder = useSAX ? new Builder() : StaxUtil.createBuilder(null, null);
+  
+  Document doc = builder.build(in);
+  System.out.println(doc.toXML());
+</listing>
+
+</section>
+
+
+
+<section name="XPath / XQuery examples">
+<listing name="Basic XPath / XQuery examples">
+  // parse XML document with XOM:
+  Document doc = new Builder().build(new File("samples/data/periodic.xml"));
+  
+  // find the atom named 'Zinc' in the periodic table:
+  Node result = XQueryUtil.xquery(doc, "/PERIODIC_TABLE/ATOM[NAME = 'Zinc']").get(0);
+  System.out.println("result=" + result.toXML());
+ 
+  // equivalent via the more powerful underlying API:
+  XQuery xquery = new XQuery("/PERIODIC_TABLE/ATOM[NAME = 'Zinc']", null);
+  Node result = xquery.execute(doc).next();
+
+  // count the numer of elements in a document tree
+  int count = XQueryUtil.xquery(doc, "//*").size();
+  System.out.println("count=" + count);
+</listing>
+	
+<p></p>						
+<listing name="A query to find the links of all images (or all JPG images) in a XHTML-like document, with serialization to an output stream">
+  Document doc = new Builder().build(new File("/tmp/test.xml"));
+  Nodes results = XQueryUtil.xquery(doc, "//*:img/@src");
+  //Nodes results = XQueryUtil.xquery(doc, "//*:img/@src[matches(., '.jpg')]");
+
+  // see exactly what items the query does (or does not) return:
+  for (int i=0; i &lt; results.size(); i++) {
+     System.out.println("node "+i+": " + results.get(i).toXML());
+     //System.out.println("node "+i+": " + XOMUtil.toPrettyXML(results.get(i)));
+  }
+  
+  // or serialize results according to W3C spec onto an output stream:
+  ResultSequenceSerializer ser = new ResultSequenceSerializer();
+  ser.setEncoding("UTF-8");
+  ser.setIndent(4);
+  ser.setAlgorithm(ResultSequenceSerializer.W3C_ALGORITHM);
+  // ser.setAlgorithm(ResultSequenceSerializer.WRAP_ALGORITHM);
+  OutputStream out = System.out;
+  ser.write(results, out);
+</listing>
+
+<p></p>						
+<listing name="More XQueries: List books published by Addison-Wesley after 1991, 
+including their year and title">
+  java:
+  
+  File query = new File("/tmp/saxonb-8.6.1/use-cases/xmp/q1.xq");
+  XQuery xquery = XQueryPool.GLOBAL_POOL.getXQuery(query);
+  Nodes results = xquery.execute(null).toNodes();
+  ResultSequenceSerializer ser = new ResultSequenceSerializer();
+  ser.setIndent(4);
+  ser.write(results, System.out);
+
+  xmp/q1.xq:
+
+  &lt;bib>
+    {
+      for $b in doc("bib.xml")/bib/book
+      where $b/publisher = "Addison-Wesley" and $b/@year > 1991
+      return
+        &lt;book year="{ $b/@year }">
+          { $b/title }
+        &lt;/book>
+    }
+  &lt;/bib> 
+  
+  output:
+  
+  &lt;?xml version="1.0" encoding="UTF8"?>
+  &lt;bib>
+    &lt;book year="1994">
+        &lt;title>TCP/IP Illustrated&lt;/title>
+    &lt;/book>
+    &lt;book year="1992">
+        &lt;title>Advanced Programming in the Unix environment&lt;/title>
+    &lt;/book>
+  &lt;/bib>
+</listing>
+
+<p></p>						
+<listing name="A typical relational join XQuery that, 
+for all bicycles, lists the item number, description, and highest bid (if any), 
+ordered by item number">
+  for $i in doc("items.xml")//item_tuple
+  let $b := doc("bids.xml")//bid_tuple[itemno = $i/itemno]
+  where contains($i/description, "Bicycle")
+  order by $i/itemno
+  return
+      &lt;item_tuple>
+         { $i/itemno }
+         { $i/description }
+         &lt;high_bid>{ max($b/bid) }&lt;/high_bid>
+      &lt;/item_tuple>
+</listing>
+
+</section>
+
+       <!-- ##################################################################################### -->
+        <section name="Google-like realtime fulltext search via Apache Lucene engine">
+                Similar to Google search, the optional fulltext search via the Apache Lucene engine is 
+                easy to use, powerful, efficient and goes far beyond what can be done with 
+                standard XPath regular expressions 
+                and string manipulation functions. It is similar in intent but not directly related to preliminary 
+                <a target="_blank" href="http://www.w3.org/TR/xmlquery-full-text-use-cases">W3C fulltext search drafts</a>.
+                Rather than targetting fulltext search of infrequent queries over huge persistent 
+                data archives (historic search), Nux targets fulltext search of huge 
+                numbers of queries over comparatively small transient realtime data (prospective search), 
+                e.g. 100000-500000 queries/sec ballpark.
+                See <a href="api/nux/xom/pool/FullTextUtil.html">FullTextUtil</a> and 
+                <a href="api/org/apache/lucene/index/memory/package-summary.html">MemoryIndex</a>.
+				<p>                
+				
+<listing name="Example fulltext XQuery that finds all books authored by James 
+				that have something to do with 'salmon fishing manuals', 
+				sorted by relevance">
+declare namespace lucene = "java:nux.xom.pool.FullTextUtil";
+
+declare variable $query := "+salmon~ +fish* manual~"; 
+(: any arbitrary Lucene query can go here :)
+(: declare variable $query as xs:string external; :)
+
+for $book in /books/book[author="James" and lucene:match(abstract, $query) > 0.0]
+let $score := lucene:match($book/abstract, $query)
+order by $score descending
+return $book
+</listing>
+				</p><p>
+				
+<listing name="Example fulltext XQuery that matches on extracted sentences">
+declare namespace lucene = "java:nux.xom.pool.FullTextUtil";
+
+for $book in /books/book
+    for $s in lucene:sentences($book/abstract, 0)
+        return
+            if (lucene:match($s, "+salmon~ +fish* manual~") > 0.0) 
+            then normalize-space($s)
+            else ()
+</listing>
+
+				</p><p>
+				Arbitrary Lucene fulltext queries can be run from Java or 
+				from XQuery/XPath/XSLT via a simple extension function. 
+				The former approach is more flexible whereas the latter is more convenient.				
+				Lucene analyzers can split on whitespace, normalize to lower case
+				for case insensitivity, ignore common terms with little 
+				discriminatory value such as "he", "in", "and" (stop words), 
+				reduce the terms to their natural linguistic root form such as 
+				"fishing" being reduced to "fish" (stemming), resolve 
+				synonyms/inflexions/thesauri (upon indexing and/or querying), etc.
+				Also see <a target="_blank" 
+				href="http://lucene.apache.org/java/docs/queryparsersyntax.html">Lucene Query Syntax</a>
+				as well as <a target="_blank" 
+				href="http://today.java.net/pub/a/today/2003/11/07/QueryParserRules.html">Query Parser Rules</a>.				
+				
+				</p><p>
+				Explore and enjoy, perhaps using the queries and sample data from the 
+				<code>samples/fulltext</code> directory as a starting point.
+				</p> 
+        </section>
+
+
+<section name="Querying Nasty HTML">
+<p>
+If you'd like to query non-XML documents such as the typical HTML that lives out there,
+you can combine Nux with <a href="http://www.tagsoup.info">TagSoup</a>,
+which is a <i>"SAX-compliant parser that, instead of parsing well-formed or valid XML, 
+parses HTML as it is found in the wild: nasty and brutish, though quite often far from short"</i>.
+TagSoup plugs into XOM and makes ill-formed HTML appear as well-formed XML. 
+Just add <code>tagsoup.jar</code> to the classpath and try this:
+</p>
+
+<listing name="XPath / XQuery with TagSoup">
+  // find the links of all images in an ill-formed HTML document
+  XMLReader parser = new org.ccil.cowan.tagsoup.Parser(); // tagsoup parser  
+  Document doc = new Builder(parser).build("http://www.yahoo.com");
+  Nodes results = XQueryUtil.xquery(doc, "//*:img/@src");
+
+  for (int i=0; i &lt; results.size(); i++) {
+     System.out.println("node "+i+": " + results.get(i).toXML());
+     //System.out.println("node "+i+": " + XOMUtil.toPrettyXML(results.get(i)));
+  }
+</listing>
+</section>
+
+
+
+<section name="Streaming Serialization of Very Large Documents">
+<p>
+Using memory consumption close 
+to zero, a <a href="api/nux/xom/io/StreamingSerializer.html">StreamingSerializer</a>
+enables writing arbitrarily large XML documents onto a destination, such as an <code>OutputStream</code>, 
+both for standard textual XML as well as binary XML.
+</p>
+<p>
+Nodes should be written in document order, starting with
+<code>writeXMLDeclaration()</code>, followed by writes for the individual nodes,
+finally finishing with <code>writeEndDocument()</code>. Elements are opened and
+closed via <code>writeStartTag(Element)</code> and <code>writeEndTag()</code>,
+respectively.
+</p>
+
+<listing name="Creating a document with ten million records">
+  StreamingSerializerFactory factory = new StreamingSerializerFactory();
+  
+  StreamingSerializer ser = factory.createXMLSerializer(System.out, "UTF-8");
+  // StreamingSerializer ser = factory.createBinaryXMLSerializer(System.out, 0);
+  // StreamingSerializer ser = factory.createStaxSerializer(XMLStreamWriter writer);
+  
+  ser.writeXMLDeclaration();
+  ser.writeStartTag(new Element("articles"));
+  for (int i = 0; i &lt; 10000000; i++) {
+      Element article = new Element("article");
+      article.addAttribute(new Attribute("id", String.valueOf(i)));
+      ser.writeStartTag(article);
+  
+      ser.writeStartTag(new Element("prize"));
+          ser.write(new Text(String.valueOf(i * 1000)));
+      ser.writeEndTag(); // close prize
+  
+      ser.writeStartTag(new Element("quantity"));
+          ser.write(new Text("hello world"));
+      ser.writeEndTag(); // close quantity
+  
+      ser.writeEndTag(); // close article
+  }
+  ser.writeEndTag(); // close articles
+  ser.writeEndDocument();
+</listing>
+  
+  <p>
+  The following example demonstrates mixing streaming writes with convenient writing of entire
+  prefabricated subtrees. For large documents, this approach combines the
+  scalability advantages of streaming with the ease of use of (comparatively small)
+  main-memory subtree construction:
+  </p>
+  
+<listing name="Creating a document with ten million records, combining streaming with main-memory subtree construction">
+  StreamingSerializerFactory factory = new StreamingSerializerFactory();
+  
+  StreamingSerializer ser = factory.createXMLSerializer(System.out, "UTF-8");
+  // StreamingSerializer ser = factory.createBinaryXMLSerializer(System.out, 0);
+  
+  ser.writeXMLDeclaration();
+  ser.writeStartTag(new Element("articles"));
+  for (int i = 0; i &lt; 10000000; i++) {
+     Element article = new Element("article");
+     article.addAttribute(new Attribute("id", String.valueOf(i)));
+  
+     Element prize = new Element("prize");
+         prize.appendChild(String.valueOf(i * 1000));
+     article.appendChild(prize);
+  
+     Element quantity = new Element("quantity");
+         quantity.appendChild("hello world");
+     article.appendChild(quantity);
+  
+     ser.write(article); // writes entire subtree
+  }
+  ser.writeEndTag(); // close articles
+  ser.writeEndDocument();
+</listing>
+
+</section>
+
+	
+		
+<section name="Streaming XQuery over Very Large Documents">
+
+<p>
+Using the <a href="api/nux/xom/xquery/StreamingPathFilter.html">StreamingPathFilter</a>, 
+the following example is complete and efficient code for parsing and iterating through millions of "person" 
+records in a database-like XML document, printing all residents of "San Francisco", 
+ while never allocating more memory than needed to hold one person element:
+</p>
+
+<listing name="Find and print all persons living in San Francisco">
+  StreamingTransform myTransform = new StreamingTransform() {
+      public Nodes transform(Element person) {
+          Nodes results = XQueryUtil.xquery(person, 
+              "name[../address/city = 'San Francisco']");
+          if (results.size() > 0) {
+              System.out.println("name = " + results.get(0).getValue());
+          }
+          return new Nodes(); // mark element as subject to garbage collection
+      }
+  };
+  
+  // parse document with a filtering Builder
+  NodeFactory factory = new StreamingPathFilter("/persons/person", null).
+      createNodeFactory(null, myTransform);
+  new Builder(factory).build(new File("/tmp/persons.xml"));
+</listing>
+
+</section>
+
+		
+<section name="Working with Efficient Binary XML">
+<p>
+The <a href="api/nux/xom/binary/BinaryXMLCodec.html">BinaryXMLCodec</a>
+serializes (encodes) and deserializes (decodes) XOM XML documents to and from
+an efficient and compact custom binary XML data format (termed <i>bnux </i>
+format), without loss or change of any information. Serialization and
+deserialization is much faster than with the standard textual XML format, and
+the resulting binary data is more compressed than textual XML.
+</p>
+
+<listing name="Parse standard textual XML, convert to binary format, round-trip it and compare results">
+  // parse standard textual XML with XOM
+  Document doc = new Builder().build(new File("samples/data/periodic.xml"));
+  
+  // convert to binary XML
+  BinaryXMLCodec codec = new BinaryXMLCodec();
+  byte[] bnuxDoc = codec.serialize(doc, 0);
+  
+  // check correctness
+  Document doc2 = codec.deserialize(bnuxDoc);
+  boolean isEqual = java.util.Arrays.equals(
+      XOMUtil.toCanonicalXML(doc), XOMUtil.toCanonicalXML(doc2));
+  System.out.println("isEqual = " + isEqual);
+  System.out.println(doc2.toXML());
+  
+  // write binary XML document to file
+  OutputStream out = new FileOutputStream("/tmp/periodic.xml.bnux");
+  out.write(bnuxDoc);
+  out.close();
+  
+  // read binary XML document from file; convert to XOM document
+  bnuxDoc = FileUtil.toByteArray(new FileInputStream("/tmp/periodic.xml.bnux"));
+  Document doc3 = codec.deserialize(bnuxDoc);
+  System.out.println(doc3.toXML());
+</listing>
+
+<p></p>
+<listing name="Streaming conversion of standard textual XML to and from binary format">
+  // streaming conversion of standard textual XML to bnux binary XML:
+  InputStream  in  = new FileInputStream("samples/data/weblog.xml");
+  OutputStream out = new FileOutputStream("/tmp/weblog.xml.bnux");
+  StreamingSerializerFactory factory = new StreamingSerializerFactory();
+  StreamingSerializer serializer = factory.createBinaryXMLSerializer(out, 0);
+  NodeFactory redirector = XOMUtil.getRedirectingNodeFactory(serializer);
+
+  new Builder(redirector).build(in); // performs streaming conversion
+
+  in.close();
+  out.close();
+
+
+  // streaming conversion of bnux binary XML to standard textual XML:
+  InputStream  in  = new FileInputStream("/tmp/weblog.xml.bnux");
+  OutputStream out = new FileOutputStream("/tmp/weblog.xml");
+  StreamingSerializerFactory factory = new StreamingSerializerFactory();
+  StreamingSerializer serializer = factory.createXMLSerializer(out, "UTF-8");
+  NodeFactory redirector = XOMUtil.getRedirectingNodeFactory(serializer);
+
+  new BinaryXMLCodec().deserialize(in, redirector); // performs streaming conversion
+
+  in.close();
+  out.close();		
+</listing>
+</section>
+
+		
+	</body>
+</document>

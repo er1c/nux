@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- $Id: gettingstarted.xml,v 1.1 2004/10/09 01:58:38 hoschek3 Exp $          -->
+<document>
+  <properties>
+    <author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+    <title>Getting Started</title>
+  </properties>
+<body>
+<!--		<menu name="Commands">
+			<item name="fire-xpath" href="#fire-xpath"/>
+			<item name="fire-xquery" href="#fire-xquery"/>
+		</menu>
+-->		
+
+<!-- ##################################################################################### -->
+<section name="Getting Started">
+	<warning name="Warning">
+		<ul>
+			<li>
+				All nux tools are available for both Unix and Windows, within the same software distribution. 
+				However, in the interest of brevity, we only show Unix examples, with Windows examples omitted. 
+				For Windows, please add <code>.bat</code> extensions to your typing and adjust file locations as obvious.
+			</li>
+			<li>
+				Also note  that depending  on your  kind of  shell, string  quoting is sometimes  necessary  to
+				prevent  the shell from  interpreting special characters in a URL or other command line option/argument, such as characters 
+				<code>'*',  '&amp;', ' '</code>, etc. 
+				On Windows, use the <code>"</code> character instead of the <code>'</code> character to quote strings.
+			</li>
+		</ul>
+	</warning>
+
+</section>
+
+
+<!-- ##################################################################################### -->
+<section name="Demos">
+You can use the <code>fire-java</code> command line program 
+to run the included demos (<a href="api/src-html/gov/lbl/dsd/nux/nio/demo/">Source code</a>). 
+For example:
+
+<pre class="source">
+/opt/nux/bin/fire-java gov.lbl.dsd.nux.nio.demo.EchoServer 9000
+/opt/nux/bin/fire-java gov.lbl.dsd.nux.nio.demo.PingPong server 9000
+/opt/nux/bin/fire-java gov.lbl.dsd.nux.nio.demo.PingPong client localhost 9000
+</pre>
+
+</section>
+
+</body>
+</document>

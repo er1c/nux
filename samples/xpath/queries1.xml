@@ -1,0 +1,71 @@
+<paths>
+<!-- if no context, defaults to root '/' -->
+<!-- path either has a count or it has a body value -->
+
+	<document url="randj.xml">
+		<path 
+			context="/guttext/play/playbody/act[@id='1']/scene[@id='1']/speech[20]" 
+			select="following-sibling::*" type="count">87</path>
+		<path context="/guttext/play/playbody/act[@id='1']/scene[@id='1']" 
+			select="preceding-sibling::*" type="count">0</path>
+		<path context="/guttext/play/playbody/act[@id='1']/scene[@id='2']" 
+			select="ancestor-or-self::*" type="count">5</path>
+		<path 
+			context="/guttext/play/playbody/act[@id='1']/scene[@id='1']/speech[20]" 
+			select="descendant::*" type="count">2</path>
+		<path select="//*" type="count">5035</path>
+		<path select="//line | //speaker" type="count">3883</path>
+		<path select="'Hello World!'" type="string">Hello World!</path>
+		<path select="count(//line)" type="double">3042.0</path>
+		<path select="//line" type="count">3042</path>
+		<path select="1+1" type="double">2.0</path>
+		<path select="//speech[speaker = 'Rom.']" type="count">163</path>
+		<path select="//speech[speaker = 'Jul.']" type="count">117</path>
+		<path select="//line[ancestor::act[@id='5']/scene[@id='3']]" 
+			type="count">433</path>
+		<path select="true() and true() and true() and true() and true()" 
+			type="boolean">true</path>
+		<path select="//*[@id]" type="count">29</path>
+		<path 
+			select="(count(descendant::*) + count(ancestor::*) + count(following::*) + count(preceding::*)) >= 5034" 
+			type="boolean">true</path>
+		<path select="contains('1234567890','9')" type="boolean">true</path>
+		<path select="//processing-instruction()" type="count">0</path>
+		<path context="/guttext/play/playbody/scene" 
+			select="following-sibling::*" type="count">5</path>
+		<path select="name(node())" type="string">guttext</path>
+		<path select="sum(//act/@id)" type="double">15.0</path>
+<!--		<path select="sum(//act/@id)" type="double">15</path> -->
+		<path 
+			select="/guttext/play/playbody/act[@id='5']/scene[@id='3']/speech" 
+			type="count">64</path>
+		<path select="normalize-space(string(distinct-values(/guttext/markupmeta/gutdate)))" type="string">November, 1997</path>
+
+		<path select="//*[contains(string(.),'Capulet')]" type="count">97</path>
+
+		<path select="substring('12345', -42, 1.0e0 div 0)" type="string">12345</path>
+<!--    <path select="substring('12345', -42, 1 div 0)" type="string">12345</path> -->
+		<path select="substring('12345', 0, 3)" type="string">12</path>
+		<path select="substring('12345', 1.5, 2.6)" type="string">234</path>
+
+		<path select="-5 mod -2" type="double">-1.0</path>
+		<path select="-5 mod 2" type="double">-1.0</path>
+		<path select="5 mod -2" type="double">1.0</path>
+		<path select="5 mod 2" type="double">1.0</path>
+<!--	
+     	<path select="-5 mod -2" type="double">-1</path>
+		<path select="-5 mod 2" type="double">-1</path>
+		<path select="5 mod -2" type="double">1</path>
+		<path select="5 mod 2" type="double">1</path>
+-->
+		<path select="normalize-space( '  qwerty ' )" type="string">qwerty</path>
+		<path select="ceiling( 3.1415 )" type="double">4.0</path>
+		<path select="floor( 3.1415 )" type="double">3.0</path>
+		<path select="ceiling( -3.1415 )" type="double">-3.0</path>
+		<path select="floor( -3.1415 )" type="double">-4.0</path>
+		<path select="/guttext/play/playbody/act" type="count">5</path>
+
+	</document>
+
+  
+ </paths>

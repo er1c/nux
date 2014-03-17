@@ -1,0 +1,36 @@
+<readme>
+This directory contains various test data files that can be used for
+experimentation when getting started with Nux command line tools or
+APIs.
+
+All documents are real-world documents, except for db*.xml,
+invoice*.xml, auction*.xml and randj10.xml, which are synthetically 
+scaled up concatenations from a base document, hence exhibiting a large 
+degree of redundancy.
+
+For each document, a corresponding bnux binary XML document is given,
+created with zlibCompressionLevel 0 (i.e. no ZLIB compression). 
+If desired, the fire-bnux program can be used to create bnux documents 
+exhibiting better compression, at the expense of performance.
+
+The collection contains various document flavours, attempting to cover
+the spectrum from very small to medium large file sizes, with and
+without namespaces, with and without attributes (e.g. weblog.xml vs.
+wurl.xml), with and without quasi-redundant repetitions (e.g.
+lhc-teams.xml vs. db*.xml and invoice*.xml), with and without
+indentation whitespace (e.g. lhc-teams.xml vs. lhc-teams-noindent.xml),
+as well as document-oriented files (mostly narrative text, e.g. README.xml,
+factbook.xml, romeo.xml), data-oriented files (database like records,
+e.g. db*.xml, weblog.xml) and messaging-oriented files (control and/or
+data flow messages e.g. soap*.xml, order.xml, invoice*.xml, 
+p2pio-receive.xml, ubl.xml), as well as documents with mixed 
+characteristics.
+
+Individual document flavours may be useful for tightly focussed
+benchmarks. All flavours taken together may serve as a good basis for
+broad overall characterizations.
+
+Good luck!
+
+whoschek@lbl.gov, Aug 12, 2005
+</readme>

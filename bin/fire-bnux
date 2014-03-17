@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Shell script to start demo program
+#
+# whoschek@lbl.gov
+# version 1.0, 06 June 2003
+# changelog: no changes so far
+#
+
+BASEDIR=`dirname $0`
+$BASEDIR/fire-java nux.xom.tests.BinaryXMLConverter ${1+"$@"}

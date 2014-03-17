@@ -1,0 +1,10 @@
+<articles>
+	<article name="chair" onStock="50">
+		<prize>10.0</prize>
+		<quantity>100</quantity>
+	</article>
+	<article name="table" onStock="30">
+		<prize>20.0</prize>
+		<quantity>200</quantity>
+	</article>	
+</articles>

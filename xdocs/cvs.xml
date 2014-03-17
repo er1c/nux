@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- $Id: cvs.xml,v 1.2 2004/10/30 03:54:30 hoschek3 Exp $          -->
+<document>
+	<properties>
+		<author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+		<title>CVS Repository</title>
+	</properties>
+	<body>
+		<!-- ##################################################################################### -->
+		<section name="CVS Repository browsing via Web interface">
+			If you're on the DSD subnet, you can browse the repository via the 
+			<a href="http://dsd.lbl.gov/viewcvs/viewcvs.cgi/java/nux/"> Web Interface</a>.
+		</section>
+
+		<!-- ##################################################################################### -->
+		<section name="CVS Repository with command line client">
+			From the command line checkout the nux module via ssh2:
+<pre class="source">
+export CVS_RSH=ssh 
+cvs -d:ext:`whoami`@portnoy.lbl.gov:/home/portnoy/u3/repository checkout java/nux
+</pre>
+		</section>
+
+		<!-- ##################################################################################### -->
+		<section name="CVS Repository with GUI client">
+			<p> With a GUI client, use cvs with ssh2 to login into </p>
+			<pre class="source">portnoy.lbl.gov</pre>
+			<p> The repository is under </p>
+			<pre class="source">/home/portnoy/u3/repository</pre>
+			<p> There, the module is called </p>
+			<pre class="source">java/nux</pre>
+			<fixme name="Fixme"> Should describe CVS access options in a more concise manner and
+				possibly refer to CVS tutorials. </fixme>
+		</section>
+	</body>
+</document>

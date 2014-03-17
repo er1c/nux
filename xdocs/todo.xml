@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- $Id: todo.xml,v 1.1 2004/10/09 01:58:37 hoschek3 Exp $          -->
+<document>
+	<properties>
+		<author email="whoschek.AT.lbl.DOT.gov">Wolfgang Hoschek</author>
+		<title>ToDo</title>
+	</properties>
+	<body>
+		<!-- ##################################################################################### -->
+		<section name="Overall Plan">
+			<subsection name="Phase 1">
+				<ul>
+					<li>XYZ.</li>
+				</ul>
+			</subsection>
+			<subsection name="Phase 2">
+				<ul>
+					<li>XYZ.</li>
+				</ul>
+			</subsection>
+			<subsection name="Phase 3">
+				<ul>
+					<li>XYZ.</li>
+				</ul>
+			</subsection>
+		</section>
+		<!-- ##################################################################################### -->
+		<section name="ToDo List">
+			<subsection name="Top Priority">
+				<ul>
+					<li>XYZ.</li>
+				</ul>
+			</subsection>
+			<subsection name="Medium Priority">
+				<ul>
+					<li>XYZ.</li>
+				</ul>
+			</subsection>
+			<subsection name="Low Priority">
+				<ul>
+					<li>XYZ.</li>
+				</ul>
+			</subsection>
+		</section>
+	</body>
+</document>
