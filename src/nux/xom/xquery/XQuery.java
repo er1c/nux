@@ -360,7 +360,7 @@ public class XQuery {
 		if (staticContext == null) {
 			staticContext = new StaticQueryContext(createConfiguration());
 		} else {
-			staticContext = staticContext.copy();
+			staticContext = staticContext; // TODO: Need to figure out the long term solution for this, my application was passing in null, was: staticContext.copy();
 		}
 		
 		this.staticContext = staticContext;
@@ -764,15 +764,7 @@ public class XQuery {
 	}
 	
 	private StaticQueryContext getStaticContext() {
-		try {
-			return getStaticContext84(); // saxon >= 8.4
-		} catch (Error e) { 
-			return this.staticContext; // saxon < 8.4
-		}
-	}	
-	
-	private StaticQueryContext getStaticContext84() {
-		return this.expression.getStaticContext();
+	  return this.expression.getStaticContext().getUserQueryContext();
 	}		
 
 		
