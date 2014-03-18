@@ -61,6 +61,7 @@ import javax.xml.transform.sax.SAXSource;
 
 import net.sf.saxon.Configuration;
 import net.sf.saxon.expr.Expression;
+import net.sf.saxon.expr.StaticContext;
 import net.sf.saxon.om.NamePool;
 import net.sf.saxon.om.NodeInfo;
 import net.sf.saxon.query.DynamicQueryContext;
@@ -288,7 +289,6 @@ import org.xml.sax.InputSource;
 public class XQuery {
 	
 	private final XQueryExpression expression; // immutable hence implicitly thread-safe
-	private final StaticQueryContext staticContext;
 			
 	/** enable low-level Saxon instruction tracing output on System.err? */
 	private static final boolean TRACE = 
@@ -359,11 +359,8 @@ public class XQuery {
 		if (query == null) throw new IllegalArgumentException("query must not be null");
 		if (staticContext == null) {
 			staticContext = new StaticQueryContext(createConfiguration());
-		} else {
-			staticContext = staticContext; // TODO: Need to figure out the long term solution for this, my application was passing in null, was: staticContext.copy();
 		}
 		
-		this.staticContext = staticContext;
 		if (baseURI != null) staticContext.setBaseURI(baseURI.toASCIIString());
 		
 		final Configuration config = staticContext.getConfiguration();
@@ -763,8 +760,8 @@ public class XQuery {
 		}
 	}
 	
-	private StaticQueryContext getStaticContext() {
-	  return this.expression.getStaticContext().getUserQueryContext();
+	private StaticContext getStaticContext() {
+	  return this.expression.getStaticContext();
 	}		
 
 		
